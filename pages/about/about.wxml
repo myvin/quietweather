@@ -1,0 +1,40 @@
+<view class='about'>
+  <view class='info'>
+    <image src='/img/logo.png'></image>
+    <view class='name'>Quiet Weather</view>
+  </view>
+  <view class='feedback item'>
+    <view class='title'>建议 & 意见反馈</view>
+    <view class='i' catchtap='copy' data-title='邮箱' data-content='{{email}}'>
+      <image catchtap='copy' data-title='邮箱' data-content='{{email}}' src='/img/email.png'></image>
+      <view catchtap='copy' data-title='邮箱' data-content='{{email}}' class='text'>通过Email反馈</view>
+    </view>
+    <view class='i' catchtap='copy' data-title='QQ' data-content='{{qq}}'>
+      <image catchtap='copy' data-title='QQ' data-content='{{qq}}' src='/img/qq.png'></image>
+      <view catchtap='copy' data-title='QQ' data-content='{{qq}}' class='text'>通过QQ反馈</view>
+    </view>
+    <view class='i'>
+      <image src='/img/wechat.png'></image>
+      <view class='text'>微信快速联系</view>
+      <button open-type="contact" class='btn'></button>
+    </view>
+  </view>
+  <view class='thanks item'>
+    <view class='title'>鸣谢</view>
+    <view class='i'>
+      <image src='/img/location_grey.png'></image>
+      <view class='text'>地理编码：百度地图开放平台</view>
+    </view>
+    <view class='i'>
+      <image src='/img/weather.png'></image>
+      <view class='text'>天气数据来源：百度地图开放平台</view>
+    </view>
+  </view>
+  <view class='attention item'>
+    <view class='title'>注意事项</view>
+    <view class='i'>
+      <!-- <image src='/img/location_grey.png'></image> -->
+      <view class='text'>Quiet Weather 小程序的数据均存储在本地，没有账号体系，没有数据同步功能，若清空微信相关数据可能会造成数据（首页缓存数据、首页悬浮球位置信息、设置）丢失（看个天气而已，何必纠结）。</view>
+    </view>
+  </view>
+</view>

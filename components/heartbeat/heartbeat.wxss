@@ -1,0 +1,8 @@
+.heart {
+  position: fixed;
+  z-index: 999;
+  top: -140rpx;
+  left: -100rpx;
+  width: 40rpx;
+  height: 40rpx;
+}

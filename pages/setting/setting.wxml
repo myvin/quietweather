@@ -1,0 +1,146 @@
+<view class='setting'>
+  <!-- 自定义 -->
+  <view class='s'>
+    <view class='title'>
+      <view>自定义</view>
+    </view>
+    <view class='content'>
+      <view class='item' catchtap='customBcg'  catchlongpress='defaultBcg'>
+        <view catchtap='customBcg'>
+          <view>自定义首页背景</view>
+          <view class='tip'>长按恢复默认背景</view>
+        </view>
+        <image catchtap='customBcg' class='more' src='/img/arrow.png'></image>
+      </view>
+      <view class='item'>
+        <view>打开顶部城市天气快捷搜索</view>
+        <switch color='#40a7e7' checked='{{!setting.hiddenSearch}}'  bindchange='switchChange' data-switchparam='hiddenSearch'></switch>
+      </view>
+      <view class='item'>
+        <view>显示生活指数信息</view>
+        <switch color='#40a7e7' checked='{{!setting.hiddenIndex}}' bindchange='switchChange' data-switchparam='hiddenIndex'></switch>
+      </view>
+    </view>
+    <!-- 检查更新 -->
+    <view class='t'>
+      <view class='title'>
+        <view>检查更新</view>
+      </view>
+      <view class='content'>
+        <view class='item'>
+          <view>
+            <view>打开首页更新提醒</view>
+            <view class='tip' catchtap='updateInstruc'>
+              <image src='/img/question.png'></image>
+              <text wx:if='{{enableUpdate}}'>在首页检测到新版本，会提示更新</text>
+              <text wx:if='{{!enableUpdate}}' style='flex:1;'>基础库版本需高于 1.9.90，当前基础库版本为 {{SDKVersion}}</text>
+            </view>
+          </view>
+          <switch color='#40a7e7' checked='{{setting.forceUpdate}}' bindchange='switchChange' data-switchParam='forceUpdate'></switch>
+        </view>
+      </view>
+    </view>
+    <!-- 小工具 -->
+    <view class='t'>
+      <view class='title'>
+        <view>小工具</view>
+      </view>
+      <view class='content sub'>
+        <view class='subtitle'>NFC</view>
+        <view class='item' catchtap='getHCEState'>
+          <view>检测是否支持NFC</view>
+          <image class='more' src='/img/arrow.png'></image>
+        </view>
+      </view>
+      <view class='content sub'>
+        <view class='subtitle'>屏幕亮度</view>
+        <view class='item'>
+          <view>
+            <view>当前屏幕亮度</view>
+            <view class='tip'>范围0~100，0 最暗，100 最亮</view>
+          </view>
+          <view>{{screenBrightness}}</view>
+        </view>
+        <view class='item' catchtap='setScreenBrightness'>
+          <view style='width:100%'>
+            <view>设置屏幕亮度</view>
+            <slider value='{{screenBrightness}}' min='0' max='100' step='1' block-size='12' block-color='#40a7e7' activeColor='#40a7e7' show-value='true' bindchanging='screenBrightnessChanging'></slider>
+          </view>
+          <!-- <view>设置屏幕亮度</view> -->
+        </view>
+        <view class='item'>
+          <view>
+            <view>保持常亮</view>
+            <view class='tip'>仅在当前小程序、当次生效，离开小程序后设置失效</view>
+          </view>
+          <switch color='#40a7e7' bindchange='switchChange' data-switchparam='keepscreenon' checked='{{keepscreenon}}'></switch>
+        </view>
+      </view>
+      <view class='content sub'>
+        <view class='subtitle'>系统信息</view>
+        <view class='item'catchtap='getsysteminfo'>
+          <view>
+            <view>查看系统信息</view>
+          </view>
+          <image class='more' src='/img/arrow.png'></image>
+        </view>
+      </view>
+    </view>
+    <!-- 清除数据 -->
+    <view class='t'>
+      <view class='title'>
+        <view>清除数据</view>
+      </view>
+      <view class='content'>
+        <view class='item'  catchtap='removeStorage' data-type='menu'>
+          <view>
+            <view>首页悬浮球复位</view>
+            <view class='tip'>
+              <text>首页悬浮球将复位到右下角</text>
+            </view>
+          </view>
+          <image class='more' src='/img/arrow.png'></image>
+        </view>
+        <view class='item' catchtap='removeStorage' data-type='setting'>
+          <view>
+            <view>恢复初始化设置</view>
+            <view class='tip'>
+              <image src='/img/danger.png'></image>
+              <text>所有设置信息都将被清除</text>
+            </view>
+          </view>
+          <image class='more' src='/img/arrow.png'></image>
+        </view>
+        <view class='item'  catchtap='removeStorage' data-type='all'>
+          <view>
+            <view>清除所有本地数据</view>
+            <view class='tip'>
+              <image src='/img/danger.png'></image>
+              <text>所有本地数据都将被清除</text>
+            </view>
+          </view>
+          <image class='more' src='/img/arrow.png'></image>
+        </view>
+      </view>
+    </view>
+  </view>
+  <!-- toast -->
+  <view class='toast' wx:if='{{show}}'>
+    <view class='mask' catchtap='hide'></view>
+    <view class='wrapper'>
+      <view class='box'>
+        <view class='content'>注：由于小程序基础库 1.9.90 开始支持 wx.getUpdateManager API，故基础库低于该版本的会忽略该设置。</view>
+        <view class='t'>启动机制</view>
+        <view class='content'>小程序启动会有两种情况，一种是「冷启动」，一种是「热启动」。 假如用户已经打开过某小程序，然后在一定时间内再次打开该小程序，此时无需重新启动，只需将后台的小程序切换到前台，这个过程就是热启动；冷启动指的是用户首次打开或小程序被微信主动销毁后再次打开的情况，此时小程序需要重新加载启动。</view>
+        <view class='t'>更新机制</view>
+        <view class='content'>小程序冷启动时如果发现有新版本，将会异步下载新版本的代码包，并同时用客户端本地的包进行启动，即新版本的小程序需要等下一次冷启动才会应用上。</view>
+        <view class='t'>运行机制</view>
+        <view class='content'>
+          <text>1、小程序没有重启的概念；</text>
+          <text>2、当小程序进入后台，客户端会维持一段时间的运行状态，超过一定时间后（目前是5分钟）会被微信主动销毁；</text>
+          <text>3、当短时间内（5s）连续收到两次以上系统内存告警，会进行小程序的销毁。</text>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>

@@ -1,0 +1,1 @@
+<image wx:for='{{arr}}' wx:key='{{index}}' animation='{{animations[index]}}' class='heart' style='left:{{lefts[index]}}px;top:{{tops[index]}}px;width:{{widths[index]}}rpx;height:{{widths[index]}}rpx;' src='/img/heartbeat.png'></image>

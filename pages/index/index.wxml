@@ -1,0 +1,55 @@
+<view class="container">
+  <heartbeat id='heartbeat' wx:if='{{showHeartbeat}}'></heartbeat>
+  <view class='bcg' wx:if='{{!bcgImg}}' style='background: {{bcgColor}}'></view>
+  <image class='bcg' wx:if='{{bcgImg}}' src='{{bcgImg}}' mode='aspectFill'></image>
+  <view class='search' wx:if='{{!setting.hiddenSearch}}' style='background:rgba(255, 255, 255, 0)'>
+    <view class='wrapper'>
+      <image src='/img/search.png'></image>
+      <input placeholder-class='placeholderClass' confirm-type='search' placeholder='查询其他城市' maxlength='20' bindconfirm='commitSearch' value='{{searchText}}' disabled='{{!enableSearch}}'></input>
+    </view>
+  </view>
+  <view class='content' style='margin-top: {{setting.hiddenSearch ? 20 : 60}}px'>
+    <view class='info'>
+      <view class='city'>
+        <view>{{cityDatas.originalData.results[0].currentCity || '定位中'}}</view>
+        <text class='time' wx:if='{{cityDatas.updateTimeFormat}}'>{{cityDatas.updateTimeFormat}} 更新</text>
+        </view>
+      <view wx:if='{{cityDatas.temperature}}' class='temp num' decode='true'>{{cityDatas.temperature}}<text style='font-size:90rpx'>°</text></view>
+      <view class='weather'>{{cityDatas.originalData.results[0].weather_data[0].weather || '--'}}</view>
+      <view class='pm' wx:if='{{cityDatas.pm.val}}'>
+        <text>{{cityDatas.pm.desc}} {{cityDatas.pm.val}}</text>
+      </view>
+    </view>
+    <!-- <canvas canvas-id='line' style='width:100%;height:350rpx;'></canvas> -->
+    <view class='guide' wx:if='{{cityDatas.originalData.results[0].weather_data}}'>
+      <view class='item' wx:for='{{cityDatas.originalData.results[0].weather_data}}' wx:key='{{index}}'>
+        <view class='date i'>{{index === 0 ? '今天' : item.date}}</view>
+        <view class='temperature i'>{{item.temperature}}</view>
+        <!-- <image class='i' src='{{item.dayPictureUrl}}' mode='widthFix'></image> -->
+        <!-- <image class='i' src='{{item.nightPictureUrl}}' mode='widthFix'></image> -->
+        <view class='weather i'>{{item.weather}}</view>
+        <view class='wind i'>{{item.wind}}</view>
+      </view>
+    </view>
+    <view class='livingIndex' wx:if='{{cityDatas.originalData.results[0].index && !setting.hiddenIndex}}'>
+      <view class='item' wx:for='{{cityDatas.originalData.results[0].index}}' wx:key='{{index}}'>
+        <image class='icon' src='{{icons[index]}}'></image>
+        <view class='right'>
+          <view class='key'>{{item.tipt}} {{item.zs}}</view>
+          <view class='value'>{{item.des}}</view>
+        </view>
+      </view>
+    </view>
+  </view>
+  <view class='copy'>
+    <view>数据来源 百度地图开放平台</view>
+    <!-- <view class='tip'>注: 仅供个人学习交流使用</view> -->
+  </view>
+  <!-- 悬浮菜单 -->
+  <view class='menus'>
+    <image src="/img/location.png" animation="{{animationOne}}" class="menu" bindtap="menuOne"  style='top:{{pos.top}}px;left:{{pos.left}}px;'></image>
+    <image src="/img/setting.png" animation="{{animationTwo}}" class="menu" bindtap="menuTwo"  style='top:{{pos.top}}px;left:{{pos.left}}px;'></image>
+    <image src="/img/info.png" animation="{{animationThree}}" class="menu" bindtap="menuThree"  style='top:{{pos.top}}px;left:{{pos.left}}px;'></image>
+    <image src="/img/menu.png" animation="{{animationMain}}" class="menu main" bindtap="menuMain" catchtouchmove='menuMainMove' style='top:{{pos.top}}px;left:{{pos.left}}px;'></image>
+  </view>
+</view>

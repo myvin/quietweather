@@ -1,0 +1,16 @@
+<view class='container'>
+  <view class='top' wx:if='{{hotCities.length}}'>
+    <view class='title'>热门城市</view>
+    <view class='items'>
+      <view class='item' hover-class='hover-ddd' catchtap='choose' data-item='{{item}}' wx:key='{{index}}' wx:for='{{hotCities}}'>{{item.name}}</view>
+    </view>
+  </view>
+  <view class='bottom'>
+    <view wx:key='{{index}}' wx:for='{{cities}}'>
+      <view class='key'>{{index}}</view>
+      <view class='values'>
+        <view wx:key='{{index}}' class='value' hover-class='hover' wx:for='{{item}}' catchtap='choose' data-item='{{item}}'>{{item.name}}</view>
+      </view>
+    </view>
+  </view>
+</view>

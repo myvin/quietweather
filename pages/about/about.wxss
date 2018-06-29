@@ -1,0 +1,57 @@
+.about {
+  font-size: 30rpx;
+  color: #666;
+  padding: 0 40rpx 40rpx;
+}
+.info {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-size: 32rpx;
+  color: #333;
+  padding: 60rpx 40rpx;
+}
+.info image {
+  width: 200rpx;
+  height: 200rpx;
+  border-radius: 50%;
+  margin-bottom: 30rpx;
+}
+.item {
+  line-height: 2.2em;
+}
+.item .title {
+  font-size: 32rpx;
+  color: #40a7e7;
+  margin: 26rpx 0;
+}
+.item .i {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  position: relative;
+  margin-left: 10rpx;
+}
+.attention .i {
+  margin-left: 0;
+}
+.i image {
+  width: 32rpx;
+  height: 32rpx;
+  margin-right: 10rpx;
+}
+.feedback .text {
+  position: relative;
+  z-index: 1;
+}
+.feedback .btn {
+  position: absolute;
+  z-index: 2;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 1;
+  opacity: 0;
+}

@@ -1,0 +1,15 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/about/about",
+    "pages/citychoose/citychoose",
+    "pages/setting/setting",
+    "pages/systeminfo/systeminfo"
+  ],
+  "window": {
+    "backgroundTextStyle": "dark",
+    "navigationBarBackgroundColor": "#40a7e7",
+    "navigationBarTitleText": "Quiet Weather",
+    "navigationBarTextStyle": "light"
+  }
+}

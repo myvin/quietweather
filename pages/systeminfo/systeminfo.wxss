@@ -1,0 +1,43 @@
+.systeminfo {
+  padding: 0 30rpx 40rpx;
+}
+.brand {
+  font-family: DINCondensed-Bold;
+  height: 300rpx;
+  font-size: 100rpx;
+  color: #40a7e7;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+.brand image {
+  width: 100rpx;
+  height: 100rpx;
+  margin-right: 20rpx;
+}
+.brand text {
+  line-height: 1em;
+}
+.systeminfo .item {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: flex-start;
+  font-size: 30rpx;
+  color: #000;
+  padding: 30rpx 15rpx;
+  height: 62rpx;
+  border-top: 1rpx solid #efefef;
+}
+.systeminfo .item:last-child {
+  border-bottom: 1rpx solid #efefef;
+}
+.systeminfo .item .key {
+  line-height: 1em;
+}
+.systeminfo .item .value {
+  font-size: 24rpx;
+  line-height: 1em;
+  color: #777;
+}
