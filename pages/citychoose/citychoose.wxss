@@ -4,6 +4,52 @@
   flex-direction: column;
   background: #f2f2f2;
 }
+.wrapper {
+  font-size: 0;
+  background: #fff;
+  padding: 30rpx;
+  position: relative;
+  border-bottom: 1rpx solid #e6e6e6;
+  height: 128rpx;
+  box-sizing: border-box;
+}
+.wrapper .search {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+.inner {
+  background: #efefef;
+  font-size: 30rpx;
+  padding: 16rpx 0 16rpx 20rpx;
+  box-sizing: border-box;
+  border-radius: 8rpx;
+  flex: 1;
+  display: flex;
+  align-items: center;
+}
+.inner input {
+  background: #efefef;
+  font-size: 30rpx;
+  height: 38rpx;
+  /* 覆盖默认样式 min-height */
+  min-height: 38rpx;
+  line-height: 38rpx;
+  width: 100%;
+  box-sizing: border-box;
+}
+.icon {
+  width: 28rpx;
+  height: 28rpx;
+  margin-right: 10rpx;
+}
+.cancel {
+  font-size: 30rpx;
+  display: inline-block;
+  color: #666;
+  width: 2.5em;
+  text-align: right;
+}
 .items {
   display: flex;
   flex-direction: row;
@@ -49,4 +95,10 @@
 }
 .hover {
   background: #efefef;
+}
+.empty {
+  margin-top: 100rpx;
+  font-size: 30rpx;
+  text-align: center;
+  color: #666;
 }

@@ -1,16 +1,26 @@
 <view class='container'>
-  <view class='top' wx:if='{{hotCities.length}}'>
+  <view class="wrapper">
+    <view class='search'>
+      <view class="inner">
+        <image class='icon' src='/img/search_grey.png'></image>
+        <input value='{{inputText}}' placeholder='搜索城市' maxlength='20' confirm-type='搜索' bindinput='inputFilter' bindconfirm='inputFilter' bindfocus='inputFilter'></input>
+      </view>
+      <text class='cancel' catchtap='cancel'>清空</text>
+    </view>
+  </view>
+  <!-- <view class='top' wx:if='{{hotCities.length}}'>
     <view class='title'>热门城市</view>
     <view class='items'>
       <view class='item' hover-class='hover-ddd' catchtap='choose' data-item='{{item}}' wx:key='{{index}}' wx:for='{{hotCities}}'>{{item.name}}</view>
     </view>
-  </view>
+  </view> -->
   <view class='bottom'>
-    <view wx:key='{{index}}' wx:for='{{cities}}'>
+    <view wx:key='{{index}}' wx:for='{{showItems}}'>
       <view class='key'>{{index}}</view>
       <view class='values'>
         <view wx:key='{{index}}' class='value' hover-class='hover' wx:for='{{item}}' catchtap='choose' data-item='{{item}}'>{{item.name}}</view>
       </view>
     </view>
   </view>
+  <view class='empty' wx:if='{{!alternative}}'>暂无城市可以选择</view>
 </view>
