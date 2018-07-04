@@ -5,13 +5,17 @@
   </view>
   <view class='feedback item'>
     <view class='title'>建议 & 意见反馈</view>
+    <view class='i' catchtap='copy' data-title='GitHub' data-content='{{github}}'>
+      <image catchtap='copy' data-title='GitHub' data-content='{{github}}' src='/img/github.png'></image>
+      <view catchtap='copy' data-title='GitHub' data-content='{{github}}' class='text'>通过 GitHub 反馈</view>
+    </view>
     <view class='i' catchtap='copy' data-title='邮箱' data-content='{{email}}'>
       <image catchtap='copy' data-title='邮箱' data-content='{{email}}' src='/img/email.png'></image>
-      <view catchtap='copy' data-title='邮箱' data-content='{{email}}' class='text'>通过Email反馈</view>
+      <view catchtap='copy' data-title='邮箱' data-content='{{email}}' class='text'>通过 Email 反馈</view>
     </view>
     <view class='i' catchtap='copy' data-title='QQ' data-content='{{qq}}'>
       <image catchtap='copy' data-title='QQ' data-content='{{qq}}' src='/img/qq.png'></image>
-      <view catchtap='copy' data-title='QQ' data-content='{{qq}}' class='text'>通过QQ反馈</view>
+      <view catchtap='copy' data-title='QQ' data-content='{{qq}}' class='text'>通过 QQ 反馈</view>
     </view>
     <view class='i'>
       <image src='/img/wechat.png'></image>

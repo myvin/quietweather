@@ -1,5 +1,6 @@
 Page({
   data: {
+    github: 'https://github.com/myvin',
     email: '851399101@qq.com',
     qq: '851399101',
   },
@@ -12,6 +13,7 @@ Page({
       success () {
         wx.showToast({
           title: `已复制${title}`,
+          duration: 2000,
         })
       },
     })
