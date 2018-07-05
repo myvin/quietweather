@@ -1,5 +1,8 @@
 # QuietWeather
 一款天气应用微信小程序
+<p align='center'>
+    <img src='https://user-gold-cdn.xitu.io/2018/7/5/1646880a97f2c931?w=344&h=344&f=jpeg&s=66247'>
+</p>
 
 ## 数据来源
 地理编码、天气数据均来自[百度地图开放平台](https://lbsyun.baidu.com/)。个人开发完全免费，有对应的小程序 sdk，加入即可，但是返回的天气数据较少。
