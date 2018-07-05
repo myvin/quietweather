@@ -41,6 +41,10 @@
       </view>
     </view>
   </view>
+  <view wx:if='{{openSettingButtonShow}}' class='openSettingButton'>
+    <image src='/img/unlock.png'></image>
+    <button open-type='openSetting'></button>
+  </view>
   <view class='copy'>
     <view>数据来源 百度地图开放平台</view>
     <!-- <view class='tip'>注: 仅供个人学习交流使用</view> -->

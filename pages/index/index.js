@@ -34,6 +34,7 @@ Page({
     // heartbeat 时禁止搜索，防止动画执行
     enableSearch: true,
     pos: {},
+    openSettingButtonShow: false,
   },
   calcPM(value) {
     if (value > 0 && value <= 50) {
@@ -81,6 +82,9 @@ Page({
     }
   },
   success (data) {
+    this.setData({
+      openSettingButtonShow: false,
+    })
     wx.stopPullDownRefresh()
     let now = new Date()
     // 存下来源数据
@@ -171,6 +175,7 @@ Page({
     })
   },
   fail (res) {
+    let that = this
     wx.stopPullDownRefresh()
     let errMsg = res.errMsg || ''
     // 拒绝授权地理位置权限
@@ -178,12 +183,18 @@ Page({
       wx.showToast({
         title: '需要开启地理位置权限',
         icon: 'none',
-        duration: 3000,
+        duration: 2500,
         success (res) {
-          let timer = setTimeout(() => {
-            clearTimeout(timer)
-            wx.openSetting({})
-          }, 3000)
+          if (that.canUseOpenSettingApi()) {
+            let timer = setTimeout(() => {
+              clearTimeout(timer)
+              wx.openSetting({})
+            }, 2500)
+          } else {
+            that.setData({
+              openSettingButtonShow: true,
+            })
+          }
         },
       })
     } else {
@@ -191,6 +202,18 @@ Page({
         title: '网络不给力，请稍后再试',
         icon: 'none',
       })
+    }
+  },
+  // wx.openSetting 要废弃，button open-type openSetting 2.0.7 后支持
+  // 使用 wx.canIUse('openSetting') 都会返回 true，这里判断版本号区分
+  canUseOpenSettingApi () {
+    let systeminfo = getApp().globalData.systeminfo
+    let SDKVersion = systeminfo.SDKVersion
+    let version = utils.cmpVersion(SDKVersion, '2.0.7')
+    if (version < 0) {
+      return true
+    } else {
+      return false
     }
   },
   init(params) {
