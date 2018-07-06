@@ -1,8 +1,14 @@
 <view class='about'>
-  <view class='info'>
-    <image src='/img/logo.png'></image>
-    <view class='name'>Quiet Weather</view>
-  </view>
+  <swiper indicator-color='#666666' indicator-active-color='#40a7e7' indicator-dots="true" autoplay="true" circular="true" interval="5000" duration="300" previous-margin="0px" next-margin="0px" style='height:{{swiperHeight}}'>
+    <block wx:for="{{bannerImgList}}" wx:key="{{index}}">
+      <swiper-item>
+        <view class='info' data-index='{{index}}' catchtap='previewImages'>
+          <image src='{{item}}'></image>
+          <view class='name'>Quiet Weather</view>
+        </view>
+      </swiper-item>
+    </block>
+  </swiper>
   <view class='feedback item'>
     <view class='title'>建议 & 意见反馈</view>
     <view class='i' catchtap='copy' data-title='GitHub' data-content='{{github}}'>
