@@ -6,12 +6,14 @@
 // 200-300 重度污染：非常不健康
 // 300-500 严重污染：有毒物
 // 500以上 爆表：有毒物
+let messages = require('../../data/messages.js')
 let bmap = require('../../lib/bmap-wx.js')
 let utils = require('../../utils/utils')
 let globalData = getApp().globalData
 let SYSTEMINFO = globalData.systeminfo
 Page({
   data: {
+    message: '',
     cityDatas: {},
     icons: ['/img/clothing.png', '/img/carwashing.png', '/img/pill.png', '/img/running.png', '/img/sun.png'],
     // 用来清空 input
@@ -287,6 +289,9 @@ Page({
         searchCity: '',
       })
     }
+    this.setData({
+      message: messages.messages(),
+    })
   },
   onHide() {
     wx.setStorage({

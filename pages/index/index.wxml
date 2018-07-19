@@ -13,7 +13,8 @@
       <view class='city'>
         <view>{{cityDatas.originalData.results[0].currentCity || '定位中'}}</view>
         <text class='time' wx:if='{{cityDatas.updateTimeFormat}}'>{{cityDatas.updateTimeFormat}} 更新</text>
-        </view>
+      </view>
+      <view class='message'>{{message}}</view>
       <view wx:if='{{cityDatas.temperature}}' class='temp num' decode='true'>{{cityDatas.temperature}}<text style='font-size:90rpx'>°</text></view>
       <view class='weather'>{{cityDatas.originalData.results[0].weather_data[0].weather || '--'}}</view>
       <view class='pm' wx:if='{{cityDatas.pm.val}}'>

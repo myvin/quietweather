@@ -108,6 +108,13 @@ page {
   top: 50%;
   transform: translateY(-50%);
 }
+.message {
+  text-align: center;
+  font-size: 22rpx;
+  color: #fff;
+  padding: 0 20rpx;
+  box-sizing: border-box;
+}
 .temp {
   height: 360rpx;
   font-size: 200rpx;
