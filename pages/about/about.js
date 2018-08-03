@@ -43,7 +43,7 @@ Page({
     })
   },
   copy(e) {
-    let dataset = (e.target || {}).dataset || {}
+    let dataset = (e.currentTarget || {}).dataset || {}
     let title = dataset.title || ''
     let content = dataset.content || ''
     wx.setClipboardData({

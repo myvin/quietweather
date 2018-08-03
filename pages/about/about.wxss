@@ -30,9 +30,15 @@
   display: flex;
   flex-direction: row;
   justify-content: flex-start;
-  align-items: center;
+  align-items: flex-start;
   position: relative;
-  margin-left: 10rpx;
+  padding-bottom: 16rpx;
+}
+.i .icon {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  height: 2.2em;
 }
 .attention .i {
   margin-left: 0;
@@ -40,7 +46,7 @@
 .i image {
   width: 32rpx;
   height: 32rpx;
-  margin-right: 10rpx;
+  margin-right: 20rpx;
 }
 .feedback .text {
   position: relative;
