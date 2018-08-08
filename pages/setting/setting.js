@@ -75,10 +75,9 @@ Page({
     })
   },
   customBcg () {
-    let that = this
     wx.chooseImage({
-      success: function (res) {
-        that.removeBcg(() => {
+      success: (res) => {
+        this.removeBcg(() => {
           wx.saveFile({
             tempFilePath: res.tempFilePaths[0],
             success: function (res) {
@@ -116,17 +115,16 @@ Page({
     })
     this.ifDisableUpdate()
     this.getScreenBrightness()
-    let that = this
     wx.getStorage({
       key: 'setting',
-      success: function(res) {
+      success: (res) => {
         let setting = res.data
-        that.setData({
+        this.setData({
           setting,
         })
       },
-      fail: function (res) {
-        that.setData({
+      fail: (res) => {
+        this.setData({
           setting: {},
         })
       },
@@ -176,15 +174,14 @@ Page({
     })
   },
   getScreenBrightness () {
-    let that = this
     wx.getScreenBrightness({
-      success: function (res) {
-        that.setData({
+      success: (res) => {
+        this.setData({
           screenBrightness: Number(res.value * 100).toFixed(0),
         })
       },
-      fail: function (res) {
-        that.setData({
+      fail: (res) => {
+        this.setData({
           screenBrightness: '获取失败',
         })
       },
@@ -194,22 +191,20 @@ Page({
     this.setScreenBrightness(e.detail.value)
   },
   setScreenBrightness (val) {
-    let that = this
     wx.setScreenBrightness({
       value: val / 100,
-      success: function (res) {
-        that.setData({
+      success: (res) => {
+        this.setData({
           screenBrightness: val,
         })
       },
     })
   },
   setKeepScreenOn (b) {
-    let that = this
     wx.setKeepScreenOn({
       keepScreenOn: b,
-      success () {
-        that.setData({
+      success: () => {
+        this.setData({
           keepscreenon: b,
         })
       },
@@ -221,7 +216,6 @@ Page({
     })
   },
   removeStorage (e) {
-    let that = this
     let datatype = e.currentTarget.dataset.type
     if (datatype === 'menu') {
       wx.setStorage({
@@ -242,7 +236,7 @@ Page({
         content: '确认要初始化设置',
         cancelText: '容朕想想',
         confirmColor: '#40a7e7',
-        success(res) {
+        success: (res) => {
           if (res.confirm) {
             wx.removeStorage({
               key: 'setting',
@@ -250,7 +244,7 @@ Page({
                 wx.showToast({
                   title: '设置已初始化',
                 })
-                that.setData({
+                this.setData({
                   setting: {},
                 })
               },
@@ -267,11 +261,11 @@ Page({
         success (res) {
           if (res.confirm) {
             wx.clearStorage({
-              success: function (res) {
+              success: (res) => {
                 wx.showToast({
                   title: '数据已清除',
                 })
-                that.setData({
+                this.setData({
                   setting: {},
                   pos: {},
                 })

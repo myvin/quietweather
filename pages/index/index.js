@@ -113,14 +113,13 @@ Page({
     this.setData({
       enableSearch: false,
     })
-    let that = this
     let heartbeat = this.selectComponent('#heartbeat')
     heartbeat.dance(() => {
-      that.setData({
+      this.setData({
         showHeartbeat: false,
         enableSearch: true,
       })
-      that.setData({
+      this.setData({
         showHeartbeat: true,
       })
     })
@@ -138,9 +137,8 @@ Page({
       duration: 300,
     })
     if (val) {
-      let that = this
       this.geocoder(val, (loc) => {
-        that.init({
+        this.init({
           location: `${loc.lng},${loc.lat}`
         })
       })
@@ -148,7 +146,6 @@ Page({
   },
   // 地理位置编码
   geocoder (address, success) {
-    let that = this
     wx.request({
       url: getApp().setGeocoderUrl(address),
       success (res) {
@@ -170,15 +167,14 @@ Page({
           icon: 'none',
         })
       },
-      complete () {
-        that.setData({
+      complete: () => {
+        this.setData({
           searchText: '',
         })
       },
     })
   },
   fail (res) {
-    let that = this
     wx.stopPullDownRefresh()
     let errMsg = res.errMsg || ''
     // 拒绝授权地理位置权限
@@ -187,14 +183,14 @@ Page({
         title: '需要开启地理位置权限',
         icon: 'none',
         duration: 2500,
-        success (res) {
-          if (that.canUseOpenSettingApi()) {
+        success: (res) => {
+          if (this.canUseOpenSettingApi()) {
             let timer = setTimeout(() => {
               clearTimeout(timer)
               wx.openSetting({})
             }, 2500)
           } else {
-            that.setData({
+            this.setData({
               openSettingButtonShow: true,
             })
           }
@@ -220,14 +216,13 @@ Page({
     }
   },
   init(params) {
-    let that = this
     let BMap = new bmap.BMapWX({
       ak: globalData.ak,
     })
     BMap.weather({
       location: params.location,
-      fail: that.fail,
-      success: that.success,
+      fail: this.fail,
+      success: this.success,
     })
   },
   // drawWeather () {
@@ -243,27 +238,25 @@ Page({
     this.init({})
   },
   setMenuPosition () {
-    let that = this
     wx.getStorage({
       key: 'pos',
-      success: function(res) {
-        that.setData({
+      success: (res) => {
+        this.setData({
           pos: res.data,
         })
       },
-      fail: function (res) {
-        that.setData({
+      fail: (res) => {
+        this.setData({
           pos: {},
         })
       },
     })
   },
   getCityDatas() {
-    let that = this
     let cityDatas = wx.getStorage({
       key: 'cityDatas',
-      success: function (res) {
-        that.setData({
+      success: (res) => {
+        this.setData({
           cityDatas: res.data,
         })
       },
@@ -272,14 +265,13 @@ Page({
   onShow () {
     this.getCityDatas()
     this.setMenuPosition()
-    let that = this
     let bcgColor = utils.themeSetting()
     this.setData({
       bcgColor,
     })
     this.setBcg()
     this.initSetting((setting) => {
-      that.checkUpdate(setting)
+      this.checkUpdate(setting)
     })
     if (!this.data.cityChanged) {
       this.init({})
@@ -322,16 +314,15 @@ Page({
     })
   },
   setBcg () {
-    let that = this
     wx.getSavedFileList({
-      success: function (res) {
+      success: (res) => {
         let fileList = res.fileList
         if (!utils.isEmptyObject(fileList)) {
-          that.setData({
+          this.setData({
             bcgImg: fileList[0].filePath,
           })
         } else {
-          that.setData({
+          this.setData({
             bcgImg: '',
           })
         }
@@ -339,18 +330,17 @@ Page({
     })
   },
   initSetting (successFunc) {
-    let that = this
     wx.getStorage({
       key: 'setting',
-      success: function(res) {
+      success: (res) => {
         let setting = res.data || {}
-        that.setData({
+        this.setData({
           setting,
         })
         successFunc && successFunc(setting)
       },
-      fail: function () {
-        that.setData({
+      fail: () => {
+        this.setData({
           setting: {},
         })
       },

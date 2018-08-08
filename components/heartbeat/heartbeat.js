@@ -20,10 +20,9 @@ Component({
   ready () {
     let systeminfo = getApp().globalData.systeminfo
     if (utils.isEmptyObject(systeminfo)) {
-      let that = this
       wx.getSystemInfo({
-        success: function(res) {
-          that.setData({
+        success: (res) => {
+          this.setData({
             windowWidth: res.windowWidth || res.screenWidth,
             windowHeight: res.windowHeight || res.screenHeight,
           })
@@ -68,9 +67,8 @@ Component({
         tops,
         widths,
       })
-      let that = this
       let timer = setTimeout(() => {
-        that.setData({
+        this.setData({
           animations,
         })
         clearTimeout(timer)

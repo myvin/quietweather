@@ -25,16 +25,15 @@ Page({
     })
   },
   initSwiper () {
-    let that = this
     let systeminfo = getApp().globalData.systeminfo
     if (utils.isEmptyObject(systeminfo)) {
       wx.getSystemInfo({
-        success: function (res) {
-          that.setSwiperHeight(res)
+        success: (res) => {
+          this.setSwiperHeight(res)
         },
       })
     } else {
-      that.setSwiperHeight(systeminfo)
+      this.setSwiperHeight(systeminfo)
     }
   },
   setSwiperHeight (res) {
