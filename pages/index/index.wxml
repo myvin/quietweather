@@ -1,4 +1,4 @@
-<view class="container">
+<view class="container {{isIPhoneX ? 'iphonex-padding' : ''}}">
   <heartbeat id='heartbeat' wx:if='{{showHeartbeat}}'></heartbeat>
   <view class='bcg' wx:if='{{!bcgImg}}' style='background: {{bcgColor}}'></view>
   <image class='bcg' wx:if='{{bcgImg}}' src='{{bcgImg}}' mode='aspectFill'></image>

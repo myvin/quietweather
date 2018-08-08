@@ -13,6 +13,7 @@ let globalData = getApp().globalData
 let SYSTEMINFO = globalData.systeminfo
 Page({
   data: {
+    isIPhoneX: globalData.isIPhoneX,
     message: '',
     cityDatas: {},
     icons: ['/img/clothing.png', '/img/carwashing.png', '/img/pill.png', '/img/running.png', '/img/sun.png'],

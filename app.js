@@ -1,9 +1,9 @@
 App({
   onLaunch () {
-    let that = this
     wx.getSystemInfo({
-      success: function (res) {
-        that.globalData.systeminfo = res
+      success: (res) => {
+        this.globalData.systeminfo = res
+        this.globalData.isIPhoneX = /iphonex/gi.test(res.model.replace(/\s+/, ''))
       },
     })
   },
@@ -11,6 +11,7 @@ App({
     // 是否保持常亮，离开小程序失效
     keepscreenon:false,
     systeminfo: {},
+    isIPhoneX: false,
     ak: 'your baidu map application ak',
   },
   setGeocoderUrl (address) {
