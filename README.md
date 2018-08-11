@@ -5,11 +5,11 @@
 </p>
 
 ## 截图
-<div style='display:flex;'>
-    <img src='https://raw.githubusercontent.com/myvin/miniprogram/master/quietweather/images/screenshot_1.png'>
-    <img src='https://raw.githubusercontent.com/myvin/miniprogram/master/quietweather/images/screenshot_2.png'>
-    <img src='https://raw.githubusercontent.com/myvin/miniprogram/master/quietweather/images/screenshot_3.png'>
-    <img src='https://raw.githubusercontent.com/myvin/miniprogram/master/quietweather/images/screenshot_4.png'>
+<div >
+    <img src='https://raw.githubusercontent.com/myvin/miniprogram/master/quietweather/images/screenshot_1.png' style='width:300px;'>
+    <img src='https://raw.githubusercontent.com/myvin/miniprogram/master/quietweather/images/screenshot_2.png' style='width:300px;'>
+    <img src='https://raw.githubusercontent.com/myvin/miniprogram/master/quietweather/images/screenshot_3.png' style='width:300px;'>
+    <img src='https://raw.githubusercontent.com/myvin/miniprogram/master/quietweather/images/screenshot_4.png' style='width:300px;'>
 </div>
 
 ## 数据来源
