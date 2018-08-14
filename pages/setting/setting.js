@@ -216,6 +216,7 @@ Page({
     })
   },
   removeStorage (e) {
+    let that = this
     let datatype = e.currentTarget.dataset.type
     if (datatype === 'menu') {
       wx.setStorage({
@@ -244,7 +245,7 @@ Page({
                 wx.showToast({
                   title: '设置已初始化',
                 })
-                this.setData({
+                that.setData({
                   setting: {},
                 })
               },
@@ -265,7 +266,7 @@ Page({
                 wx.showToast({
                   title: '数据已清除',
                 })
-                this.setData({
+                that.setData({
                   setting: {},
                   pos: {},
                 })
