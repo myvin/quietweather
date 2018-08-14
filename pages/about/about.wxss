@@ -1,7 +1,7 @@
 .about {
   font-size: 30rpx;
   color: #666;
-  padding: 0 40rpx 40rpx;
+  /* padding: 0 40rpx 40rpx; */
 }
 .info {
   display: flex;
@@ -20,6 +20,7 @@
 }
 .item {
   line-height: 2.2em;
+  padding: 0 40rpx;
 }
 .item .title {
   font-size: 32rpx;
