@@ -1,67 +1,74 @@
 <view class='about'>
-  <swiper indicator-color='#666666' indicator-active-color='#40a7e7' indicator-dots="true" autoplay="true" circular="true" interval="5000" duration="300" previous-margin="0px" next-margin="0px" style='height:{{swiperHeight}}'>
-    <block wx:for="{{bannerImgList}}" wx:key="{{index}}">
-      <swiper-item>
-        <view class='info' data-index='{{index}}' catchtap='previewImages'>
-          <image src='{{item}}'></image>
-          <view class='name'>Quiet Weather</view>
+  <view class='content'>
+    <swiper indicator-color='#666666' indicator-active-color='#40a7e7' indicator-dots="true" autoplay="true" circular="true" interval="5000" duration="300" previous-margin="0px" next-margin="0px" style='height:{{swiperHeight}}'>
+      <block wx:for="{{bannerImgList}}" wx:key="{{index}}">
+        <swiper-item>
+          <view class='info' data-index='{{index}}' catchtap='previewImages'>
+            <image src='{{item}}'></image>
+            <view class='name'>Quiet Weather</view>
+          </view>
+        </swiper-item>
+      </block>
+    </swiper>
+    <view class='item'>
+      <view class='title'>联系开发者</view>
+      <view class='i' catchtap='copy' data-title='GitHub' data-content='{{github}}'>
+        <view class='icon'>
+          <image src='/img/github.png'></image>
         </view>
-      </swiper-item>
-    </block>
-  </swiper>
-  <view class='item'>
-    <view class='title'>联系开发者</view>
-    <view class='i' catchtap='copy' data-title='GitHub' data-content='{{github}}'>
-      <view class='icon'>
-        <image src='/img/github.png'></image>
+        <view class='text'>
+          <view>通过 GitHub 反馈</view>
+          <view>{{github}}</view>
+        </view>
       </view>
-      <view class='text'>
-        <view>通过 GitHub 反馈</view>
-        <view>{{github}}</view>
+      <view class='i' catchtap='copy' data-title='邮箱' data-content='{{email}}'>
+        <view class='icon'>
+          <image src='/img/email.png'></image>
+        </view>
+        <view class='text'>
+          <view>通过 Email 反馈</view>
+          <view>{{email}}</view>
+        </view>
+      </view>
+      <view class='i' catchtap='copy' data-title='QQ' data-content='{{qq}}'>
+        <view class='icon'>
+          <image src='/img/qq.png'></image>
+        </view>
+        <view class='text'>
+          <view>通过 QQ 反馈</view>
+          <view>{{qq}}</view>
+        </view>
+      </view>
+      <view class='i'>
+        <view class='icon'>
+          <image src='/img/wechat.png'></image>
+        </view>
+        <view class='text'>微信快速联系</view>
+        <button open-type="contact" class='btn'></button>
       </view>
     </view>
-    <view class='i' catchtap='copy' data-title='邮箱' data-content='{{email}}'>
-      <view class='icon'>
-        <image src='/img/email.png'></image>
+    <view class='thanks item'>
+      <view class='title'>鸣谢</view>
+      <view class='i'>
+        <view class='icon'>
+          <image src='/img/location_grey.png'></image>
+        </view>
+        <view class='text'>地理编码：百度地图开放平台</view>
       </view>
-      <view class='text'>
-        <view>通过 Email 反馈</view>
-        <view>{{email}}</view>
-      </view>
-    </view>
-    <view class='i' catchtap='copy' data-title='QQ' data-content='{{qq}}'>
-      <view class='icon'>
-        <image src='/img/qq.png'></image>
-      </view>
-      <view class='text'>
-        <view>通过 QQ 反馈</view>
-        <view>{{qq}}</view>
+      <view class='i'>
+        <view class='icon'>
+          <image src='/img/weather.png'></image>
+        </view>
+        <view class='text'>天气数据来源：百度地图开放平台</view>
       </view>
     </view>
-    <!-- <view class='i'>
-      <view class='icon'>
-        <image src='/img/wechat.png'></image>
+    <view class='attention item'>
+      <view class='title'>注意事项</view>
+      <view class='i'>
+        <!-- <image src='/img/location_grey.png'></image> -->
+        <view class='text'>Quiet Weather 小程序的数据均存储在本地，没有账号体系，没有数据同步功能，若清空微信相关数据可能会造成数据（首页缓存数据、首页悬浮球位置信息、设置）丢失（看个天气而已，何必纠结）。</view>
       </view>
-      <view class='text'>微信快速联系</view>
-      <button open-type="contact" class='btn'></button>
-    </view> -->
-  </view>
-  <view class='thanks item'>
-    <view class='title'>鸣谢</view>
-    <view class='i'>
-      <image src='/img/location_grey.png'></image>
-      <view class='text'>地理编码：百度地图开放平台</view>
-    </view>
-    <view class='i'>
-      <image src='/img/weather.png'></image>
-      <view class='text'>天气数据来源：百度地图开放平台</view>
-    </view>
-  </view>
-  <view class='attention item'>
-    <view class='title'>注意事项</view>
-    <view class='i'>
-      <!-- <image src='/img/location_grey.png'></image> -->
-      <view class='text'>Quiet Weather 小程序的数据均存储在本地，没有账号体系，没有数据同步功能，若清空微信相关数据可能会造成数据（首页缓存数据、首页悬浮球位置信息、设置）丢失（看个天气而已，何必纠结）。</view>
     </view>
   </view>
+  <view class='footer'>开发者 · myvin</view>
 </view>

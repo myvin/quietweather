@@ -2,6 +2,10 @@
   font-size: 30rpx;
   color: #666;
   /* padding: 0 40rpx 40rpx; */
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-height: 100vh;
 }
 .info {
   display: flex;
@@ -61,4 +65,13 @@
   top: 0;
   left: 1;
   opacity: 0;
+}
+.footer {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  height: 80rpx;
+  font-size: 24rpx;
+  color: #333;
+  margin-top: 30rpx;
 }
