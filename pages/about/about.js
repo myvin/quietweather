@@ -1,6 +1,7 @@
 let utils = require('../../utils/utils')
 Page({
   data: {
+    projectAddress: 'https://github.com/myvin/quietweather',
     github: 'https://github.com/myvin',
     email: '851399101@qq.com',
     qq: '851399101',

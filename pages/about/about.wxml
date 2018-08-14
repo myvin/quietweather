@@ -11,6 +11,18 @@
       </block>
     </swiper>
     <view class='item'>
+      <view class='title'>代码已开源</view>
+      <view class='i' catchtap='copy' data-title='项目地址' data-content='{{projectAddress}}'>
+        <view class='icon'>
+          <image src='/img/github.png'></image>
+        </view>
+        <view class='text'>
+          <view>可随意 star</view>
+          <view>{{projectAddress}}</view>
+        </view>
+      </view>
+    </view>
+    <view class='item'>
       <view class='title'>联系开发者</view>
       <view class='i' catchtap='copy' data-title='GitHub' data-content='{{github}}'>
         <view class='icon'>
