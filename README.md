@@ -20,3 +20,16 @@
 > * 注册[百度地图开放平台](https://lbsyun.baidu.com/)开发者，创建应用 **（注意：应用类型选择微信小程序时，请填写真实的小程序 appid）** ，获取 `ak`（其他配置可自行查看）；
 > * 在 `app.js` 中替换 `globalData` 中的 `ak` 为自己的 `ak`；
 > * Run and Enjoy!
+
+## 请喝咖啡
+如果我的项目对你有帮助，可以请我喝杯咖啡噢~
+
+### 支付宝
+
+> 省事的可以先扫码领红包，然后扫支付宝将红包支付给我（商家）~
+
+<img src="https://raw.githubusercontent.com/myvin/miniprogram/master/9181893579988_.pic_hd.jpg" width="300" /> <img src="https://raw.githubusercontent.com/myvin/miniprogram/master/9191893579989_.pic.jpg" width="300" />
+
+### 微信
+
+<img src="https://raw.githubusercontent.com/myvin/miniprogram/master/9201893579990_.pic_hd.jpg" width="300" />
