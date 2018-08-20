@@ -11,7 +11,7 @@
   <view class='content' style='margin-top: {{setting.hiddenSearch ? 20 : 60}}px'>
     <view class='info'>
       <view class='city'>
-        <view>{{cityDatas.originalData.results[0].currentCity || '定位中'}}</view>
+        <view class='name'>{{cityDatas.originalData.results[0].currentCity || '定位中'}}</view>
         <text class='time' wx:if='{{cityDatas.updateTimeFormat}}'>{{cityDatas.updateTimeFormat}} 更新</text>
       </view>
       <view class='message'>{{message}}</view>

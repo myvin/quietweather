@@ -73,7 +73,6 @@ page {
   padding-bottom: 50rpx;
   /* border-bottom: 1rpx solid rgba(240, 240, 240, .4); */
 }
-.city,
 .info .temp,
 .info .pm,
 .info .pm view,
@@ -97,22 +96,29 @@ page {
   background: rgba(240, 240, 240, .2);
 }
 .city {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
   position: relative;
-  height: 90rpx;
-  font-size: 36rpx;
+  padding: 0 50rpx;
+  font-size: 66rpx;
+}
+.city .name {
+  width: 5em;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 1;
+  overflow: hidden;
 }
 .city .time {
-  position: absolute;
+  display: block;
+  text-align: right;
   font-size: 24rpx;
-  right: 30rpx;
-  top: 50%;
-  transform: translateY(-50%);
 }
 .message {
-  text-align: center;
   font-size: 22rpx;
   color: #fff;
-  padding: 0 20rpx;
+  padding: 30rpx 50rpx 0;
   box-sizing: border-box;
 }
 .temp {
