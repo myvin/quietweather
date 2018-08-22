@@ -2,14 +2,27 @@
   <heartbeat id='heartbeat' wx:if='{{showHeartbeat}}'></heartbeat>
   <view class='bcg' wx:if='{{!bcgImg}}' style='background: {{bcgColor}}'></view>
   <image class='bcg' wx:if='{{bcgImg}}' src='{{bcgImg}}' mode='aspectFill'></image>
-  <view class='search' wx:if='{{!setting.hiddenSearch}}' style='background:rgba(255, 255, 255, 0)'>
+  <view class='search' wx:if='{{!setting.hiddenSearch && !bcgImgAreaShow}}' style='background:rgba(255, 255, 255, 0)'>
     <view class='wrapper'>
       <image src='/img/search.png'></image>
       <input placeholder-class='placeholderClass' confirm-type='search' placeholder='查询其他城市' maxlength='20' bindconfirm='commitSearch' value='{{searchText}}' disabled='{{!enableSearch}}'></input>
     </view>
   </view>
-  <view class='content' style='margin-top: {{setting.hiddenSearch ? 20 : 60}}px'>
-    <view class='avatarInfo'>
+  <view class='chooseBcg' wx:if='{{bcgImgAreaShow}}'>
+    <view class='top'>
+      <view class='title'>更换背景</view>
+      <view class='bcgs'>
+        <view class='border {{bcgImgIndex === index ? "active" : ""}}' wx:for='{{bcgImgList}}' wx:key='{{index}}'>
+          <image src='{{item}}' catchtap='chooseBcg' data-index='{{index}}' data-src='{{item}}'></image>
+        </view>
+      </view>
+    </view>
+    <view class='close' catchtap='hideBcgImgArea'>
+      <image src='/img/up-arrow.png'></image>
+    </view>
+  </view>
+  <view class='content' wx:if='{{!bcgImgAreaShow}}' style='margin-top: {{setting.hiddenSearch ? 20 : 60}}px'>
+    <view class='avatarInfo' catchtap='showBcgImgArea'>
       <open-data class='avatar' type='userAvatarUrl'></open-data>
       <open-data class='name' type='userNickName'></open-data>
       <image class='downArrow' src='/img/down-arrow.png'></image>
@@ -52,7 +65,7 @@
     <button open-type='openSetting'></button>
   </view>
   <!-- 悬浮菜单 -->
-  <view class='menus'>
+  <view class='menus' wx:if='{{!bcgImgAreaShow}}'>
     <image src="/img/location.png" animation="{{animationOne}}" class="menu" bindtap="menuOne"  style='top:{{pos.top}}px;left:{{pos.left}}px;'></image>
     <image src="/img/setting.png" animation="{{animationTwo}}" class="menu" bindtap="menuTwo"  style='top:{{pos.top}}px;left:{{pos.left}}px;'></image>
     <image src="/img/info.png" animation="{{animationThree}}" class="menu" bindtap="menuThree"  style='top:{{pos.top}}px;left:{{pos.left}}px;'></image>

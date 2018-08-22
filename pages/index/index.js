@@ -30,7 +30,18 @@ Page({
     // 需要查询的城市
     searchCity: '',
     setting: {},
-    bcgImg: '/img/back-view-beautiful-bloom-906002.jpg',
+    bcgImgList: [
+      '/img/backlit-dawn-dusk-327466.jpg',
+      '/img/back-view-beautiful-bloom-906002.jpg',
+      '/img/afterglow-background-beautiful-552791.jpg',
+      '/img/animal-aquatic-corals-847393.jpg',
+      '/img/background-clouds-countryside-733031.jpg',
+      '/img/beach-calm-clouds-457882.jpg',
+      '/img/beautiful-cold-dawn-547115.jpg'
+    ],
+    bcgImgIndex: 0,
+    bcgImg: '',
+    bcgImgAreaShow: false,
     bcgColor: '#444',
     // 粗暴直接：移除后再创建，达到初始化组件的作用
     showHeartbeat: true,
@@ -262,7 +273,33 @@ Page({
       },
     })
   },
+  setBcgImg (index) {
+    if (index) {
+      this.setData({
+        bcgImgIndex: index,
+        bcgImg: this.data.bcgImgList[index],
+      })
+      return
+    }
+    wx.getStorage({
+      key: 'bcgImgIndex',
+      success: (res) => {
+        let bcgImgIndex = res.data || 0
+        this.setData({
+          bcgImgIndex,
+          bcgImg: this.data.bcgImgList[bcgImgIndex],
+        })
+      },
+      fail: () => {
+        this.setData({
+          bcgImgIndex: 0,
+          bcgImg: this.data.bcgImgList[0],
+        })
+      },
+    })
+  },
   onShow () {
+    this.setBcgImg()
     this.getCityDatas()
     this.setMenuPosition()
     wx.setNavigationBarColor({
@@ -313,22 +350,42 @@ Page({
       })
     })
   },
-  setBcg () {
-    wx.getSavedFileList({
-      success: (res) => {
-        let fileList = res.fileList
-        if (!utils.isEmptyObject(fileList)) {
-          this.setData({
-            bcgImg: fileList[0].filePath,
-          })
-        } else {
-          this.setData({
-            bcgImg: '',
-          })
-        }
-      },
+  showBcgImgArea () {
+    this.setData({
+      bcgImgAreaShow: true,
     })
   },
+  hideBcgImgArea () {
+    this.setData({
+      bcgImgAreaShow: false,
+    })
+  },
+  chooseBcg (e) {
+    let dataset = e.currentTarget.dataset
+    let src = dataset.src
+    let index = dataset.index
+    this.setBcgImg(index)
+    wx.setStorage({
+      key: 'bcgImgIndex',
+      data: index,
+    })
+  },
+  // setBcg () {
+  //   wx.getSavedFileList({
+  //     success: (res) => {
+  //       let fileList = res.fileList
+  //       if (!utils.isEmptyObject(fileList)) {
+  //         this.setData({
+  //           bcgImg: fileList[0].filePath,
+  //         })
+  //       } else {
+  //         this.setData({
+  //           bcgImg: '',
+  //         })
+  //       }
+  //     },
+  //   })
+  // },
   initSetting (successFunc) {
     wx.getStorage({
       key: 'setting',

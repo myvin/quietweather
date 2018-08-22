@@ -60,6 +60,57 @@ page {
 .placeholderClass {
   color: #fff;
 }
+.chooseBcg {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  position: fixed;
+  z-index: 100;
+  top: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+  font-size: 24rpx;
+  color: #333;
+}
+.chooseBcg .top {
+  box-sizing: border-box;
+  padding: 20rpx 20rpx 50rpx;
+  background: rgba(255, 255, 255, .6);
+}
+.chooseBcg .bcgs {
+  display: flex;
+  align-items: center;
+  margin-top: 20rpx;
+  overflow: scroll;
+}
+.chooseBcg .border {
+  padding: 6rpx;
+  margin-right: 14rpx;
+  border: 1rpx solid rgba(255, 255, 255, 0);
+  transition: .1s ease;
+}
+.chooseBcg .border:last-child {
+  margin-right: 0;
+}
+.chooseBcg .border.active {
+  border: 1rpx solid #40a7e7;
+  transition: .1s ease;
+}
+.chooseBcg .bcgs image {
+  width: 110rpx;
+  height: 190rpx;
+}
+.chooseBcg .close {
+  flex: 1;
+  background: rgba(0, 0, 0, .3);
+  padding: 20rpx 0;
+  text-align: center;
+}
+.chooseBcg .close image {
+  width: 64rpx;
+  height: 64rpx;
+}
 .avatarInfo {
   display: flex;
   align-items: center;
