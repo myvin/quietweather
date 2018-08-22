@@ -30,8 +30,8 @@ Page({
     // 需要查询的城市
     searchCity: '',
     setting: {},
-    bcgImg: '',
-    bcgColor: '#40a7e7',
+    bcgImg: '/img/back-view-beautiful-bloom-906002.jpg',
+    bcgColor: '#444',
     // 粗暴直接：移除后再创建，达到初始化组件的作用
     showHeartbeat: true,
     // heartbeat 时禁止搜索，防止动画执行
@@ -265,11 +265,11 @@ Page({
   onShow () {
     this.getCityDatas()
     this.setMenuPosition()
-    let bcgColor = utils.themeSetting()
-    this.setData({
-      bcgColor,
+    wx.setNavigationBarColor({
+      frontColor: '#ffffff',
+      backgroundColor: this.data.bcgColor,
     })
-    this.setBcg()
+    // this.setBcg()
     this.initSetting((setting) => {
       this.checkUpdate(setting)
     })

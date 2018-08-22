@@ -31,20 +31,20 @@ let isEmptyObject = (obj) => {
   return true
 }
 
-let themeSetting = () => {
-  let bcgColor = '#40a7e7'
-  let hour = new Date().getHours()
-  if (hour >= 6 && hour <= 17) {
-    bcgColor = '#40a7e7'
-  } else {
-    bcgColor = '#384148'
-  }
-  wx.setNavigationBarColor({
-    frontColor: '#ffffff',
-    backgroundColor: bcgColor,
-  })
-  return bcgColor
-}
+// let themeSetting = () => {
+//   let bcgColor = '#40a7e7'
+//   let hour = new Date().getHours()
+//   if (hour >= 6 && hour <= 17) {
+//     bcgColor = '#40a7e7'
+//   } else {
+//     bcgColor = '#384148'
+//   }
+//   wx.setNavigationBarColor({
+//     frontColor: '#ffffff',
+//     backgroundColor: bcgColor,
+//   })
+//   return bcgColor
+// }
 
 // 比较版本号：left > right 1, left < right -1, left == right 0
 // 用途：旧版本不执行写入、删除 日历操作
@@ -69,6 +69,6 @@ let cmpVersion = (left, right) => {
 module.exports = {
   formatDate,
   isEmptyObject,
-  themeSetting,
+  // themeSetting,
   cmpVersion,
 }

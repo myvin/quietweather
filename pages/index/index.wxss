@@ -60,12 +60,31 @@ page {
 .placeholderClass {
   color: #fff;
 }
+.avatarInfo {
+  display: flex;
+  align-items: center;
+  padding: 0 50rpx;
+}
+.avatarInfo .avatar {
+  display: block;
+  overflow: hidden;
+  width: 60rpx;
+  height: 60rpx;
+  border-radius: 50%;
+}
+.avatarInfo .name {
+  padding: 0 20rpx;
+  font-size: 30rpx;
+}
+.avatarInfo .downArrow {
+  width: 30rpx;
+  height: 30rpx;
+}
 .container .content {
   flex: 2;
   transition: .3s ease;
 }
-.content,
-.copy {
+.content {
   position: relative;
   z-index: 2;
 }
@@ -133,7 +152,7 @@ page {
   font-size: 24rpx;
   padding-top: 20rpx;
   /* border-bottom: 1rpx solid rgba(240, 240, 240, .4); */
-  background: rgba(6, 85, 114, .1);
+  background: rgba(0, 0, 0, .6);
   margin-bottom: 20rpx;
 }
 .guide .item {
@@ -150,7 +169,7 @@ page {
 }
 .livingIndex {
   /* border-bottom: 1rpx solid rgba(240, 240, 240, .4); */
-  background: rgba(6, 85, 114, .1);
+  background: rgba(0, 0, 0, .6);
   margin-bottom: 20rpx;
 }
 .livingIndex .item {
@@ -181,18 +200,6 @@ page {
   height: 80rpx;
   padding: 0 24rpx;
 }
-.copy {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-around;
-  align-items: center;
-  padding: 10rpx 0;
-  height: 70rpx;
-  font-size: 22rpx;
-}
-/* .copy .tip {
-  font-size: 20rpx;
-} */
 .menus .menu {
   height: 40px;
   width: 40px;

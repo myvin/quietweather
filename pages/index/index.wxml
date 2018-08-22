@@ -9,6 +9,11 @@
     </view>
   </view>
   <view class='content' style='margin-top: {{setting.hiddenSearch ? 20 : 60}}px'>
+    <view class='avatarInfo'>
+      <open-data class='avatar' type='userAvatarUrl'></open-data>
+      <open-data class='name' type='userNickName'></open-data>
+      <image class='downArrow' src='/img/down-arrow.png'></image>
+    </view>
     <view class='info'>
       <view class='city'>
         <view class='name'>{{cityDatas.originalData.results[0].currentCity || '定位中'}}</view>
@@ -45,10 +50,6 @@
   <view wx:if='{{openSettingButtonShow}}' class='openSettingButton'>
     <image src='/img/unlock.png'></image>
     <button open-type='openSetting'></button>
-  </view>
-  <view class='copy'>
-    <view>数据来源 百度地图开放平台</view>
-    <!-- <view class='tip'>注: 仅供个人学习交流使用</view> -->
   </view>
   <!-- 悬浮菜单 -->
   <view class='menus'>
