@@ -37,67 +37,67 @@ Page({
       data: setting,
     })
   },
-  defaultBcg () {
-    this.removeBcg(() => {
-      wx.showToast({
-        title: '恢复默认背景',
-        duration: 1500,
-      })
-    })
-  },
-  removeBcg (callback) {
-    wx.getSavedFileList({
-      success: function (res) {
-        let fileList = res.fileList
-        let len = fileList.length
-        if (len > 0) {
-          for (let i = 0; i < len; i++)
-          (function (path) {
-            wx.removeSavedFile({
-              filePath: path,
-              complete: function (res) {
-                if (i === len - 1) {
-                  callback && callback()
-                }
-              }
-            })
-          })(fileList[i].filePath)
-        } else {
-          callback && callback()
-        }
-      },
-      fail: function () {
-        wx.showToast({
-          title: '出错了，请稍后再试',
-          icon: 'none',
-        })
-      },
-    })
-  },
-  customBcg () {
-    wx.chooseImage({
-      success: (res) => {
-        this.removeBcg(() => {
-          wx.saveFile({
-            tempFilePath: res.tempFilePaths[0],
-            success: function (res) {
-              wx.navigateBack({})
-            },
-          })
-        })
-      },
-      fail: function (res) {
-        let errMsg = res.errMsg
-        // 如果是取消操作，不提示
-        if (errMsg.indexOf('cancel') === -1) {
-          wx.showToast({
-            title: '发生错误，请稍后再试',
-            icon: 'none',
-          })
-        }
-      },
-    })
-  },
+  // defaultBcg () {
+  //   this.removeBcg(() => {
+  //     wx.showToast({
+  //       title: '恢复默认背景',
+  //       duration: 1500,
+  //     })
+  //   })
+  // },
+  // removeBcg (callback) {
+  //   wx.getSavedFileList({
+  //     success: function (res) {
+  //       let fileList = res.fileList
+  //       let len = fileList.length
+  //       if (len > 0) {
+  //         for (let i = 0; i < len; i++)
+  //         (function (path) {
+  //           wx.removeSavedFile({
+  //             filePath: path,
+  //             complete: function (res) {
+  //               if (i === len - 1) {
+  //                 callback && callback()
+  //               }
+  //             }
+  //           })
+  //         })(fileList[i].filePath)
+  //       } else {
+  //         callback && callback()
+  //       }
+  //     },
+  //     fail: function () {
+  //       wx.showToast({
+  //         title: '出错了，请稍后再试',
+  //         icon: 'none',
+  //       })
+  //     },
+  //   })
+  // },
+  // customBcg () {
+  //   wx.chooseImage({
+  //     success: (res) => {
+  //       this.removeBcg(() => {
+  //         wx.saveFile({
+  //           tempFilePath: res.tempFilePaths[0],
+  //           success: function (res) {
+  //             wx.navigateBack({})
+  //           },
+  //         })
+  //       })
+  //     },
+  //     fail: function (res) {
+  //       let errMsg = res.errMsg
+  //       // 如果是取消操作，不提示
+  //       if (errMsg.indexOf('cancel') === -1) {
+  //         wx.showToast({
+  //           title: '发生错误，请稍后再试',
+  //           icon: 'none',
+  //         })
+  //       }
+  //     },
+  //   })
+  // },
   hide () {
     this.setData({
       show: false,
