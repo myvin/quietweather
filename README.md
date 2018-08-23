@@ -4,7 +4,7 @@
     <img src='https://user-gold-cdn.xitu.io/2018/7/5/1646880a97f2c931?w=344&h=344&f=jpeg&s=66247'>
 </p>
 
-## 新版首页
+## 新版首页(可选择内置背景)
 <img src='https://raw.githubusercontent.com/myvin/miniprogram/master/quietweather/images/screenshot_1_new.png' style='width:300px;'>
 
 ## 截图
