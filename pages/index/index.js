@@ -31,18 +31,43 @@ Page({
     searchCity: '',
     setting: {},
     bcgImgList: [
-      '/img/backlit-dawn-dusk-327466.jpg',
-      '/img/back-view-beautiful-bloom-906002.jpg',
-      '/img/afterglow-background-beautiful-552791.jpg',
-      '/img/animal-aquatic-corals-847393.jpg',
-      '/img/background-clouds-countryside-733031.jpg',
-      '/img/beach-calm-clouds-457882.jpg',
-      '/img/beautiful-cold-dawn-547115.jpg'
+      {
+        src: '/img/beach-bird-birds-235787.jpg',
+        topColor: '#393836'
+      },
+      {
+        src: '/img/clouds-forest-idyllic-417102.jpg',
+        topColor: '#0085e5'
+      },
+      {
+        src: '/img/backlit-dawn-dusk-327466.jpg',
+        topColor: '#2d2225'
+      },
+      {
+        src: '/img/accomplishment-adventure-clear-sky-585825.jpg',
+        topColor: '#004a89'
+      },
+      {
+        src: '/img/fog-himalayas-landscape-38326.jpg',
+        topColor: '#b8bab9'
+      },
+      {
+        src: '/img/asphalt-blue-sky-clouds-490411.jpg',
+        topColor: '#009ffe'
+      },
+      {
+        src: '/img/aerial-climate-cold-296559.jpg',
+        topColor: '#d6d1e6'
+      },
+      {
+        src: '/img/beautiful-cold-dawn-547115.jpg',
+        topColor: '#ffa5bc'
+      }
     ],
     bcgImgIndex: 0,
     bcgImg: '',
     bcgImgAreaShow: false,
-    bcgColor: '#444',
+    bcgColor: '#2d2225',
     // 粗暴直接：移除后再创建，达到初始化组件的作用
     showHeartbeat: true,
     // heartbeat 时禁止搜索，防止动画执行
@@ -277,8 +302,10 @@ Page({
     if (index) {
       this.setData({
         bcgImgIndex: index,
-        bcgImg: this.data.bcgImgList[index],
+        bcgImg: this.data.bcgImgList[index].src,
+        bcgColor: this.data.bcgImgList[index].topColor,
       })
+      this.setNavigationBarColor()
       return
     }
     wx.getStorage({
@@ -287,25 +314,33 @@ Page({
         let bcgImgIndex = res.data || 0
         this.setData({
           bcgImgIndex,
-          bcgImg: this.data.bcgImgList[bcgImgIndex],
+          bcgImg: this.data.bcgImgList[bcgImgIndex].src,
+          bcgColor: this.data.bcgImgList[bcgImgIndex].topColor,
         })
+        this.setNavigationBarColor()
       },
       fail: () => {
         this.setData({
           bcgImgIndex: 0,
-          bcgImg: this.data.bcgImgList[0],
+          bcgImg: this.data.bcgImgList[0].src,
+          bcgColor: this.data.bcgImgList[0].topColor,
         })
+        this.setNavigationBarColor()
       },
+    })
+  },
+  setNavigationBarColor (color) {
+    let bcgColor = color || this.data.bcgColor
+    wx.setNavigationBarColor({
+      frontColor: '#ffffff',
+      backgroundColor: this.data.bcgColor,
     })
   },
   onShow () {
     this.setBcgImg()
     this.getCityDatas()
     this.setMenuPosition()
-    wx.setNavigationBarColor({
-      frontColor: '#ffffff',
-      backgroundColor: this.data.bcgColor,
-    })
+    this.setNavigationBarColor('#2d2225')
     // this.setBcg()
     this.initSetting((setting) => {
       this.checkUpdate(setting)

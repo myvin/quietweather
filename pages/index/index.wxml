@@ -13,7 +13,7 @@
       <view class='title'>更换背景</view>
       <view class='bcgs'>
         <view class='border {{bcgImgIndex === index ? "active" : ""}}' wx:for='{{bcgImgList}}' wx:key='{{index}}'>
-          <image src='{{item}}' catchtap='chooseBcg' data-index='{{index}}' data-src='{{item}}'></image>
+          <image src='{{item.src}}' catchtap='chooseBcg' data-index='{{index}}' data-src='{{item.src}}'></image>
         </view>
       </view>
     </view>
