@@ -1,5 +1,7 @@
 .systeminfo {
-  padding: 0 30rpx 40rpx;
+  padding: 0 30rpx 0 30rpx;
+  background: #fff;
+  margin-bottom: 20rpx;
 }
 .brand {
   font-family: DINCondensed-Bold;
@@ -31,7 +33,7 @@
   border-top: 1rpx solid #efefef;
 }
 .systeminfo .item:last-child {
-  border-bottom: 1rpx solid #efefef;
+  border-bottom: none;
 }
 .systeminfo .item .key {
   line-height: 1em;

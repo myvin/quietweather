@@ -1,24 +1,26 @@
 <view class='setting'>
   <!-- 自定义 -->
   <view class='s'>
-    <view class='title'>
-      <view>自定义</view>
-    </view>
-    <view class='content'>
-      <!-- <view class='item' catchtap='customBcg'  catchlongpress='defaultBcg'>
-        <view catchtap='customBcg'>
-          <view>自定义首页背景</view>
-          <view class='tip'>长按恢复默认背景</view>
-        </view>
-        <image catchtap='customBcg' class='more' src='/img/arrow.png'></image>
-      </view> -->
-      <view class='item'>
-        <view>打开顶部城市天气快捷搜索</view>
-        <switch color='#40a7e7' checked='{{!setting.hiddenSearch}}'  bindchange='switchChange' data-switchparam='hiddenSearch'></switch>
+    <view class='t'>
+      <view class='title'>
+        <view>自定义</view>
       </view>
-      <view class='item'>
-        <view>显示生活指数信息</view>
-        <switch color='#40a7e7' checked='{{!setting.hiddenIndex}}' bindchange='switchChange' data-switchparam='hiddenIndex'></switch>
+      <view class='content'>
+        <!-- <view class='item' catchtap='customBcg'  catchlongpress='defaultBcg'>
+          <view catchtap='customBcg'>
+            <view>自定义首页背景</view>
+            <view class='tip'>长按恢复默认背景</view>
+          </view>
+          <image catchtap='customBcg' class='more' src='/img/arrow.png'></image>
+        </view> -->
+        <view class='item'>
+          <view>打开顶部城市天气快捷搜索</view>
+          <switch color='#40a7e7' checked='{{!setting.hiddenSearch}}'  bindchange='switchChange' data-switchparam='hiddenSearch'></switch>
+        </view>
+        <view class='item'>
+          <view>显示生活指数信息</view>
+          <switch color='#40a7e7' checked='{{!setting.hiddenIndex}}' bindchange='switchChange' data-switchparam='hiddenIndex'></switch>
+        </view>
       </view>
     </view>
     <!-- 检查更新 -->

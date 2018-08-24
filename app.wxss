@@ -1,3 +1,6 @@
+Page {
+  background: #f4f6f9;
+}
 ::-webkit-scrollbar {
   display: none;
 }

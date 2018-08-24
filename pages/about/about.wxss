@@ -7,6 +7,10 @@
   justify-content: space-between;
   min-height: 100vh;
 }
+swiper {
+  background: #fff;
+  margin-bottom: 20rpx;
+}
 .info {
   display: flex;
   flex-direction: column;
@@ -25,6 +29,9 @@
 .item {
   line-height: 2.2em;
   padding: 0 40rpx;
+  overflow: hidden;
+  background: #fff;
+  margin-bottom: 20rpx;
 }
 .item .title {
   font-size: 32rpx;
@@ -73,5 +80,4 @@
   height: 80rpx;
   font-size: 24rpx;
   color: #333;
-  margin-top: 30rpx;
 }
