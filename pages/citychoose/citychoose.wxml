@@ -22,5 +22,5 @@
       </view>
     </view>
   </view>
-  <view class='empty' wx:if='{{!alternative}}'>暂无城市可以选择</view>
+  <view class='empty' wx:if='{{!showItems}}'>暂无城市可以选择</view>
 </view>

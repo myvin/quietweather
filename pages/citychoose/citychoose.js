@@ -5,7 +5,7 @@ Page({
     alternative: null,
     cities: [],
     // 需要显示的城市
-    showItems: [],
+    showItems: null,
     inputText: '',
   },
   cancel () {
