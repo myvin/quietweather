@@ -66,7 +66,7 @@
         <view class='item' catchtap='setScreenBrightness'>
           <view style='width:100%'>
             <view>设置屏幕亮度</view>
-            <slider value='{{screenBrightness}}' min='0' max='100' step='1' block-size='12' block-color='#40a7e7' activeColor='#40a7e7' show-value='true' bindchanging='screenBrightnessChanging'></slider>
+            <slider value='{{screenBrightness}}' min='0' max='100' step='1' block-size='12' block-color='#40a7e7' activeColor='#40a7e7' show-value='true' bindchange='screenBrightnessChanging' bindchanging='screenBrightnessChanging'></slider>
           </view>
           <!-- <view>设置屏幕亮度</view> -->
         </view>
