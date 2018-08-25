@@ -131,7 +131,8 @@
     <view class='mask' catchtap='hide'></view>
     <view class='wrapper'>
       <view class='box'>
-        <view class='content'>注：由于小程序基础库 1.9.90 开始支持 wx.getUpdateManager API，故基础库低于该版本的会忽略该设置。</view>
+        <view class='t'>兼容性</view>
+        <view class='content'>由于小程序基础库从 1.9.90 开始支持 wx.getUpdateManager API，故基础库低于该版本的会忽略该设置。</view>
         <view class='t'>启动机制</view>
         <view class='content'>小程序启动会有两种情况，一种是「冷启动」，一种是「热启动」。 假如用户已经打开过某小程序，然后在一定时间内再次打开该小程序，此时无需重新启动，只需将后台的小程序切换到前台，这个过程就是热启动；冷启动指的是用户首次打开或小程序被微信主动销毁后再次打开的情况，此时小程序需要重新加载启动。</view>
         <view class='t'>更新机制</view>
