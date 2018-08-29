@@ -7,7 +7,14 @@ Page({
     qq: '851399101',
     swiperHeight: 'auto',
     bannerImgList: [
-      'https://raw.githubusercontent.com/myvin/miniprogram/master/quietweather/images/logo.png',  'https://raw.githubusercontent.com/myvin/miniprogram/master/quietweather/images/miniqrcode.jpg',
+      {
+        src: 'https://raw.githubusercontent.com/myvin/miniprogram/master/quietweather/images/miniqrcode.jpg',
+        title: 'Quiet Weather',
+      },
+      {
+        src: 'https://raw.githubusercontent.com/myvin/miniprogram/master/juejin/images/miniqrcode.jpg',
+        title: '掘金第三方版',
+      },
     ],
   },
   onLoad () {
@@ -16,9 +23,13 @@ Page({
   previewImages (e) {
     let index = e.currentTarget.dataset.index || 0
     let urls = this.data.bannerImgList
+    let arr = []
+    let imgs = urls.forEach(item => {
+      arr.push(item.src)
+    })
     wx.previewImage({
-      current: urls[index],
-      urls,
+      current: arr[index],
+      urls: arr,
       success: function (res) { },
       fail: function (res) {
         console.error('previewImage fail: ', res)
