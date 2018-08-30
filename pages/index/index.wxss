@@ -295,3 +295,11 @@ page {
   opacity: 0;
   z-index: 3;
 }
+.footer {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  height: 60rpx;
+  font-size: 22rpx;
+  color: #fff;
+}

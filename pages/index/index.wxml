@@ -59,6 +59,7 @@
         </view>
       </view>
     </view>
+    <view class='footer'>开发者 · myvin</view>
   </view>
   <view wx:if='{{openSettingButtonShow}}' class='openSettingButton'>
     <image src='/img/unlock.png'></image>

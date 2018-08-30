@@ -78,6 +78,6 @@ swiper {
   justify-content: space-around;
   align-items: center;
   height: 80rpx;
-  font-size: 24rpx;
+  font-size: 22rpx;
   color: #333;
 }
