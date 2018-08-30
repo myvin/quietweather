@@ -9,7 +9,6 @@
   background: #fff;
   padding: 30rpx;
   position: relative;
-  border-bottom: 1rpx solid #e6e6e6;
   height: 128rpx;
   box-sizing: border-box;
 }
