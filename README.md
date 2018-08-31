@@ -36,3 +36,5 @@
 ### 微信
 
 <img src="https://raw.githubusercontent.com/myvin/miniprogram/master/9201893579990_.pic_hd.jpg" width="300" />
+
+> 转载请注明出处
