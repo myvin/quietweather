@@ -299,7 +299,7 @@ Page({
     })
   },
   setBcgImg (index) {
-    if (index) {
+    if (index !== undefined) {
       this.setData({
         bcgImgIndex: index,
         bcgImg: this.data.bcgImgList[index].src,
