@@ -4,6 +4,18 @@
     <img src='https://user-gold-cdn.xitu.io/2018/7/5/1646880a97f2c931?w=344&h=344&f=jpeg&s=66247'>
 </p>
 
+## 说明
+
+`d0e51c8` 版本之后为[小程序云开发](https://developers.weixin.qq.com/miniprogram/dev/wxcloud/basis/getting-started.html)版本，若未开通云开发功能，为不影响小程序正常运行，可以将版本号回退到 `git reset d0e51c8 --hard`，或，将云开发相关代码注释掉(包括：`app.js` 中的初始化、`index.js` 中获取 `message` 的代码)。若开通了云开发功能，可将相应代码部署到云上，同时，在云开发控制台数据控中添加 `broadcast` 集合，添加 24 条如下类似记录即可。
+
+```
+"_id": W7tqZw6qgQy38ina
+"hour": 0
+"message": 这个点儿了还在看手机？没有妹子就是好啊
+```
+
+> `d0e51c8` 版本(包括)之前，首页的文字广播数据是写死在本地的~~(懒)~~，`d0e51c8` 版本之后，即云开发版，该数据都放到了小程序云上。
+
 ## 新版首页(可选择内置背景)
 <img src='https://raw.githubusercontent.com/myvin/miniprogram/master/quietweather/images/screenshot_1_new.png' style='width:300px;'>
 
