@@ -14,7 +14,7 @@
 "message": 这个点儿了还在看手机？没有妹子就是好啊
 ```
 
-> `d0e51c8` 版本(包括)之前，首页的文字广播数据是写死在本地的~~(懒)~~，`d0e51c8` 版本之后，即云开发版，该数据都放到了小程序云上。
+> `d0e51c8` 版本之前，首页的文字广播数据是写死在本地的~~(懒)~~，`d0e51c8` 版本之后，即云开发版，该数据都放到了小程序云上。
 
 ## 新版首页(可选择内置背景)
 <img src='https://raw.githubusercontent.com/myvin/miniprogram/master/quietweather/images/screenshot_1_new.png' style='width:300px;'>
