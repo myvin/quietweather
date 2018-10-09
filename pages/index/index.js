@@ -6,7 +6,6 @@
 // 200-300 重度污染：非常不健康
 // 300-500 严重污染：有毒物
 // 500以上 爆表：有毒物
-let messages = require('../../data/messages.js')
 let bmap = require('../../lib/bmap-wx.js')
 let utils = require('../../utils/utils')
 let globalData = getApp().globalData
@@ -336,6 +335,20 @@ Page({
       backgroundColor: this.data.bcgColor,
     })
   },
+  getBroadcast (callback) {
+    wx.cloud.callFunction({
+      name: 'getBroadcast',
+      data: {
+        hour: new Date().getHours(),
+      },
+    })
+    .then(res => {
+      let data = res.result.data
+      if (data) {
+        callback && callback(data[0].message)
+      }
+    })
+  },
   onShow () {
     this.setBcgImg()
     this.getCityDatas()
@@ -354,8 +367,10 @@ Page({
         searchCity: '',
       })
     }
-    this.setData({
-      message: messages.messages(),
+    this.getBroadcast((message) => {
+      this.setData({
+        message,
+      })
     })
   },
   onHide() {

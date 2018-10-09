@@ -1,5 +1,8 @@
 App({
   onLaunch () {
+    wx.cloud.init({
+      env: 'envid',
+    })
     wx.getSystemInfo({
       success: (res) => {
         this.globalData.systeminfo = res

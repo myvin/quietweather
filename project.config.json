@@ -1,15 +1,16 @@
 {
 	"description": "项目配置文件",
 	"setting": {
-		"urlCheck": false,
+		"urlCheck": true,
 		"es6": true,
 		"postcss": true,
 		"minified": true,
 		"newFeature": true
 	},
+	"cloudfunctionRoot": "cloudfunction/",
 	"compileType": "miniprogram",
-	"libVersion": "1.9.1",
-	"appid": "you appid",
+	"libVersion": "2.3.0",
+	"appid": "ur appid",
 	"projectname": "weather",
 	"condition": {
 		"search": {
