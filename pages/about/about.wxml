@@ -51,13 +51,13 @@
           <view>{{qq}}</view>
         </view>
       </view>
-      <view class='i'>
+      <!-- <view class='i'>
         <view class='icon'>
           <image src='/img/wechat.png'></image>
         </view>
         <view class='text'>微信快速联系</view>
         <button open-type="contact" class='btn'></button>
-      </view>
+      </view> -->
     </view>
     <view class='thanks item'>
       <view class='title'>鸣谢</view>
