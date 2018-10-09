@@ -2,6 +2,7 @@ App({
   onLaunch () {
     wx.cloud.init({
       env: 'envid',
+      traceUser: true,
     })
     wx.getSystemInfo({
       success: (res) => {
