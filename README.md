@@ -6,7 +6,9 @@
 
 ## 说明
 
-`d0e51c8` 版本之后为[小程序云开发](https://developers.weixin.qq.com/miniprogram/dev/wxcloud/basis/getting-started.html)版本，若未开通云开发功能，为不影响小程序正常运行，可以将版本号回退到 `git reset d0e51c8 --hard`，或，将云开发相关代码注释掉(包括：`app.js` 中的初始化、`index.js` 中获取 `message` 的代码)。若开通了云开发功能，可将相应代码部署到云上，同时，在云开发控制台数据控中添加 `broadcast` 集合，添加 24 条如下类似记录即可。
+I、气象数据由[百度地图开放平台]((https://lbsyun.baidu.com/))修改为了[和风天气](http://www.heweather.com/)，需要注册账号获取 `key`；
+
+II、`d0e51c8` 版本之后为[小程序云开发](https://developers.weixin.qq.com/miniprogram/dev/wxcloud/basis/getting-started.html)版本，若未开通云开发功能，为不影响小程序正常运行，可以将版本号回退到 `git reset d0e51c8 --hard`，或，将云开发相关代码注释掉(包括：`app.js` 中的初始化、`index.js` 中获取 `message` 的代码)。若开通了云开发功能，可将相应代码部署到云上，同时，在云开发控制台数据控中添加 `broadcast` 集合，添加 24 条如下类似记录即可。
 
 ```
 "_id": W7tqZw6qgQy38ina
@@ -28,12 +30,16 @@
 </div>
 
 ## 数据来源
-地理编码、天气数据均来自[百度地图开放平台](https://lbsyun.baidu.com/)。个人开发完全免费，有对应的小程序 `sdk`，加入即可，但是返回的天气数据较少。
+~~地理编码、天气数据均来自[百度地图开放平台](https://lbsyun.baidu.com/)。个人开发完全免费，有对应的小程序 `sdk`，加入即可，但是返回的天气数据较少。~~
+
+气象数据更换为了[和风天气](http://www.heweather.com/)，使用的是免费版本。
 
 ## 运行前准备
 > * [注册微信小程序](https://mp.weixin.qq.com/wxopen/waregister?action=step1)，获取 `appid`，配置域名白名单(在小程序后台将使用到的 `API` 添加到域名白名单)；
-> * 注册[百度地图开放平台](https://lbsyun.baidu.com/)开发者，创建应用 **（注意：应用类型选择微信小程序时，请填写真实的小程序 appid）** ，获取 `ak`（其他配置可自行查看）；
-> * 在 `app.js` 中替换 `globalData` 中的 `ak` 为自己的 `ak`；
+> * ~~注册[百度地图开放平台](https://lbsyun.baidu.com/)开发者，创建应用 **（注意：应用类型选择微信小程序时，请填写真实的小程序 appid）** ，获取 `ak`（其他配置可自行查看）；~~
+> * 注册[和风天气](http://www.heweather.com/)账号，获取 'key`；
+> * ~~在 `app.js` 中替换 `globalData` 中的 `ak` 为自己的 `ak`；~~
+> * 在 `app.js` 中替换 `globalData` 中的 `key` 为你的 `key`；
 > * Run and Enjoy!
 
 ## 请喝咖啡
