@@ -10,6 +10,7 @@
         </swiper-item>
       </block>
     </swiper>
+    <!-- <ad unit-id="adunit-da632c715ebfb1a5"></ad> -->
     <view class='item'>
       <view class='title'>代码已开源</view>
       <view class='i' catchtap='copy' data-title='项目地址' data-content='{{projectAddress}}'>
@@ -63,15 +64,9 @@
       <view class='title'>鸣谢</view>
       <view class='i'>
         <view class='icon'>
-          <image src='/img/location_grey.png'></image>
-        </view>
-        <view class='text'>地理编码：百度地图开放平台</view>
-      </view>
-      <view class='i'>
-        <view class='icon'>
           <image src='/img/weather.png'></image>
         </view>
-        <view class='text'>天气数据来源：百度地图开放平台</view>
+        <view class='text'>气象数据来源：和风天气</view>
       </view>
     </view>
   </view>
