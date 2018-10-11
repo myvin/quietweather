@@ -1,21 +1,30 @@
-// pm2.5 浓度对应的指数等级
-// 0-50 优
-// 50-100 良
-// 100-150 轻度污染：对敏感人群不健康
-// 150-200 中度污染：不健康
-// 200-300 重度污染：非常不健康
-// 300-500 严重污染：有毒物
-// 500以上 爆表：有毒物
-let bmap = require('../../lib/bmap-wx.js')
 let utils = require('../../utils/utils')
 let globalData = getApp().globalData
+const key = globalData.key
 let SYSTEMINFO = globalData.systeminfo
 Page({
   data: {
     isIPhoneX: globalData.isIPhoneX,
     message: '',
     cityDatas: {},
-    icons: ['/img/clothing.png', '/img/carwashing.png', '/img/pill.png', '/img/running.png', '/img/sun.png'],
+    lifestyles: {
+      'comf': '舒适度指数',
+      'cw': '洗车指数',
+      'drsg': '穿衣指数',
+      'flu': '感冒指数',
+      'sport': '运动指数',
+      'trav': '旅游指数',
+      'uv': '紫外线指数',
+      'air': '空气污染扩散条件指数',
+      'ac': '空调开启指数',
+      'ag': '过敏指数',
+      'gl': '太阳镜指数',
+      'mu': '化妆指数',
+      'airc': '晾晒指数',
+      'ptfc': '交通指数',
+      'fsh': '钓鱼指数',
+      'spi': '防晒指数',
+    },
     // 用来清空 input
     searchText: '',
     // 是否已经弹出
@@ -74,51 +83,6 @@ Page({
     pos: {},
     openSettingButtonShow: false,
   },
-  calcPM(value) {
-    if (value > 0 && value <= 50) {
-      return {
-        val: value,
-        desc: '优',
-        detail: '',
-      }
-    } else if (value > 50 && value <= 100) {
-      return {
-        val: value,
-        desc: '良',
-        detail: '',
-      }
-    } else if (value > 100 && value <= 150) {
-      return {
-        val: value,
-        desc: '轻度污染',
-        detail: '对敏感人群不健康',
-      }
-    } else if (value > 150 && value <= 200) {
-      return {
-        val: value,
-        desc: '中度污染',
-        detail: '不健康',
-      }
-    } else if (value > 200 && value <= 300) {
-      return {
-        val: value,
-        desc: '重度污染',
-        detail: '非常不健康',
-      }
-    } else if (value > 300 && value <= 500) {
-      return {
-        val: value,
-        desc: '严重污染',
-        detail: '有毒物',
-      }
-    } else if (value > 500) {
-      return {
-        val: value,
-        desc: '爆表',
-        detail: '能出来的都是条汉子',
-      }
-    }
-  },
   success (data) {
     this.setData({
       openSettingButtonShow: false,
@@ -128,88 +92,15 @@ Page({
     // 存下来源数据
     data.updateTime = now.getTime()
     data.updateTimeFormat = utils.formatDate(now, "MM-dd hh:mm")
-    let results = data.originalData.results[0] || {}
-    data.pm = this.calcPM(results['pm25'])
-    // 当天实时温度
-    data.temperature = `${results.weather_data[0].date.match(/\d+/g)[2]}`
     wx.setStorage({
       key: 'cityDatas',
-      data: data,
+      data,
     })
     this.setData({
       cityDatas: data,
     })
   },
-  commitSearch (res) {
-    let val = ((res.detail || {}).value || '').replace(/\s+/g, '')
-    this.search(val)
-  },
-  dance() {
-    this.setData({
-      enableSearch: false,
-    })
-    let heartbeat = this.selectComponent('#heartbeat')
-    heartbeat.dance(() => {
-      this.setData({
-        showHeartbeat: false,
-        enableSearch: true,
-      })
-      this.setData({
-        showHeartbeat: true,
-      })
-    })
-  },
-  search (val) {
-    if (val === '520' || val === '521') {
-      this.setData({
-        searchText: '',
-      })
-      this.dance()
-      return
-    }
-    wx.pageScrollTo({
-      scrollTop: 0,
-      duration: 300,
-    })
-    if (val) {
-      this.geocoder(val, (loc) => {
-        this.init({
-          location: `${loc.lng},${loc.lat}`
-        })
-      })
-    }
-  },
-  // 地理位置编码
-  geocoder (address, success) {
-    wx.request({
-      url: getApp().setGeocoderUrl(address),
-      success (res) {
-        let data = res.data || {}
-        if (!data.status) {
-          let location = (data.result || {}).location || {}
-          // location = {lng, lat}
-          success && success(location)
-        } else {
-          wx.showToast({
-            title: data.msg || '网络不给力，请稍后再试',
-            icon: 'none',
-          })
-        }
-      },
-      fail (res) {
-        wx.showToast({
-          title: res.errMsg || '网络不给力，请稍后再试',
-          icon: 'none',
-        })
-      },
-      complete: () => {
-        this.setData({
-          searchText: '',
-        })
-      },
-    })
-  },
-  fail (res) {
+  fail(res) {
     wx.stopPullDownRefresh()
     let errMsg = res.errMsg || ''
     // 拒绝授权地理位置权限
@@ -238,6 +129,44 @@ Page({
       })
     }
   },
+  commitSearch (res) {
+    let val = ((res.detail || {}).value || '').replace(/\s+/g, '')
+    this.search(val)
+  },
+  dance() {
+    this.setData({
+      enableSearch: false,
+    })
+    let heartbeat = this.selectComponent('#heartbeat')
+    heartbeat.dance(() => {
+      this.setData({
+        showHeartbeat: false,
+        enableSearch: true,
+      })
+      this.setData({
+        showHeartbeat: true,
+      })
+    })
+  },
+  clearInput () {
+    this.setData({
+      searchText: '',
+    })
+  },
+  search (val) {
+    if (val === '520' || val === '521') {
+      this.clearInput()
+      this.dance()
+      return
+    }
+    wx.pageScrollTo({
+      scrollTop: 0,
+      duration: 300,
+    })
+    if (val) {
+      this.getWeather(val)
+    }
+  },
   // wx.openSetting 要废弃，button open-type openSetting 2.0.7 后支持
   // 使用 wx.canIUse('openSetting') 都会返回 true，这里判断版本号区分
   canUseOpenSettingApi () {
@@ -251,24 +180,44 @@ Page({
     }
   },
   init(params) {
-    let BMap = new bmap.BMapWX({
-      ak: globalData.ak,
-    })
-    BMap.weather({
-      location: params.location,
-      fail: this.fail,
-      success: this.success,
+    wx.getLocation({
+      success: (res) => {
+        this.getWeather(`${res.latitude},${res.longitude}`)
+      },
+      fail: (res) => {
+        this.fail(res)
+      }
     })
   },
-  // drawWeather () {
-  //   let context = wx.createCanvasContext('line')
-  //   context.setStrokeStyle("#ffffff")
-  //   context.setLineWidth(1)
-  //   context.moveTo(0, 0)
-  //   context.lineTo(350, 150)
-  //   context.stroke()
-  //   context.draw()
-  // },
+  getWeather (location) {
+    wx.request({
+      url: `${globalData.requestUrl.weather}`,
+      data: {
+        location,
+        key,
+      },
+      success: (res) => {
+        if (res.statusCode === 200) {
+          let data = res.data.HeWeather6[0]
+          if (data.status === 'ok') {
+            this.clearInput()
+            this.success(data)
+          } else {
+            wx.showToast({
+              title: '查询失败',
+              icon: 'none',
+            })
+          }
+        }
+      },
+      fail: () => {
+        wx.showToast({
+          title: '查询失败',
+          icon: 'none',
+        })
+      },
+    })
+  },
   onPullDownRefresh (res) {
     this.init({})
   },

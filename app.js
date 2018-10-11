@@ -16,9 +16,9 @@ App({
     keepscreenon:false,
     systeminfo: {},
     isIPhoneX: false,
-    ak: 'your baidu map application ak',
-  },
-  setGeocoderUrl (address) {
-    return `https://api.map.baidu.com/geocoder/v2/?address=${address}&output=json&ak=${this.globalData.ak}`
+    key: 'ur hefengtianqi key',
+    requestUrl: {
+      weather: 'https://free-api.heweather.com/s6/weather',
+    },
   },
 })
