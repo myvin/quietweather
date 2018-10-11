@@ -199,19 +199,22 @@ page {
 .guide {
   display: flex;
   flex-direction: row;
-  justify-content: space-around;
-  align-items: center;
+  justify-content: flex-start;
+  align-items: flex-start;
   font-size: 24rpx;
   padding-top: 20rpx;
   /* border-bottom: 1rpx solid rgba(240, 240, 240, .4); */
   background: rgba(0, 0, 0, .6);
   margin-bottom: 20rpx;
+  overflow-x: scroll;
 }
 .guide .item {
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
   align-items: center;
+  width: 170rpx;
+  flex-shrink: 0;
 }
 .guide image {
   width: 44rpx;
