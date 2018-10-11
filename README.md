@@ -18,9 +18,6 @@ II、`d0e51c8` 版本之后为[小程序云开发](https://developers.weixin.qq.
 
 > `d0e51c8` 版本之前，首页的文字广播数据是写死在本地的~~(懒)~~，`d0e51c8` 版本之后，即云开发版，该数据都放到了小程序云上。
 
-## 新版首页(可选择内置背景)
-<img src='https://raw.githubusercontent.com/myvin/miniprogram/master/quietweather/images/screenshot_1_new.png' style='width:300px;'>
-
 ## 截图
 <div >
     <img src='https://raw.githubusercontent.com/myvin/miniprogram/master/quietweather/images/screenshot_1.png' style='width:300px;'>
