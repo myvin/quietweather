@@ -7,11 +7,12 @@ Page({
     isIPhoneX: globalData.isIPhoneX,
     message: '',
     cityDatas: {},
+    weatherIconUrl: globalData.weatherIconUrl,
     detailsDic: {
       key: ['tmp', 'fl', 'hum', 'pcpn', 'wind_dir', 'wind_deg', 'wind_sc', 'wind_spd', 'vis', 'pres', 'cloud', ''],
       val: {
-        tmp: '温度(°C)',
-        fl: '体感温度(°C)',
+        tmp: '温度(℃)',
+        fl: '体感温度(℃)',
         hum: '相对湿度(%)',
         pcpn: '降水量(mm)',
         wind_dir: '风向',

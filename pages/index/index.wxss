@@ -222,6 +222,15 @@ page {
 .guide .i {
   padding-bottom: 20rpx;
 }
+.guide .i.weather {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.guide .i image {
+  width: 40rpx;
+  margin-left: 4rpx;
+}
 .details {
   display: flex;
   align-items: center;

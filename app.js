@@ -17,6 +17,7 @@ App({
     systeminfo: {},
     isIPhoneX: false,
     key: 'ur hefengtianqi key',
+    weatherIconUrl: 'https://cdn.heweather.com/cond_icon/',
     requestUrl: {
       weather: 'https://free-api.heweather.com/s6/weather',
     },

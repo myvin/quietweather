@@ -33,18 +33,20 @@
         <text class='time' wx:if='{{cityDatas.updateTimeFormat}}'>{{cityDatas.updateTimeFormat}} 更新</text>
       </view>
       <view class='message'>{{message}}</view>
-      <view class='temp num' decode='true'>{{cityDatas.now.tmp || '-'}}<text style='font-size:90rpx'>°</text></view>
+      <view class='temp num' decode='true'>{{cityDatas.now.tmp || '-'}}<text style='font-size:50rpx;position:relative;top:-20px;'>℃</text></view>
       <view class='weather'>{{cityDatas.now.cond_txt || '--'}}</view>
       <view class='pm'>
         <text>能见度 {{cityDatas.now.vis}}</text>
       </view>
     </view>
-    <!-- <ad unit-id="adunit-785cc3f710cc3d4c"></ad> -->
     <view class='guide' wx:if='{{cityDatas.daily_forecast}}'>
       <view class='item' wx:for='{{cityDatas.daily_forecast}}' wx:key='{{index}}'>
         <view class='date i'>{{item.date}}</view>
-        <view class='temperature i'>{{item.tmp_max}}~{{item.tmp_min}}°C</view>
-        <view class='weather i'>{{item.cond_txt_d}}</view>
+        <view class='temperature i'>{{item.tmp_max}}~{{item.tmp_min}}℃</view>
+        <view class='weather i'>
+          <text>{{item.cond_txt_d}}</text>
+          <image mode='widthFix' src='{{weatherIconUrl}}{{item.cond_code_d}}.png'></image>
+        </view>
         <view class='wind i'>{{item.wind_dir}}{{item.wind_sc}}级</view>
       </view>
     </view>
@@ -54,6 +56,7 @@
         <view>{{cityDatas.now[item]}}</view>
       </view>
     </view>
+    <!-- <ad unit-id="adunit-785cc3f710cc3d4c"></ad> -->
     <view class='livingIndex' wx:if='{{!setting.hiddenIndex}}'>
       <view class='item' wx:for='{{cityDatas.lifestyle}}' wx:key='{{index}}'>
         <image class='icon' src='/img/lifestyle_{{item.type}}.png'></image>
