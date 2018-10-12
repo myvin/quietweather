@@ -7,6 +7,22 @@ Page({
     isIPhoneX: globalData.isIPhoneX,
     message: '',
     cityDatas: {},
+    detailsDic: {
+      key: ['tmp', 'fl', 'hum', 'pcpn', 'wind_dir', 'wind_deg', 'wind_sc', 'wind_spd', 'vis', 'pres', 'cloud', ''],
+      val: {
+        tmp: '温度(°C)',
+        fl: '体感温度(°C)',
+        hum: '相对湿度(%)',
+        pcpn: '降水量(mm)',
+        wind_dir: '风向',
+        wind_deg: '风向角度(deg)',
+        wind_sc: '风力(级)',
+        wind_spd: '风速(mk/h)',
+        vis: '能见度(km)',
+        pres: '气压(mb)',
+        cloud: '云量',
+      },
+    },
     lifestyles: {
       'comf': '舒适度指数',
       'cw': '洗车指数',

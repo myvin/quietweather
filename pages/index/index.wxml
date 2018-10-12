@@ -48,6 +48,12 @@
         <view class='wind i'>{{item.wind_dir}}{{item.wind_sc}}级</view>
       </view>
     </view>
+    <view class='details'>
+      <view class='detail' wx:for='{{detailsDic.key}}' wx:key='{{index}}'>
+        <view>{{detailsDic.val[item]}}</view>
+        <view>{{cityDatas.now[item]}}</view>
+      </view>
+    </view>
     <view class='livingIndex' wx:if='{{!setting.hiddenIndex}}'>
       <view class='item' wx:for='{{cityDatas.lifestyle}}' wx:key='{{index}}'>
         <image class='icon' src='/img/lifestyle_{{item.type}}.png'></image>

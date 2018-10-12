@@ -222,6 +222,32 @@ page {
 .guide .i {
   padding-bottom: 20rpx;
 }
+.details {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  background:rgba(0, 0, 0, .6);
+  margin-bottom:20rpx;
+  font-size: 24rpx;
+}
+.details .detail {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  padding: 10rpx 0;
+  height: 100rpx;
+  width: 25%;
+  border-right: 1rpx solid rgba(250, 250, 250, 0.2);
+  border-bottom: 1rpx solid rgba(250, 250, 250, 0.2);
+  box-sizing: border-box;
+}
+.details .detail:nth-child(4n) {
+  border-right: none;
+}
+.details .detail:nth-child(n+9) {
+  border-bottom: none;
+}
 .livingIndex {
   /* border-bottom: 1rpx solid rgba(240, 240, 240, .4); */
   background: rgba(0, 0, 0, .6);
