@@ -421,7 +421,7 @@ Page({
   },
   onShareAppMessage (res) {
     return {
-      title: 'Quiet Weather--安静天气',
+      title: 'Quiet Weather',
       path: `/pages/index/index`,
       // imageUrl: '',
     }
