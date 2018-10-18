@@ -8,15 +8,7 @@
 
 I、气象数据由[百度地图开放平台]((https://lbsyun.baidu.com/))修改为了[和风天气](http://www.heweather.com/)，需要注册账号获取 `key`；免费版只能获取三天的天气数据，若要获取七天的气象数据，可以申请个人开发者认证；
 
-II、`d0e51c8` 版本之后为[小程序云开发](https://developers.weixin.qq.com/miniprogram/dev/wxcloud/basis/getting-started.html)版本，若未开通云开发功能，为不影响小程序正常运行，可以将版本号回退到 `git reset d0e51c8 --hard`，或，将云开发相关代码注释掉(包括：`app.js` 中的初始化、`index.js` 中获取 `message` 的代码)。若开通了云开发功能，可将相应代码部署到云上，同时，在云开发控制台数据控中添加 `broadcast` 集合，添加 24 条如下类似记录即可。
-
-```
-"_id": W7tqZw6qgQy38ina
-"hour": 0
-"message": 这个点儿了还在看手机？没有妹子就是好啊
-```
-
-> `d0e51c8` 版本之前，首页的文字广播数据是写死在本地的~~(懒)~~，`d0e51c8` 版本之后，即云开发版，该数据都放到了小程序云上。
+II、`d0e51c8` 版本之后为[小程序云开发](https://developers.weixin.qq.com/miniprogram/dev/wxcloud/basis/getting-started.html)版本，若未开通云开发功能，为不影响小程序正常运行，可以将版本号回退到 `git reset d0e51c8 --hard`，或，将云开发相关代码注释掉(包括：`app.js` 中的初始化、`index.js` 中获取 `message` 的代码)。若开通了云开发功能，可将相应代码部署到云上。
 
 ## 截图
 <div >
