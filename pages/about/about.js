@@ -15,6 +15,10 @@ Page({
         src: 'https://raw.githubusercontent.com/myvin/miniprogram/master/juejin/images/miniqrcode.jpg',
         title: '掘金第三方版',
       },
+      {
+        src: 'https://raw.githubusercontent.com/myvin/miniprogram/master/suijiyitu/images/suijiyitu.jpg',
+        title: '随机一图',
+      },
     ],
   },
   onLoad () {
