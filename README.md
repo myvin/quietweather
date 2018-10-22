@@ -16,7 +16,9 @@ II、`d0e51c8` 版本之后为[小程序云开发](https://developers.weixin.qq.
     <img src='https://raw.githubusercontent.com/myvin/miniprogram/master/quietweather/images/screenshot_2.png' style='width:300px;'>
     <img src='https://raw.githubusercontent.com/myvin/miniprogram/master/quietweather/images/screenshot_3.png' style='width:300px;'>
     <img src='https://raw.githubusercontent.com/myvin/miniprogram/master/quietweather/images/screenshot_4.png' style='width:300px;'>
-</div>
+
+<img src='https://raw.githubusercontent.com/myvin/miniprogram/master/quietweather/images/screenshot_5.png' style='width:300px;'>
+<img src='https://raw.githubusercontent.com/myvin/miniprogram/master/quietweather/images/screenshot_6.png' style='width:300px;'></div>
 
 ## 数据来源
 ~~地理编码、天气数据均来自[百度地图开放平台](https://lbsyun.baidu.com/)。个人开发完全免费，有对应的小程序 `sdk`，加入即可，但是返回的天气数据较少。~~
