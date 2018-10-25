@@ -7,6 +7,7 @@ Page({
     isIPhoneX: globalData.isIPhoneX,
     message: '',
     cityDatas: {},
+    hourlyDatas: [],
     weatherIconUrl: globalData.weatherIconUrl,
     detailsDic: {
       key: ['tmp', 'fl', 'hum', 'pcpn', 'wind_dir', 'wind_deg', 'wind_sc', 'wind_spd', 'vis', 'pres', 'cloud', ''],
@@ -182,6 +183,7 @@ Page({
     })
     if (val) {
       this.getWeather(val)
+      this.getHourly(val)
     }
   },
   // wx.openSetting 要废弃，button open-type openSetting 2.0.7 后支持
@@ -200,6 +202,7 @@ Page({
     wx.getLocation({
       success: (res) => {
         this.getWeather(`${res.latitude},${res.longitude}`)
+        this.getHourly(`${res.latitude},${res.longitude}`)
       },
       fail: (res) => {
         this.fail(res)
@@ -223,6 +226,31 @@ Page({
             wx.showToast({
               title: '查询失败',
               icon: 'none',
+            })
+          }
+        }
+      },
+      fail: () => {
+        wx.showToast({
+          title: '查询失败',
+          icon: 'none',
+        })
+      },
+    })
+  },
+  getHourly(location) {
+    wx.request({
+      url: `${globalData.requestUrl.hourly}`,
+      data: {
+        location,
+        key,
+      },
+      success: (res) => {
+        if (res.statusCode === 200) {
+          let data = res.data.HeWeather6[0]
+          if (data.status === 'ok') {
+            this.setData({
+              hourlyDatas: data.hourly || []
             })
           }
         }

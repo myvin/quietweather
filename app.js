@@ -20,6 +20,7 @@ App({
     weatherIconUrl: 'https://cdn.heweather.com/cond_icon/',
     requestUrl: {
       weather: 'https://free-api.heweather.com/s6/weather',
+      hourly: 'https://free-api.heweather.com/s6/weather/hourly',
     },
   },
 })
