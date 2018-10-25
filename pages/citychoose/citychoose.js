@@ -7,6 +7,7 @@ Page({
     // 需要显示的城市
     showItems: null,
     inputText: '',
+    hotCities: [],
   },
   cancel () {
     this.setData({
@@ -71,16 +72,37 @@ Page({
     return obj
   },
   choose(e) {
-    let item = e.currentTarget.dataset.item
-    let name = item.name
+    let name = e.currentTarget.dataset.name
     let pages = getCurrentPages()
     let len = pages.length
     let indexPage = pages[len - 2]
-    indexPage.search(name, () => {
-      wx.navigateBack({})
+    if (name) {
+      indexPage.search(name, () => {
+        wx.navigateBack({})
+      })
+    } else {
+      indexPage.init({}, () => {
+        wx.navigateBack({})
+      })
+    }
+  },
+  getHotCities(callback) {
+    wx.cloud.callFunction({
+      name: 'getHotCities',
+      data: {},
+    })
+    .then(res => {
+      let data = res.result.data
+      if (data) {
+        console.log(data)
+        this.setData({
+          hotCities: data
+        })
+      }
     })
   },
   onLoad () {
+    this.getHotCities()
     let cities = this.getSortedAreaObj(staticData.cities || [])
     this.setData({
       cities,

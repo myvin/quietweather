@@ -3,7 +3,7 @@
     <view class='search'>
       <view class="inner">
         <image class='icon' src='/img/search_grey.png'></image>
-        <input value='{{inputText}}' placeholder='搜索城市' maxlength='20' confirm-type='搜索' bindinput='inputFilter' bindconfirm='inputFilter' bindfocus='inputFilter'></input>
+        <input value='{{inputText}}' placeholder='请输入城市名，快速查询天气信息' maxlength='20' confirm-type='搜索' bindinput='inputFilter' bindconfirm='inputFilter' bindfocus='inputFilter'></input>
       </view>
       <text class='cancel' catchtap='cancel'>清空</text>
     </view>
@@ -14,11 +14,18 @@
       <view class='item' hover-class='hover-ddd' catchtap='choose' data-item='{{item}}' wx:key='{{index}}' wx:for='{{hotCities}}'>{{item.name}}</view>
     </view>
   </view> -->
+  <view class='hot'>
+    <view class='title'>猜你想找</view>
+    <view class='cities'>
+      <view class='item active' catchtap='choose'>定位</view>
+      <view class='item' hover-class='active' catchtap='choose' wx:for='{{hotCities}}' wx:key='{{index}}' data-name='{{item.name}}'>{{item.name}}</view>
+    </view>
+  </view>
   <view class='bottom'>
     <view wx:key='{{index}}' wx:for='{{showItems}}'>
       <view class='key'>{{index}}</view>
       <view class='values'>
-        <view wx:key='{{index}}' class='value' hover-class='hover' wx:for='{{item}}' catchtap='choose' data-item='{{item}}'>{{item.name}}</view>
+        <view wx:key='{{index}}' class='value' hover-class='hover' wx:for='{{item}}' catchtap='choose' data-name='{{item.name}}'>{{item.name}}</view>
       </view>
     </view>
   </view>

@@ -203,7 +203,7 @@ Page({
       return false
     }
   },
-  init(params) {
+  init(params, callback) {
     this.setData({
       located: true,
     })
@@ -211,6 +211,7 @@ Page({
       success: (res) => {
         this.getWeather(`${res.latitude},${res.longitude}`)
         this.getHourly(`${res.latitude},${res.longitude}`)
+        callback && callback()
       },
       fail: (res) => {
         this.fail(res)

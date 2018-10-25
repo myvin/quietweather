@@ -75,6 +75,43 @@
   color: #333;
   background: #fff;
 }
+.hot {
+  background: #fff;
+  margin-top: 10rpx;
+  padding: 30rpx 30rpx 20rpx;
+}
+.hot .title {
+  font-size: 32rpx;
+}
+.hot .cities {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+}
+.hot .item {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 30%;
+  height: 60rpx;
+  background: #f4f6f9;
+  border-radius: 8rpx;
+  color: #333;
+  font-size: 28rpx;
+  margin-top: 20rpx;
+  margin-left: 2.5%;
+  margin-right: 2.5%;
+}
+.hot .item.active {
+  background: #40a7e7;
+  color: #fff;
+}
+.hot .item:nth-child(3n+1) {
+  margin-left: 0;
+}
+.hot .item:nth-child(3n) {
+  margin-right: 0;
+}
 .bottom .key {
   background: #f4f6f9;
   height: 50rpx;
