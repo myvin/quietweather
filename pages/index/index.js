@@ -52,7 +52,7 @@ Page({
     animationTwo: {},
     animationThree: {},
     // 是否切换了城市
-    cityChanged: false,
+    located: true,
     // 需要查询的城市
     searchCity: '',
     setting: {},
@@ -101,9 +101,10 @@ Page({
     pos: {},
     openSettingButtonShow: false,
   },
-  success (data) {
+  success (data, location) {
     this.setData({
       openSettingButtonShow: false,
+      searchCity: location,
     })
     wx.stopPullDownRefresh()
     let now = new Date()
@@ -171,7 +172,7 @@ Page({
       searchText: '',
     })
   },
-  search (val) {
+  search (val, callback) {
     if (val === '520' || val === '521') {
       this.clearInput()
       this.dance()
@@ -182,9 +183,13 @@ Page({
       duration: 300,
     })
     if (val) {
+      this.setData({
+        located: false,
+      })
       this.getWeather(val)
       this.getHourly(val)
     }
+    callback && callback()
   },
   // wx.openSetting 要废弃，button open-type openSetting 2.0.7 后支持
   // 使用 wx.canIUse('openSetting') 都会返回 true，这里判断版本号区分
@@ -199,6 +204,9 @@ Page({
     }
   },
   init(params) {
+    this.setData({
+      located: true,
+    })
     wx.getLocation({
       success: (res) => {
         this.getWeather(`${res.latitude},${res.longitude}`)
@@ -221,7 +229,7 @@ Page({
           let data = res.data.HeWeather6[0]
           if (data.status === 'ok') {
             this.clearInput()
-            this.success(data)
+            this.success(data, location)
           } else {
             wx.showToast({
               title: '查询失败',
@@ -264,7 +272,7 @@ Page({
     })
   },
   onPullDownRefresh (res) {
-    this.init({})
+    this.reloadPage()
   },
   setMenuPosition () {
     wx.getStorage({
@@ -343,29 +351,33 @@ Page({
       }
     })
   },
-  onShow () {
-    this.setBcgImg()
-    this.getCityDatas()
-    this.setMenuPosition()
-    this.setNavigationBarColor('#2d2225')
-    // this.setBcg()
-    this.initSetting((setting) => {
-      this.checkUpdate(setting)
-    })
-    if (!this.data.cityChanged) {
-      this.init({})
-    } else {
-      this.search(this.data.searchCity)
-      this.setData({
-        cityChanged: false,
-        searchCity: '',
-      })
-    }
+  reloadGetBroadcast () {
     this.getBroadcast((message) => {
       this.setData({
         message,
       })
     })
+  },
+  reloadWeather () {
+    if (this.data.located) {
+      this.init({})
+    } else {
+      this.search(this.data.searchCity)
+      this.setData({
+        searchCity: '',
+      })
+    }
+  },
+  onLoad () {
+    this.reloadPage()
+  },
+  reloadPage () {
+    this.setBcgImg()
+    this.getCityDatas()
+    this.setMenuPosition()
+    this.reloadInitSetting()
+    this.reloadWeather()
+    this.reloadGetBroadcast()
   },
   onHide() {
     wx.setStorage({
@@ -414,22 +426,6 @@ Page({
       data: index,
     })
   },
-  // setBcg () {
-  //   wx.getSavedFileList({
-  //     success: (res) => {
-  //       let fileList = res.fileList
-  //       if (!utils.isEmptyObject(fileList)) {
-  //         this.setData({
-  //           bcgImg: fileList[0].filePath,
-  //         })
-  //       } else {
-  //         this.setData({
-  //           bcgImg: '',
-  //         })
-  //       }
-  //     },
-  //   })
-  // },
   initSetting (successFunc) {
     wx.getStorage({
       key: 'setting',
@@ -445,6 +441,11 @@ Page({
           setting: {},
         })
       },
+    })
+  },
+  reloadInitSetting () {
+    this.initSetting((setting) => {
+      this.checkUpdate(setting)
     })
   },
   onShareAppMessage (res) {
@@ -489,7 +490,6 @@ Page({
     })
   },
   menuHide () {
-    console.log(9)
     if (this.data.hasPopped) {
       this.takeback()
       this.setData({

@@ -7,6 +7,7 @@ Page({
     keepscreenon: false,
     SDKVersion: '',
     enableUpdate: true,
+    indexPage: {},
   },
   switchChange(e) {
     let dataset = e.currentTarget.dataset
@@ -35,6 +36,9 @@ Page({
     wx.setStorage({
       key: 'setting',
       data: setting,
+      success: () => {
+        this.data.indexPage.reloadInitSetting()
+      },
     })
   },
   // defaultBcg () {
@@ -109,9 +113,13 @@ Page({
     })
   },
   onShow () {
+    let pages = getCurrentPages()
+    let len = pages.length
+    let indexPage = pages[len - 2]
     // 不能初始化到 data 里面！！！！
     this.setData({
       keepscreenon: getApp().globalData.keepscreenon,
+      indexPage,
     })
     this.ifDisableUpdate()
     this.getScreenBrightness()
@@ -226,6 +234,7 @@ Page({
           left: 'auto',
         },
         success: function (res) {
+          that.data.indexPage.setMenuPosition()
           wx.showToast({
             title: '悬浮球已复位',
           })
@@ -248,6 +257,7 @@ Page({
                 that.setData({
                   setting: {},
                 })
+                that.data.indexPage.reloadInitSetting()
               },
             })
           }
@@ -270,6 +280,8 @@ Page({
                   setting: {},
                   pos: {},
                 })
+                that.data.indexPage.reloadInitSetting()
+                that.data.indexPage.setMenuPosition()
               },
             })
           }

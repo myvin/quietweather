@@ -76,13 +76,9 @@ Page({
     let pages = getCurrentPages()
     let len = pages.length
     let indexPage = pages[len - 2]
-    indexPage.setData({
-      // 是否切换了城市
-      cityChanged: true,
-      // 需要查询的城市
-      searchCity: name,
+    indexPage.search(name, () => {
+      wx.navigateBack({})
     })
-    wx.navigateBack({})
   },
   onLoad () {
     let cities = this.getSortedAreaObj(staticData.cities || [])
