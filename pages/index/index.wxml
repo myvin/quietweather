@@ -1,4 +1,4 @@
-<view class="container {{isIPhoneX ? 'iphonex-padding' : ''}}">
+<view class="container {{isIPhoneX ? 'iphonex-padding' : ''}}" catchtap='menuHide'>
   <heartbeat id='heartbeat' wx:if='{{showHeartbeat}}'></heartbeat>
   <view class='bcg' wx:if='{{!bcgImg}}' style='background: {{bcgColor}}'></view>
   <image class='bcg' wx:if='{{bcgImg}}' src='{{bcgImg}}' mode='aspectFill'></image>
@@ -138,9 +138,9 @@
   </view>
   <!-- 悬浮菜单 -->
   <view class='menus' wx:if='{{!bcgImgAreaShow}}'>
-    <image src="/img/location.png" animation="{{animationOne}}" class="menu" bindtap="menuOne"  style='top:{{pos.top}}px;left:{{pos.left}}px;'></image>
-    <image src="/img/setting.png" animation="{{animationTwo}}" class="menu" bindtap="menuTwo"  style='top:{{pos.top}}px;left:{{pos.left}}px;'></image>
-    <image src="/img/info.png" animation="{{animationThree}}" class="menu" bindtap="menuThree"  style='top:{{pos.top}}px;left:{{pos.left}}px;'></image>
-    <image src="/img/menu.png" animation="{{animationMain}}" class="menu main" bindtap="menuMain" catchtouchmove='menuMainMove' style='top:{{pos.top}}px;left:{{pos.left}}px;'></image>
+    <image src="/img/location.png" animation="{{animationOne}}" class="menu" catchtap="menuOne"  style='top:{{pos.top}}px;left:{{pos.left}}px;'></image>
+    <image src="/img/setting.png" animation="{{animationTwo}}" class="menu" catchtap="menuTwo"  style='top:{{pos.top}}px;left:{{pos.left}}px;'></image>
+    <image src="/img/info.png" animation="{{animationThree}}" class="menu" catchtap="menuThree"  style='top:{{pos.top}}px;left:{{pos.left}}px;'></image>
+    <image src="/img/menu.png" animation="{{animationMain}}" class="menu main" catchtap="menuMain" catchtouchmove='menuMainMove' style='top:{{pos.top}}px;left:{{pos.left}}px;'></image>
   </view>
 </view>

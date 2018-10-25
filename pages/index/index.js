@@ -488,6 +488,15 @@ Page({
       pos,
     })
   },
+  menuHide () {
+    console.log(9)
+    if (this.data.hasPopped) {
+      this.takeback()
+      this.setData({
+        hasPopped: false,
+      })
+    }
+  },
   menuMain () {
     if (!this.data.hasPopped) {
       this.popp()
