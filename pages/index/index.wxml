@@ -40,7 +40,7 @@
       </view>
     </view>
     <view class='guide' wx:if='{{cityDatas.daily_forecast}}'>
-      <view class='title'>7 天天气预报</view>
+      <view class='title'>7 天预报</view>
       <view class='guides'>
         <view class='item' wx:for='{{cityDatas.daily_forecast}}' wx:key='{{index}}'>
           <view class='date i'>{{item.date}}</view>
