@@ -17,7 +17,10 @@
   <view class='hot'>
     <view class='title'>猜你想找</view>
     <view class='cities'>
-      <view class='item active' catchtap='choose'>定位</view>
+      <view class='item active' catchtap='choose'>
+        <image class='icon' src='/img/location_s_w.png'></image>
+        <view>定位</view>
+      </view>
       <view class='item' hover-class='active' catchtap='choose' wx:for='{{hotCities}}' wx:key='{{index}}' data-name='{{item.name}}'>{{item.name}}</view>
     </view>
   </view>

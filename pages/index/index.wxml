@@ -25,11 +25,15 @@
     <view class='avatarInfo' catchtap='showBcgImgArea'>
       <open-data class='avatar' type='userAvatarUrl'></open-data>
       <open-data class='name' type='userNickName'></open-data>
-      <image class='downArrow' src='/img/down-arrow.png'></image>
+      <image class='downArrow' src='/img/down.png'></image>
     </view>
     <view class='info'>
       <view class='city'>
-        <view class='name'>{{cityDatas.basic.location || '定位中'}}</view>
+        <view class='name' bindtap='toCitychoose'>
+          <image wx:if='{{located}}' class='icon' src='/img/location_s_w.png'></image>
+          <view class='val'>{{cityDatas.basic.location || '定位中'}}</view>
+          <image class='down' src='/img/down.png'></image>
+        </view>
         <text class='time' wx:if='{{cityDatas.updateTimeFormat}}'>{{cityDatas.updateTimeFormat}} 更新</text>
       </view>
       <view class='message'>{{message}}</view>

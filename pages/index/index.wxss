@@ -129,8 +129,8 @@ page {
   font-size: 30rpx;
 }
 .avatarInfo .downArrow {
-  width: 30rpx;
-  height: 30rpx;
+  width: 20rpx;
+  height: 20rpx;
 }
 .container .content {
   flex: 2;
@@ -175,11 +175,27 @@ page {
   font-size: 66rpx;
 }
 .city .name {
-  width: 5em;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.city .name .val {
+  max-width: 5em;
   display: -webkit-box;
   -webkit-box-orient: vertical;
   -webkit-line-clamp: 1;
   overflow: hidden;
+}
+.city .name .icon,
+.city .name .down {
+  width: 30rpx;
+  height: 30rpx;
+}
+.city .name .icon {
+  margin-right: 20rpx;
+}
+.city .name .down {
+  margin-left: 20rpx;
 }
 .city .time {
   display: block;

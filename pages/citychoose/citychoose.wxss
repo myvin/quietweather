@@ -102,6 +102,11 @@
   margin-left: 2.5%;
   margin-right: 2.5%;
 }
+.hot .item .icon {
+  width: 24rpx;
+  height: 24rpx;
+  margin-right: 8rpx;
+}
 .hot .item.active {
   background: #40a7e7;
   color: #fff;

@@ -427,6 +427,11 @@ Page({
       data: index,
     })
   },
+  toCitychoose () {
+    wx.navigateTo({
+      url: '/pages/citychoose/citychoose',
+    })
+  },
   initSetting (successFunc) {
     wx.getStorage({
       key: 'setting',
