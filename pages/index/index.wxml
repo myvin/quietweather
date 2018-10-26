@@ -5,7 +5,7 @@
   <view class='search' wx:if='{{!setting.hiddenSearch && !bcgImgAreaShow}}' style='background:rgba(255, 255, 255, 0)'>
     <view class='wrapper'>
       <image src='/img/search.png'></image>
-      <input placeholder-class='placeholderClass' confirm-type='search' placeholder='查询其他城市' maxlength='20' bindconfirm='commitSearch' value='{{searchText}}' disabled='{{!enableSearch}}'></input>
+      <input placeholder-class='placeholderClass' confirm-type='search' placeholder='请输入城市名，快速查询天气信息' maxlength='20' bindconfirm='commitSearch' value='{{searchText}}' disabled='{{!enableSearch}}'></input>
     </view>
   </view>
   <view class='chooseBcg' wx:if='{{bcgImgAreaShow}}'>
