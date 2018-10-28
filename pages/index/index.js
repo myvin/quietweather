@@ -98,7 +98,7 @@ Page({
     showHeartbeat: true,
     // heartbeat 时禁止搜索，防止动画执行
     enableSearch: true,
-    pos: {},
+    // pos: {},
     openSettingButtonShow: false,
   },
   success (data, location) {
@@ -275,21 +275,6 @@ Page({
   onPullDownRefresh (res) {
     this.reloadPage()
   },
-  setMenuPosition () {
-    wx.getStorage({
-      key: 'pos',
-      success: (res) => {
-        this.setData({
-          pos: res.data,
-        })
-      },
-      fail: (res) => {
-        this.setData({
-          pos: {},
-        })
-      },
-    })
-  },
   getCityDatas() {
     let cityDatas = wx.getStorage({
       key: 'cityDatas',
@@ -375,16 +360,9 @@ Page({
   reloadPage () {
     this.setBcgImg()
     this.getCityDatas()
-    this.setMenuPosition()
     this.reloadInitSetting()
     this.reloadWeather()
     this.reloadGetBroadcast()
-  },
-  onHide() {
-    wx.setStorage({
-      key: 'pos',
-      data: this.data.pos,
-    })
   },
   checkUpdate (setting) {
     // 兼容低版本
@@ -460,40 +438,6 @@ Page({
       path: `/pages/index/index`,
       // imageUrl: '',
     }
-  },
-  menuMainMove (e) {
-    // 如果已经弹出来了，需要先收回去，否则会受 top、left 会影响
-    if (this.data.hasPopped) {
-      this.takeback()
-      this.setData({
-        hasPopped: false,
-      })
-    }
-    let windowWidth = SYSTEMINFO.windowWidth
-    let windowHeight = SYSTEMINFO.windowHeight
-    let touches = e.touches[0]
-    let clientX  = touches.clientX
-    let clientY = touches.clientY
-    // 边界判断
-    if (clientX > windowWidth - 40) {
-      clientX = windowWidth - 40
-    }
-    if (clientX <= 90) {
-      clientX = 90
-    }
-    if (clientY > windowHeight - 40 - 60) {
-      clientY = windowHeight - 40 - 60
-    }
-    if (clientY <= 60) {
-      clientY = 60
-    }
-    let pos = {
-      left: clientX,
-      top: clientY,
-    }
-    this.setData({
-      pos,
-    })
   },
   menuHide () {
     if (this.data.hasPopped) {

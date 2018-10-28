@@ -142,9 +142,9 @@
   </view>
   <!-- 悬浮菜单 -->
   <view class='menus' wx:if='{{!bcgImgAreaShow}}'>
-    <image src="/img/location.png" animation="{{animationOne}}" class="menu" catchtap="menuOne"  style='top:{{pos.top}}px;left:{{pos.left}}px;'></image>
-    <image src="/img/setting.png" animation="{{animationTwo}}" class="menu" catchtap="menuTwo"  style='top:{{pos.top}}px;left:{{pos.left}}px;'></image>
-    <image src="/img/info.png" animation="{{animationThree}}" class="menu" catchtap="menuThree"  style='top:{{pos.top}}px;left:{{pos.left}}px;'></image>
-    <image src="/img/menu.png" animation="{{animationMain}}" class="menu main" catchtap="menuMain" catchtouchmove='menuMainMove' style='top:{{pos.top}}px;left:{{pos.left}}px;'></image>
+    <image src="/img/location.png" animation="{{animationOne}}" class="menu" catchtap="menuOne"></image>
+    <image src="/img/setting.png" animation="{{animationTwo}}" class="menu" catchtap="menuTwo"></image>
+    <image src="/img/info.png" animation="{{animationThree}}" class="menu" catchtap="menuThree"></image>
+    <image src="/img/menu.png" animation="{{animationMain}}" class="menu main" catchtap="menuMain"></image>
   </view>
 </view>

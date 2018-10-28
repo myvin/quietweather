@@ -94,7 +94,7 @@
         <view>清除数据</view>
       </view>
       <view class='content'>
-        <view class='item'  catchtap='removeStorage' data-type='menu'>
+        <!-- <view class='item'  catchtap='removeStorage' data-type='menu'>
           <view>
             <view>首页悬浮球复位</view>
             <view class='tip'>
@@ -102,7 +102,7 @@
             </view>
           </view>
           <image class='more' src='/img/arrow.png'></image>
-        </view>
+        </view> -->
         <view class='item' catchtap='removeStorage' data-type='setting'>
           <view>
             <view>恢复初始化设置</view>

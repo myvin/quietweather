@@ -94,7 +94,6 @@ Page({
     .then(res => {
       let data = res.result.data
       if (data) {
-        console.log(data)
         this.setData({
           hotCities: data
         })

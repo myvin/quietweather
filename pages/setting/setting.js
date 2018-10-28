@@ -226,21 +226,7 @@ Page({
   removeStorage (e) {
     let that = this
     let datatype = e.currentTarget.dataset.type
-    if (datatype === 'menu') {
-      wx.setStorage({
-        key: 'pos',
-        data: {
-          top: 'auto',
-          left: 'auto',
-        },
-        success: function (res) {
-          that.data.indexPage.setMenuPosition()
-          wx.showToast({
-            title: '悬浮球已复位',
-          })
-        },
-      })
-    } else if (datatype === 'setting') {
+    if (datatype === 'setting') {
       wx.showModal({
         title: '提示',
         content: '确认要初始化设置',
@@ -281,7 +267,6 @@ Page({
                   pos: {},
                 })
                 that.data.indexPage.reloadInitSetting()
-                that.data.indexPage.setMenuPosition()
               },
             })
           }
