@@ -98,8 +98,8 @@ Page({
     showHeartbeat: true,
     // heartbeat 时禁止搜索，防止动画执行
     enableSearch: true,
-    // pos: {},
     openSettingButtonShow: false,
+    shareInfo: {},
   },
   success (data, location) {
     this.setData({
@@ -354,6 +354,25 @@ Page({
       })
     }
   },
+  onShow() {
+    // onShareAppMessage 要求同步返回
+    if (!utils.isEmptyObject(this.data.shareInfo)) {
+      return
+    }
+    wx.cloud.callFunction({
+      name: 'getShareInfo',
+    })
+    .then(res => {
+      let shareInfo = res.result
+      if (shareInfo) {
+        if (!utils.isEmptyObject(shareInfo)) {
+          this.setData({
+            shareInfo,
+          })
+        }
+      }
+    })
+  },
   onLoad () {
     this.reloadPage()
   },
@@ -433,10 +452,11 @@ Page({
     })
   },
   onShareAppMessage (res) {
+    let shareInfo = this.data.shareInfo
     return {
-      title: 'Quiet Weather',
-      path: `/pages/index/index`,
-      // imageUrl: '',
+      title: shareInfo.title || 'Quiet Weather',
+      path: shareInfo.path || '/pages/index/index',
+      imageUrl: shareInfo.imageUrl,
     }
   },
   menuHide () {
