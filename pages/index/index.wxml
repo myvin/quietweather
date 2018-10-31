@@ -66,7 +66,7 @@
     <view class='hourly' wx:if='{{hourlyDatas.length}}'>
       <view class='title'>24 小时逐 3 小时预报</view>
       <view class='hours'>
-        <swiper style='height:360rpx;' indicator-dots="{{false}}" autoplay="{{false}}" circular="{{true}}" duration="300" previous-margin="50rpx" next-margin="50rpx">
+        <swiper style='height:360rpx;' indicator-dots="{{false}}" autoplay="{{false}}" circular="{{false}}" duration="300" next-margin="50rpx">
           <block wx:for="{{hourlyDatas}}" wx:key="{{index}}">
             <swiper-item>
               <view class='hour'>
