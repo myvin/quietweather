@@ -347,14 +347,19 @@ page {
   height: 80rpx;
   padding: 0 24rpx;
 }
-.menus .menu {
+.menus .menu,
+.menus .share {
   height: 40px;
   width: 40px;
+  border-radius: 50%;
   position: fixed;
   z-index: 100;
   bottom: 150rpx;
   right: 70rpx;
   opacity: 0;
+}
+.menus .share {
+  background: rgba(0, 0, 0, 0);
 }
 .menus .main {
   opacity: 1;
