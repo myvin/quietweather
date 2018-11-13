@@ -47,3 +47,9 @@ II、`d0e51c8` 版本之后为[小程序云开发](https://developers.weixin.qq.
 <img src="https://raw.githubusercontent.com/myvin/miniprogram/master/9201893579990_.pic_hd.jpg" width="300" />
 
 > 转载请注明出处
+
+## License
+
+[MIT](http://opensource.org/licenses/MIT)
+
+Copyright (c) 2018-present, myvin
