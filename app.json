@@ -12,5 +12,10 @@
     "navigationBarTitleText": "Quiet Weather",
     "navigationBarTextStyle": "light"
   },
+  "permission": {
+    "scope.userLocation": {
+      "desc": "定位以获取当前位置天气信息"
+    }
+  },
   "cloud": true
 }
