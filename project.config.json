@@ -5,11 +5,12 @@
 		"es6": true,
 		"postcss": true,
 		"minified": true,
-		"newFeature": true
+		"newFeature": true,
+		"nodeModules": true
 	},
 	"compileType": "miniprogram",
 	"libVersion": "1.9.1",
-	"appid": "you appid",
+	"appid": "wx4949a3afa9e6fe87",
 	"projectname": "weather",
 	"condition": {
 		"search": {
@@ -20,9 +21,22 @@
 			"current": -1,
 			"list": []
 		},
-		"miniprogram": {
+		"plugin": {
 			"current": -1,
 			"list": []
+		},
+		"game": {
+			"list": []
+		},
+		"miniprogram": {
+			"current": 0,
+			"list": [
+				{
+					"id": -1,
+					"name": "share",
+					"pathName": "pages/share/index"
+				}
+			]
 		}
 	}
 }

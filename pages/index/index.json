@@ -1,7 +1,8 @@
 {
-  "navigationBarTitleText": "Quiet Weather",
-  "enablePullDownRefresh": true,
-  "usingComponents": {
-    "heartbeat": "/components/heartbeat/heartbeat"
-  }
+    "navigationBarTitleText": "OwnerWeather",
+    "enablePullDownRefresh": true,
+    "usingComponents": {
+        "canvasdrawer": "/components/canvasdrawer/canvasdrawer",
+        "heartbeat": "/components/heartbeat/heartbeat"
+    }
 }

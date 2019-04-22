@@ -14,11 +14,11 @@
       </view>
       <view class='item'>
         <view>打开顶部城市天气快捷搜索</view>
-        <switch color='#40a7e7' checked='{{!setting.hiddenSearch}}'  bindchange='switchChange' data-switchparam='hiddenSearch'></switch>
+        <switch color='#4FC3F7' checked='{{!setting.hiddenSearch}}'  bindchange='switchChange' data-switchparam='hiddenSearch'></switch>
       </view>
       <view class='item'>
         <view>显示生活指数信息</view>
-        <switch color='#40a7e7' checked='{{!setting.hiddenIndex}}' bindchange='switchChange' data-switchparam='hiddenIndex'></switch>
+        <switch color='#4FC3F7' checked='{{!setting.hiddenIndex}}' bindchange='switchChange' data-switchparam='hiddenIndex'></switch>
       </view>
     </view>
     <!-- 检查更新 -->
@@ -36,7 +36,7 @@
               <text wx:if='{{!enableUpdate}}' style='flex:1;'>基础库版本需高于 1.9.90，当前基础库版本为 {{SDKVersion}}</text>
             </view>
           </view>
-          <switch color='#40a7e7' checked='{{setting.forceUpdate}}' bindchange='switchChange' data-switchParam='forceUpdate'></switch>
+          <switch color='#4FC3F7' checked='{{setting.forceUpdate}}' bindchange='switchChange' data-switchParam='forceUpdate'></switch>
         </view>
       </view>
     </view>
@@ -64,7 +64,7 @@
         <view class='item' catchtap='setScreenBrightness'>
           <view style='width:100%'>
             <view>设置屏幕亮度</view>
-            <slider value='{{screenBrightness}}' min='0' max='100' step='1' block-size='12' block-color='#40a7e7' activeColor='#40a7e7' show-value='true' bindchanging='screenBrightnessChanging'></slider>
+            <slider value='{{screenBrightness}}' min='0' max='100' step='1' block-size='12' block-color='#4FC3F7' activeColor='#4FC3F7' show-value='true' bindchanging='screenBrightnessChanging'></slider>
           </view>
           <!-- <view>设置屏幕亮度</view> -->
         </view>
@@ -73,7 +73,7 @@
             <view>保持常亮</view>
             <view class='tip'>仅在当前小程序、当次生效，离开小程序后设置失效</view>
           </view>
-          <switch color='#40a7e7' bindchange='switchChange' data-switchparam='keepscreenon' checked='{{keepscreenon}}'></switch>
+          <switch color='#4FC3F7' bindchange='switchChange' data-switchparam='keepscreenon' checked='{{keepscreenon}}'></switch>
         </view>
       </view>
       <view class='content sub'>
@@ -123,6 +123,7 @@
         </view>
       </view>
     </view>
+    <ad style='margin-bottom:80rpx;' unit-id="adunit-fd0d2b63f6e96bbf"></ad>
   </view>
   <!-- toast -->
   <view class='toast' wx:if='{{show}}'>

@@ -1,0 +1,6 @@
+{
+    "navigationBarTitleText": "Share",
+    "usingComponents": {
+        "canvasdrawer": "/components/canvasdrawer/canvasdrawer"
+    }
+}

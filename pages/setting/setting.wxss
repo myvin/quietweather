@@ -1,94 +1,121 @@
 .setting {
-  font-size: 28rpx;
-  color: #666;
-  padding: 30rpx 40rpx;
+    font-size: 28rpx;
+    color: #666;
+    padding: 30rpx 40rpx;
 }
+
 .more {
-  width: 32rpx;
-  height: 32rpx;
+    width: 32rpx;
+    height: 32rpx;
 }
+
 .item {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  height: 100rpx;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 100rpx;
 }
+
 .sub.content .item {
-  padding-left: 20rpx;
+    padding-left: 20rpx;
 }
+
 .item .right {
-  display: flex;
-  justify-content: flex-end;
-  align-items: center;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
 }
+
 .item .tip {
-  font-size: 22rpx;
-  color: #999;
-  display: flex;
-  justify-content: flex-start;
-  align-items: center;
+    font-size: 22rpx;
+    color: #999;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
 }
+
 .item .tip image {
-  width: 24rpx;
-  height: 24rpx;
-  margin-right: 10rpx;
+    width: 24rpx;
+    height: 24rpx;
+    margin-right: 10rpx;
 }
+
 .item slider {
-  width: 100%;
-  margin: 0;
+    width: 100%;
+    margin: 0;
 }
+
 .title {
-  font-size: 32rpx;
-  color: #40a7e7;
-  margin: 26rpx 0;
+    font-size: 32rpx;
+    color: #4FC3F7;
+    margin: 26rpx 0;
 }
+
 .subtitle {
-  font-size: 28rpx;
-  color: #40a7e7;
+    font-size: 28rpx;
+    color: #4FC3F7;
 }
+
 .toast .mask {
-  position: fixed;
-  z-index: 9;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  margin: auto;
-  background: rgba(0, 0, 0, .5);
+    position: fixed;
+    z-index: 9;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    margin: auto;
+    background: rgba(0, 0, 0, .5);
 }
+
 .toast .wrapper {
-  position: fixed;
-  z-index: 10;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  margin: auto;
-  background: #fff;
-  font-size: 24rpx;
-  color: #333;
-  width: 60%;
-  height: 400rpx;
-  border-radius: 14rpx;
-  padding: 46rpx 28rpx;
+    position: fixed;
+    z-index: 10;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    margin: auto;
+    background: #fff;
+    font-size: 24rpx;
+    color: #333;
+    width: 60%;
+    height: 400rpx;
+    border-radius: 14rpx;
+    padding: 46rpx 28rpx;
 }
+
 .toast .box {
-  height: 400rpx;
-  overflow: scroll;
+    height: 400rpx;
+    overflow: scroll;
 }
+
 .toast .t {
-  font-size: 28rpx;
-  color: #40a7e7;
-  margin: 20rpx 0;
+    font-size: 28rpx;
+    color: #4FC3F7;
+    margin: 20rpx 0;
 }
+
 .toast .content {
-  line-height: 1.8em;
-  text-align: justify;
+    line-height: 1.8em;
+    text-align: justify;
 }
+
 .toast .content text {
-  display: block;
-  margin-bottom: 10rpx;
+    display: block;
+    margin-bottom: 10rpx;
 }
-.wx-switch-input{width:84rpx !important;height:43rpx !important;}
-.wx-switch-input::before{width:82rpx !important;height: 38rpx !important;}
-.wx-switch-input::after{width: 38rpx !important;height: 38rpx !important;}
+
+.wx-switch-input {
+    width: 84rpx !important;
+    height: 43rpx !important;
+}
+
+.wx-switch-input::before {
+    width: 82rpx !important;
+    height: 38rpx !important;
+}
+
+.wx-switch-input::after {
+    width: 38rpx !important;
+    height: 38rpx !important;
+}

@@ -1,0 +1,16 @@
+/* pages/share/index.wxss */
+.share-image {
+  width: 600rpx;
+  height: 888rpx;
+  display: block;
+  margin: 20rpx auto;
+  border: 1px solid #ececec;
+}
+
+button {
+  width: 60%;
+  display: block;
+  margin: 20rpx auto;
+  background: #4FC3F7;
+  color: #fff;
+}
