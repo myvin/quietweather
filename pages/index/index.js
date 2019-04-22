@@ -28,13 +28,20 @@ Page({
         searchCity: '',
         setting: {},
         bcgImg: '',
+<<<<<<< HEAD
         bcgColor: '#4FC3F7',
+=======
+        bcgColor: '#40a7e7',
+>>>>>>> 05e4fffd53380cacb00cb26a54e8b220d6dcc36f
         // 粗暴直接：移除后再创建，达到初始化组件的作用
         showHeartbeat: true,
         // heartbeat 时禁止搜索，防止动画执行
         enableSearch: true,
         pos: {},
+<<<<<<< HEAD
         painting: {}
+=======
+>>>>>>> 05e4fffd53380cacb00cb26a54e8b220d6dcc36f
     },
     calcPM(value) {
         if (value > 0 && value <= 50) {
@@ -218,6 +225,7 @@ Page({
         this.init({})
     },
     setMenuPosition() {
+<<<<<<< HEAD
         let that = this
         wx.getStorage({
             key: 'pos',
@@ -228,17 +236,35 @@ Page({
             },
             fail: function(res) {
                 that.setData({
+=======
+        wx.getStorage({
+            key: 'pos',
+            success: (res) => {
+                this.setData({
+                    pos: res.data,
+                })
+            },
+            fail: (res) => {
+                this.setData({
+>>>>>>> 05e4fffd53380cacb00cb26a54e8b220d6dcc36f
                     pos: {},
                 })
             },
         })
     },
     getCityDatas() {
+<<<<<<< HEAD
         let that = this
         let cityDatas = wx.getStorage({
             key: 'cityDatas',
             success: function(res) {
                 that.setData({
+=======
+        let cityDatas = wx.getStorage({
+            key: 'cityDatas',
+            success: (res) => {
+                this.setData({
+>>>>>>> 05e4fffd53380cacb00cb26a54e8b220d6dcc36f
                     cityDatas: res.data,
                 })
             },
@@ -247,14 +273,21 @@ Page({
     onShow() {
         this.getCityDatas()
         this.setMenuPosition()
+<<<<<<< HEAD
         let that = this
+=======
+>>>>>>> 05e4fffd53380cacb00cb26a54e8b220d6dcc36f
         let bcgColor = utils.themeSetting()
         this.setData({
             bcgColor,
         })
         this.setBcg()
         this.initSetting((setting) => {
+<<<<<<< HEAD
             that.checkUpdate(setting)
+=======
+            this.checkUpdate(setting)
+>>>>>>> 05e4fffd53380cacb00cb26a54e8b220d6dcc36f
         })
         if (!this.data.cityChanged) {
             this.init({})
@@ -264,6 +297,7 @@ Page({
                 cityChanged: false,
                 searchCity: '',
             })
+<<<<<<< HEAD
         }
     },
     onHide() {
@@ -347,6 +381,89 @@ Page({
                 })
             }
         }
+=======
+        }
+    },
+    onHide() {
+        wx.setStorage({
+            key: 'pos',
+            data: this.data.pos,
+        })
+    },
+    checkUpdate(setting) {
+        // 兼容低版本
+        if (!setting.forceUpdate || !wx.getUpdateManager) {
+            return
+        }
+        let updateManager = wx.getUpdateManager()
+        updateManager.onCheckForUpdate((res) => {
+            console.error(res)
+        })
+        updateManager.onUpdateReady(function() {
+            wx.showModal({
+                title: '更新提示',
+                content: '新版本已下载完成，是否重启应用？',
+                success: function(res) {
+                    if (res.confirm) {
+                        updateManager.applyUpdate()
+                    }
+                }
+            })
+        })
+    },
+    setBcg() {
+        wx.getSavedFileList({
+            success: (res) => {
+                let fileList = res.fileList
+                if (!utils.isEmptyObject(fileList)) {
+                    this.setData({
+                        bcgImg: fileList[0].filePath,
+                    })
+                } else {
+                    this.setData({
+                        bcgImg: '',
+                    })
+                }
+            },
+        })
+    },
+    initSetting(successFunc) {
+        wx.getStorage({
+            key: 'setting',
+            success: (res) => {
+                let setting = res.data || {}
+                this.setData({
+                    setting,
+                })
+                successFunc && successFunc(setting)
+            },
+            fail: (res) => {
+                this.setData({
+                    setting: {},
+                })
+            },
+        })
+    },
+    onShareAppMessage(res) {
+        return {
+            title: 'Quiet Weather--安静天气',
+            path: `/pages/index/index`,
+            // imageUrl: '',
+            success() {},
+            fail(e) {
+                let errMsg = e.errMsg || ''
+                    // 对不是用户取消转发导致的失败进行提示
+                let msg = '分享失败，可重新分享'
+                if (errMsg.indexOf('cancel') !== -1) {
+                    msg = '取消分享'
+                }
+                wx.showToast({
+                    title: msg,
+                    icon: 'none',
+                })
+            }
+        }
+>>>>>>> 05e4fffd53380cacb00cb26a54e8b220d6dcc36f
     },
     menuMainMove(e) {
         // 如果已经弹出来了，需要先收回去，否则会受 top、left 会影响
@@ -413,12 +530,15 @@ Page({
             url: '/pages/about/about',
         })
     },
+<<<<<<< HEAD
     menuFour() {
         this.menuMain()
         wx.navigateTo({
             url: '/pages/share/index',
         })
     },
+=======
+>>>>>>> 05e4fffd53380cacb00cb26a54e8b220d6dcc36f
     popp() {
         let animationMain = wx.createAnimation({
             duration: 200,
@@ -436,6 +556,7 @@ Page({
             duration: 200,
             timingFunction: 'ease-out'
         })
+<<<<<<< HEAD
         let animationFour = wx.createAnimation({
             duration: 200,
             timingFunction: 'ease-out'
@@ -445,12 +566,21 @@ Page({
         animationTwo.translate(-100, 0).rotateZ(360).opacity(1).step()
         animationThree.translate(-50, 60).rotateZ(360).opacity(1).step()
         animationFour.translate(-50, 0).rotateZ(360).opacity(1).step()
+=======
+        animationMain.rotateZ(180).step()
+        animationOne.translate(-50, -60).rotateZ(360).opacity(1).step()
+        animationTwo.translate(-90, 0).rotateZ(360).opacity(1).step()
+        animationThree.translate(-50, 60).rotateZ(360).opacity(1).step()
+>>>>>>> 05e4fffd53380cacb00cb26a54e8b220d6dcc36f
         this.setData({
             animationMain: animationMain.export(),
             animationOne: animationOne.export(),
             animationTwo: animationTwo.export(),
             animationThree: animationThree.export(),
+<<<<<<< HEAD
             animationFour: animationFour.export()
+=======
+>>>>>>> 05e4fffd53380cacb00cb26a54e8b220d6dcc36f
         })
     },
     takeback() {
@@ -470,21 +600,30 @@ Page({
             duration: 200,
             timingFunction: 'ease-out'
         })
+<<<<<<< HEAD
         let animationFour = wx.createAnimation({
             duration: 200,
             timingFunction: 'ease-out'
         })
+=======
+>>>>>>> 05e4fffd53380cacb00cb26a54e8b220d6dcc36f
         animationMain.rotateZ(0).step();
         animationOne.translate(0, 0).rotateZ(0).opacity(0).step()
         animationTwo.translate(0, 0).rotateZ(0).opacity(0).step()
         animationThree.translate(0, 0).rotateZ(0).opacity(0).step()
+<<<<<<< HEAD
         animationFour.translate(0, 0).rotateZ(0).opacity(0).step()
+=======
+>>>>>>> 05e4fffd53380cacb00cb26a54e8b220d6dcc36f
         this.setData({
             animationMain: animationMain.export(),
             animationOne: animationOne.export(),
             animationTwo: animationTwo.export(),
             animationThree: animationThree.export(),
+<<<<<<< HEAD
             animationFour: animationFour.export()
+=======
+>>>>>>> 05e4fffd53380cacb00cb26a54e8b220d6dcc36f
         })
     },
 })

@@ -75,10 +75,9 @@ Page({
         })
     },
     customBcg() {
-        let that = this
         wx.chooseImage({
-            success: function(res) {
-                that.removeBcg(() => {
+            success: (res) => {
+                this.removeBcg(() => {
                     wx.saveFile({
                         tempFilePath: res.tempFilePaths[0],
                         success: function(res) {
@@ -87,7 +86,7 @@ Page({
                     })
                 })
             },
-            fail: function(res) {
+            fail: (res) => {
                 let errMsg = res.errMsg
                     // 如果是取消操作，不提示
                 if (errMsg.indexOf('cancel') === -1) {
@@ -116,17 +115,16 @@ Page({
         })
         this.ifDisableUpdate()
         this.getScreenBrightness()
-        let that = this
         wx.getStorage({
             key: 'setting',
-            success: function(res) {
+            success: (res) => {
                 let setting = res.data
-                that.setData({
+                this.setData({
                     setting,
                 })
             },
-            fail: function(res) {
-                that.setData({
+            fail: (res) => {
+                this.setData({
                     setting: {},
                 })
             },
@@ -160,7 +158,7 @@ Page({
                     content: '该设备支持NFC功能',
                     showCancel: false,
                     confirmText: '朕知道了',
-                    confirmColor: '#4FC3F7',
+                    confirmColor: '#40a7e7',
                 })
             },
             fail: function(res) {
@@ -170,21 +168,20 @@ Page({
                     content: '该设备不支持NFC功能',
                     showCancel: false,
                     confirmText: '朕知道了',
-                    confirmColor: '#4FC3F7',
+                    confirmColor: '#40a7e7',
                 })
             },
         })
     },
     getScreenBrightness() {
-        let that = this
         wx.getScreenBrightness({
-            success: function(res) {
-                that.setData({
+            success: (res) => {
+                this.setData({
                     screenBrightness: Number(res.value * 100).toFixed(0),
                 })
             },
-            fail: function(res) {
-                that.setData({
+            fail: (res) => {
+                this.setData({
                     screenBrightness: '获取失败',
                 })
             },
@@ -194,22 +191,20 @@ Page({
         this.setScreenBrightness(e.detail.value)
     },
     setScreenBrightness(val) {
-        let that = this
         wx.setScreenBrightness({
             value: val / 100,
-            success: function(res) {
-                that.setData({
+            success: (res) => {
+                this.setData({
                     screenBrightness: val,
                 })
             },
         })
     },
     setKeepScreenOn(b) {
-        let that = this
         wx.setKeepScreenOn({
             keepScreenOn: b,
-            success() {
-                that.setData({
+            success: () => {
+                this.setData({
                     keepscreenon: b,
                 })
             },
@@ -221,7 +216,6 @@ Page({
         })
     },
     removeStorage(e) {
-        let that = this
         let datatype = e.currentTarget.dataset.type
         if (datatype === 'menu') {
             wx.setStorage({
@@ -241,16 +235,16 @@ Page({
                 title: '提示',
                 content: '确认要初始化设置',
                 cancelText: '容朕想想',
-                confirmColor: '#4FC3F7',
-                success(res) {
+                confirmColor: '#40a7e7',
+                success: (res) => {
                     if (res.confirm) {
                         wx.removeStorage({
                             key: 'setting',
-                            success: function(res) {
+                            success: (res) => {
                                 wx.showToast({
                                     title: '设置已初始化',
                                 })
-                                that.setData({
+                                this.setData({
                                     setting: {},
                                 })
                             },
@@ -263,15 +257,15 @@ Page({
                 title: '提示',
                 content: '确认要删除',
                 cancelText: '容朕想想',
-                confirmColor: '#4FC3F7',
-                success(res) {
+                confirmColor: '#40a7e7',
+                success: (res) => {
                     if (res.confirm) {
                         wx.clearStorage({
-                            success: function(res) {
+                            success: (res) => {
                                 wx.showToast({
                                     title: '数据已清除',
                                 })
-                                that.setData({
+                                this.setData({
                                     setting: {},
                                     pos: {},
                                 })
