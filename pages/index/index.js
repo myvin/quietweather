@@ -341,7 +341,6 @@ Page({
       pageShowCount: ++this.data.pageShowCount,
     })
     // 注意：这里是测试广告的，上线后请注释掉
-    console.error('this.data.pageShowCount: ', this.data.pageShowCount);
     if (this.data.pageShowCount === 3) {
       this.showRewardedVideo()
     } else {

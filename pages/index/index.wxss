@@ -11,7 +11,6 @@ page {
 .container {
   display: flex;
   flex-direction: column;
-  min-height: 100vh;
   color: #fff;
   font-size: 30rpx;
 }
@@ -60,12 +59,7 @@ page {
 .chooseBcg {
   display: flex;
   flex-direction: column;
-  min-height: 100vh;
-  position: fixed;
   z-index: 100;
-  top: 0;
-  left: 0;
-  right: 0;
   width: 100%;
   font-size: 24rpx;
   color: #333;
@@ -96,8 +90,8 @@ page {
   transition: .1s ease;
 }
 .chooseBcg .bcgs image {
-  width: 110rpx;
-  height: 190rpx;
+  width: 132rpx;
+  height: 228rpx;
 }
 .chooseBcg .close {
   flex: 1;
