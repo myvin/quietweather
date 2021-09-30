@@ -59,7 +59,7 @@
     </view>
     <view class='details'>
       <view class='detail' wx:for='{{detailsDic.key}}' wx:key='index'>
-        <view>{{detailsDic.val[item]}}</view>
+        <view>{{environmentVars[item]}}</view>
         <view>{{cityDatas.now[item]}}</view>
       </view>
     </view>
