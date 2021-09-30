@@ -1,0 +1,471 @@
+.cu-custom view {
+  box-sizing: border-box;
+}
+.cu-custom .ev-back {
+  font-size: 36rpx;
+}
+.cu-custom .content {
+  font-size: 32rpx;
+}
+.navigation-bar-default-background-color {
+	background-color: #40a7e7;
+	color: #ffffff;
+}
+
+.cu-bar {
+	display: flex;
+	position: relative;
+	align-items: center;
+	min-height: 100rpx;
+	justify-content: space-between;
+}
+
+.cu-bar .action {
+	display: flex;
+	align-items: center;
+	height: 100%;
+	justify-content: center;
+	max-width: 100%;
+}
+
+.cu-bar .action.border-title {
+	position: relative;
+	top: -10rpx;
+}
+
+.cu-bar .action.border-title text[class*="bg-"]:last-child {
+	position: absolute;
+	bottom: -0.5rem;
+	min-width: 2rem;
+	height: 6rpx;
+	left: 0;
+}
+
+.cu-bar .action.sub-title {
+	position: relative;
+	top: -0.2rem;
+}
+
+.cu-bar .action.sub-title text {
+	position: relative;
+	z-index: 1;
+}
+
+.cu-bar .action.sub-title text[class*="bg-"]:last-child {
+	position: absolute;
+	display: inline-block;
+	bottom: -0.2rem;
+	border-radius: 6rpx;
+	width: 100%;
+	height: 0.6rem;
+	left: 0.6rem;
+	opacity: 0.3;
+	z-index: 0;
+}
+
+.cu-bar .action.sub-title text[class*="text-"]:last-child {
+	position: absolute;
+	display: inline-block;
+	bottom: -0.7rem;
+	left: 0.5rem;
+	opacity: 0.2;
+	z-index: 0;
+	text-align: right;
+	font-weight: 900;
+	font-size: 36rpx;
+}
+
+.cu-bar.justify-center .action.border-title text:last-child,
+.cu-bar.justify-center .action.sub-title text:last-child {
+	left: 0;
+	right: 0;
+	margin: auto;
+	text-align: center;
+}
+
+.cu-bar .action:first-child,
+.cu-bar .action.avatar {
+	margin-left: 30rpx;
+	font-size: 30rpx;
+}
+.cu-bar .action.avatar .base-info {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  background-color: transparent;
+}
+.cu-bar .action.avatar .avatar {
+  width: 50rpx;
+  height: 50rpx;
+  border-radius: 50%;
+  overflow: hidden;
+}
+
+.cu-bar .action text.text-cut {
+	text-align: left;
+	width: 100%;
+}
+
+.cu-bar .cu-avatar:first-child {
+	margin-left: 20rpx;
+}
+
+.cu-bar .action:first-child>text[class*="cuIcon-"] {
+	margin-left: -0.3em;
+	margin-right: 0.3em;
+}
+
+.cu-bar .action:last-child {
+	margin-right: 30rpx;
+}
+
+.cu-bar .action>text[class*="cuIcon-"],
+.cu-bar .action>view[class*="cuIcon-"] {
+	font-size: 36rpx;
+}
+
+.cu-bar .action>text[class*="cuIcon-"]+text[class*="cuIcon-"] {
+	margin-left: 0.5em;
+}
+
+.cu-bar .content {
+	position: absolute;
+	text-align: center;
+	width: calc(100% - 340rpx);
+	left: 0;
+	right: 0;
+	bottom: 0;
+	top: 0;
+	margin: auto;
+	height: 60rpx;
+	font-size: 32rpx;
+	line-height: 60rpx;
+	cursor: none;
+	pointer-events: none;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	overflow: hidden;
+}
+
+.cu-bar.ios .content {
+	bottom: 7px;
+	height: 30px;
+	font-size: 32rpx;
+	line-height: 30px;
+}
+
+.cu-bar.btn-group {
+	justify-content: space-around;
+}
+
+.cu-bar.btn-group button {
+	padding: 20rpx 32rpx;
+}
+
+.cu-bar.btn-group button {
+	flex: 1;
+	margin: 0 20rpx;
+	max-width: 50%;
+}
+
+.cu-bar .search-form {
+	background-color: #f5f5f5;
+	line-height: 64rpx;
+	height: 64rpx;
+	font-size: 24rpx;
+	color: #000000;
+	flex: 1;
+	display: flex;
+	align-items: center;
+	margin: 0 30rpx;
+}
+
+.cu-bar .search-form+.action {
+	margin-right: 30rpx;
+}
+
+.cu-bar .search-form input {
+	flex: 1;
+	padding-right: 30rpx;
+	height: 64rpx;
+	line-height: 64rpx;
+	font-size: 26rpx;
+	background-color: transparent;
+}
+
+.cu-bar .search-form [class*="cuIcon-"] {
+	margin: 0 0.5em 0 0.8em;
+}
+
+.cu-bar .search-form [class*="cuIcon-"]::before {
+	top: 0rpx;
+}
+
+.cu-bar.fixed,
+.nav.fixed {
+	position: fixed;
+	width: 100%;
+	top: 0;
+	z-index: 1024;
+	box-shadow: 0 1rpx 6rpx rgba(0, 0, 0, 0.1);
+}
+
+.cu-bar.foot {
+	position: fixed;
+	width: 100%;
+	bottom: 0;
+	z-index: 1024;
+	box-shadow: 0 -1rpx 6rpx rgba(0, 0, 0, 0.1);
+}
+
+.cu-bar.tabbar {
+	padding: 0;
+	height: calc(100rpx + env(safe-area-inset-bottom) / 2);
+	padding-bottom: calc(env(safe-area-inset-bottom) / 2);
+}
+
+.cu-tabbar-height {
+	min-height: 100rpx;
+	height: calc(100rpx + env(safe-area-inset-bottom) / 2);
+}
+
+.cu-bar.tabbar.shadow {
+	box-shadow: 0 -1rpx 6rpx rgba(0, 0, 0, 0.1);
+}
+
+.cu-bar.tabbar .action {
+	font-size: 22rpx;
+	position: relative;
+	flex: 1;
+	text-align: center;
+	padding: 0;
+	display: block;
+	height: auto;
+	line-height: 1;
+	margin: 0;
+	overflow: initial;
+}
+
+.cu-bar.tabbar.shop .action {
+	width: 140rpx;
+	flex: initial;
+}
+
+.cu-bar.tabbar .action.add-action {
+	position: relative;
+	z-index: 2;
+	padding-top: 50rpx;
+	background-color: inherit;
+}
+
+.cu-bar.tabbar .action.add-action [class*="cuIcon-"] {
+	position: absolute;
+	width: 70rpx;
+	z-index: 2;
+	height: 70rpx;
+	border-radius: 50%;
+	line-height: 70rpx;
+	font-size: 50rpx;
+	top: -35rpx;
+	left: 0;
+	right: 0;
+	margin: auto;
+	padding: 0;
+}
+
+.cu-bar.tabbar .action.add-action::after {
+	content: "";
+	position: absolute;
+	width: 100rpx;
+	height: 100rpx;
+	top: -50rpx;
+	left: 0;
+	right: 0;
+	margin: auto;
+	box-shadow: 0 -3rpx 8rpx rgba(0, 0, 0, 0.08);
+	border-radius: 50rpx;
+	background-color: inherit;
+	z-index: 0;
+}
+
+.cu-bar.tabbar .action.add-action::before {
+	content: "";
+	position: absolute;
+	width: 100rpx;
+	height: 30rpx;
+	bottom: 30rpx;
+	left: 0;
+	right: 0;
+	margin: auto;
+	background-color: inherit;
+	z-index: 1;
+}
+
+.cu-bar.tabbar .btn-group {
+	flex: 1;
+	display: flex;
+	justify-content: space-around;
+	align-items: center;
+	padding: 0 10rpx;
+}
+
+.cu-bar.tabbar button.action::after {
+	border: 0;
+}
+
+.cu-bar.tabbar .action [class*="cuIcon-"] {
+	width: 100rpx;
+	position: relative;
+	display: block;
+	height: auto;
+	margin: 0 auto 10rpx;
+	text-align: center;
+	font-size: 40rpx;
+}
+
+.cu-bar.tabbar .action .cuIcon-cu-image {
+	margin: 0 auto;
+}
+
+.cu-bar.tabbar .action .cuIcon-cu-image image {
+	width: 50rpx;
+	height: 50rpx;
+	display: inline-block;
+}
+
+.cu-bar.tabbar .submit {
+	align-items: center;
+	display: flex;
+	justify-content: center;
+	text-align: center;
+	position: relative;
+	flex: 2;
+	align-self: stretch;
+}
+
+.cu-bar.tabbar .submit:last-child {
+	flex: 2.6;
+}
+
+.cu-bar.tabbar .submit+.submit {
+	flex: 2;
+}
+
+.cu-bar.tabbar.border .action::before {
+	content: " ";
+	width: 200%;
+	height: 200%;
+	position: absolute;
+	top: 0;
+	left: 0;
+	transform: scale(0.5);
+	transform-origin: 0 0;
+	border-right: 1rpx solid rgba(0, 0, 0, 0.1);
+	z-index: 3;
+}
+
+.cu-bar.tabbar.border .action:last-child:before {
+	display: none;
+}
+
+.cu-bar.input {
+	padding-right: 20rpx;
+	background-color: #ffffff;
+}
+
+.cu-bar.input input {
+	overflow: initial;
+	line-height: 64rpx;
+	height: 64rpx;
+	min-height: 64rpx;
+	flex: 1;
+	font-size: 30rpx;
+	margin: 0 20rpx;
+}
+
+.cu-bar.input .action {
+	margin-left: 20rpx;
+}
+
+.cu-bar.input .action [class*="cuIcon-"] {
+	font-size: 48rpx;
+}
+
+.cu-bar.input input+.action {
+	margin-right: 20rpx;
+	margin-left: 0rpx;
+}
+
+.cu-bar.input .action:first-child [class*="cuIcon-"] {
+	margin-left: 0rpx;
+}
+
+.cu-custom {
+	display: block;
+	position: relative;
+}
+
+.cu-custom .cu-bar .content {
+	width: calc(100% - 440rpx);
+}
+
+
+.cu-custom .cu-bar .content image {
+	height: 60rpx;
+	width: 240rpx;
+}
+
+.cu-custom .cu-bar {
+	min-height: 0px;
+	padding-right: 220rpx;
+	box-shadow: 0rpx 0rpx 0rpx;
+	z-index: 9999;
+}
+
+.cu-custom .cu-bar .border-custom {
+	position: relative;
+	background: rgba(0, 0, 0, 0.15);
+	border-radius: 1000rpx;
+	height: 30px;
+}
+
+.cu-custom .cu-bar .border-custom::after {
+	content: " ";
+	width: 200%;
+	height: 200%;
+	position: absolute;
+	top: 0;
+	left: 0;
+	border-radius: inherit;
+	transform: scale(0.5);
+	transform-origin: 0 0;
+	pointer-events: none;
+	box-sizing: border-box;
+	border: 1rpx solid #ffffff;
+	opacity: 0.5;
+}
+
+.cu-custom .cu-bar .border-custom::before {
+	content: " ";
+	width: 1rpx;
+	height: 110%;
+	position: absolute;
+	top: 22.5%;
+	left: 0;
+	right: 0;
+	margin: auto;
+	transform: scale(0.5);
+	transform-origin: 0 0;
+	pointer-events: none;
+	box-sizing: border-box;
+	opacity: 0.6;
+	background-color: #ffffff;
+}
+
+.cu-custom .cu-bar .border-custom text {
+	display: block;
+	flex: 1;
+	margin: auto !important;
+	text-align: center;
+	font-size: 34rpx;
+}

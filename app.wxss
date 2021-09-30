@@ -1,3 +1,5 @@
+@import "/icon/iconfont.wxss";
+
 Page {
   background: #f4f6f9;
 }

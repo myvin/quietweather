@@ -9,6 +9,7 @@
   "window": {
     "backgroundTextStyle": "dark",
     "navigationBarBackgroundColor": "#40a7e7",
+    "navigationStyle": "custom",
     "navigationBarTitleText": "Quiet Weather",
     "navigationBarTextStyle": "white"
   },
@@ -17,6 +18,10 @@
       "desc": "定位以获取当前位置天气信息"
     }
   },
+  "usingComponents": {
+    "custom-navigation-bar": "/components/custom-navigation-bar/custom-navigation-bar"
+  },
+  "style": "v2",
   "cloud": true,
   "sitemapLocation": "sitemap.json"
 }
