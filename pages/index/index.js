@@ -43,6 +43,7 @@ Page({
     openSettingButtonShow: false,
     shareInfo: {},
     pageShowCount: 0,
+    isWx: getApp().globalData.platform === 'wx',
   },
   success (data, location) {
     this.setData({

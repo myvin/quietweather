@@ -5,6 +5,7 @@ App({
     //   env: CloudEnvId,
     //   traceUser: true,
     // })
+    this.globalData.platform = typeof tt !== 'undefined' ? 'tt' : 'wx';
     wx.getSystemInfo({
       success: (res) => {
         this.globalData.StatusBar = res.statusBarHeight;

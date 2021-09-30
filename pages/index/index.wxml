@@ -138,7 +138,13 @@
         </view>
       </view>
     </view>
-    <view class='footer'>开发者 · myvin</view>
+    <view wx:if="{{isWx}}" class="footer">
+      <view class="feedback">
+        <view>意见反馈</view>
+        <button open-type='feedback'>意见反馈</button>
+      </view>
+    </view>
+    <view wx:else class='footer'>开发者 · myvin</view>
   </view>
   <view wx:if='{{openSettingButtonShow}}' class='openSettingButton'>
     <image src='/img/unlock.png'></image>
