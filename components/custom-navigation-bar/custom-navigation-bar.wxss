@@ -147,6 +147,11 @@
 	overflow: hidden;
 }
 
+.cu-bar .content.left {
+	text-align: left;
+	margin-left: 30rpx;
+}
+
 .cu-bar.ios .content {
 	bottom: 7px;
 	height: 30px;

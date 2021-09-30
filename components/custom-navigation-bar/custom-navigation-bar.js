@@ -31,6 +31,10 @@ Component({
       type: String,
       default: ''
     },
+    titleLeft: {
+      type: Boolean,
+      default: false,
+    },
   },
   /**
    * 组件的初始数据

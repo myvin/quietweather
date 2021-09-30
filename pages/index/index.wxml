@@ -1,4 +1,4 @@
-<custom-navigation-bar bgColor="{{transparentClass}}">
+<custom-navigation-bar bgColor="{{transparentClass}}" titleLeft="{{true}}">
   <view slot="content">Quiet Weather</view>
 </custom-navigation-bar>
 <view class="container {{isIPhoneX ? 'iphonex-padding' : ''}}" catchtap='menuHide'>
