@@ -27,6 +27,7 @@
       <view class='item' hover-class='active' catchtap='choose' wx:for='{{hotCities}}' wx:key='index' data-name='{{item.name}}'>{{item.name}}</view>
     </view>
   </view>
+  <ad unit-id="adunit-f545cc3a91fb35cd" ad-intervals="30"></ad>
   <view class='bottom'>
     <view wx:key='index' wx:for='{{showItems}}'>
       <view class='key'>{{index}}</view>

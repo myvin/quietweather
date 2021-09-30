@@ -66,6 +66,7 @@
         <view>{{cityDatas.now[item]}}</view>
       </view>
     </view>
+    <ad unit-id="adunit-785cc3f710cc3d4c" ad-intervals="30"></ad>
     <view class='hourly' wx:if='{{hourlyDatas.length}}'>
       <view class='title'>24 小时逐 3 小时预报</view>
       <view class='hours'>
@@ -127,7 +128,7 @@
         </swiper>
       </view>
     </view>
-    <ad unit-id="adunit-785cc3f710cc3d4c"></ad>
+    <ad unit-id="adunit-7333c7f2387ab699" ad-type="video" ad-theme="black"  ad-intervals="60"></ad>
     <view class='livingIndex' wx:if='{{!setting.hiddenIndex}}'>
       <view class='item' wx:for='{{cityDatas.lifestyle}}' wx:key='index'>
         <image class='icon' src='/img/lifestyle_{{item.type}}.png'></image>

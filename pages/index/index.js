@@ -4,6 +4,7 @@ let utils = require('../../utils/utils')
 let globalData = getApp().globalData
 const key = globalData.key
 let SYSTEMINFO = globalData.systeminfo
+let rewardedVideoAd = null;
 Page({
   data: {
     transparentClass: 'transparentClass',
@@ -41,7 +42,7 @@ Page({
     enableSearch: true,
     openSettingButtonShow: false,
     shareInfo: {},
-    firstLoad: true,
+    pageShowCount: 0,
   },
   success (data, location) {
     this.setData({
@@ -89,6 +90,23 @@ Page({
         icon: 'none',
       })
     }
+  },
+  initRewardedVideo () {
+    rewardedVideoAd = wx.createRewardedVideoAd({
+      adUnitId: 'adunit-5598044ee112a568'
+    });
+    rewardedVideoAd.onLoad(() => {});
+    rewardedVideoAd.onError((err) => {});
+    rewardedVideoAd.onClose((res) => {});
+  },
+  showRewardedVideo () {
+    rewardedVideoAd.show().catch(() => {
+      rewardedVideoAd.load()
+        .then(() =>  rewardedVideoAd.show())
+        .catch(err => {
+          console.log('激励视频 广告显示失败')
+        })
+    });
   },
   showInterstitialAd () {
     // 在页面中定义插屏广告
@@ -319,16 +337,22 @@ Page({
     }
   },
   onShow() {
-    if (this.data.firstLoad) {
-      this.setData({
-        firstLoad: false,
-      })
+    this.setData({
+      pageShowCount: ++this.data.pageShowCount,
+    })
+    // 注意：这里是测试广告的，上线后请注释掉
+    console.error('this.data.pageShowCount: ', this.data.pageShowCount);
+    if (this.data.pageShowCount === 3) {
+      this.showRewardedVideo()
     } else {
-      this.showInterstitialAd()
+      if (this.data.pageShowCount > 1) {
+        this.showInterstitialAd()
+      }
     }
   },
   onLoad () {
     this.reloadPage()
+    this.initRewardedVideo()
   },
   reloadPage () {
     this.setBcgImg()
