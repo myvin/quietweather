@@ -191,6 +191,7 @@ Page({
       located: true,
     })
     wx.getLocation({
+      type: 'gcj02', // qq 必须
       success: (res) => {
         this.getWeather(`${res.latitude},${res.longitude}`)
         this.getHourly(`${res.latitude},${res.longitude}`)
