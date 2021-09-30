@@ -378,23 +378,6 @@ Page({
   },
   onShow() {
     this.showInterstitialAd()
-    // onShareAppMessage 要求同步返回
-    if (!utils.isEmptyObject(this.data.shareInfo)) {
-      return
-    }
-    wx.cloud.callFunction({
-      name: 'getShareInfo',
-    })
-    .then(res => {
-      let shareInfo = res.result
-      if (shareInfo) {
-        if (!utils.isEmptyObject(shareInfo)) {
-          this.setData({
-            shareInfo,
-          })
-        }
-      }
-    })
   },
   onLoad () {
     this.reloadPage()
@@ -474,12 +457,16 @@ Page({
       this.checkUpdate(setting)
     })
   },
-  onShareAppMessage (res) {
-    let shareInfo = this.data.shareInfo
+  onShareAppMessage () {
     return {
-      title: shareInfo.title || 'Quiet Weather',
-      path: shareInfo.path || '/pages/index/index',
-      imageUrl: shareInfo.imageUrl,
+      title: '出行天气早知道',
+      path: '/pages/index/index',
+      imageUrl: '/img/share/img1.png',
+    }
+  },
+  onShareTimeline () {
+    return {
+      title: '出现天气早知道',
     }
   },
   menuHide () {
