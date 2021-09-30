@@ -1,3 +1,6 @@
+<custom-navigation-bar bgColor="{{transparentClass}}">
+  <view slot="content">Quiet Weather</view>
+</custom-navigation-bar>
 <view class="container {{isIPhoneX ? 'iphonex-padding' : ''}}" catchtap='menuHide'>
   <heartbeat id='heartbeat' wx:if='{{showHeartbeat}}'></heartbeat>
   <view class='bcg' wx:if='{{!bcgImg}}' style='background: {{bcgColor}}'></view>
@@ -21,7 +24,7 @@
       <image src='/img/up-arrow.png'></image>
     </view>
   </view>
-  <view class='content' wx:if='{{!bcgImgAreaShow}}' style='margin-top: {{setting.hiddenSearch ? 20 : 60}}px'>
+  <view class='content' wx:if='{{!bcgImgAreaShow}}'>
     <view class='avatarInfo' catchtap='showBcgImgArea'>
       <open-data class='avatar' type='userAvatarUrl'></open-data>
       <open-data class='name' type='userNickName'></open-data>

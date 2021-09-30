@@ -1,3 +1,6 @@
+<custom-navigation-bar isBack="{{true}}">
+  <view slot="content">设置</view>
+</custom-navigation-bar>
 <view class='setting'>
   <!-- 自定义 -->
   <view class='s'>
@@ -70,13 +73,13 @@
           </view>
           <!-- <view>设置屏幕亮度</view> -->
         </view>
-        <view class='item'>
+        <!-- <view class='item'>
           <view>
             <view>保持常亮</view>
             <view class='tip'>仅在当前小程序、当次生效，离开小程序后设置失效</view>
           </view>
           <switch color='#40a7e7' bindchange='switchChange' data-switchparam='keepscreenon' checked='{{keepscreenon}}'></switch>
-        </view>
+        </view> -->
       </view>
       <view class='content sub'>
         <view class='subtitle'>系统信息</view>

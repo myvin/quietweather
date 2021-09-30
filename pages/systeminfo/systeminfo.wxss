@@ -1,7 +1,8 @@
 .systeminfo {
   padding: 0 30rpx 0 30rpx;
   background: #fff;
-  margin-bottom: 20rpx;
+  margin-bottom: calc(constant(safe-area-inset-bottom));
+  margin-bottom: calc(env(safe-area-inset-bottom));
 }
 .brand {
   font-family: DINCondensed-Bold;

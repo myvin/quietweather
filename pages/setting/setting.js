@@ -4,7 +4,7 @@ Page({
     setting: {},
     show: false,
     screenBrightness: '获取中',
-    keepscreenon: false,
+    // keepscreenon: false,
     SDKVersion: '',
     enableUpdate: true,
     indexPage: {},

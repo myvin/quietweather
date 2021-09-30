@@ -1,3 +1,6 @@
+<custom-navigation-bar isBack="{{true}}">
+  <view slot="content">系统信息</view>
+</custom-navigation-bar>
 <view class='systeminfo'>
   <view class='brand'>
     <image src='/img/mobile.png'></image>

@@ -6,6 +6,7 @@ const key = globalData.key
 let SYSTEMINFO = globalData.systeminfo
 Page({
   data: {
+    transparentClass: 'transparentClass',
     isIPhoneX: globalData.isIPhoneX,
     message: '',
     cityDatas: {},

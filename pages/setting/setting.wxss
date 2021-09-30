@@ -1,6 +1,8 @@
 .setting {
   font-size: 28rpx;
   color: #666;
+  margin-bottom: calc(20rpx + constant(safe-area-inset-bottom));
+  margin-bottom: calc(20rpx + env(safe-area-inset-bottom));
 }
 .more {
   width: 32rpx;

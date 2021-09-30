@@ -18,8 +18,7 @@ App({
     })
   },
   globalData: {
-    // 是否保持常亮，离开小程序失效
-    keepscreenon:false,
+    // keepscreenon:false,
     systeminfo: {},
     isIPhoneX: false,
     key: HeWeatherKey,

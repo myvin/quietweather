@@ -1,3 +1,6 @@
+<custom-navigation-bar isBack="{{true}}">
+  <view slot="content">选择城市</view>
+</custom-navigation-bar>
 <view class='container'>
   <view class="wrapper">
     <view class='search'>

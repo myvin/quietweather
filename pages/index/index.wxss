@@ -2,6 +2,9 @@ page {
   -webkit-font-smoothing: antialiased;
   font-family: "PingHei","Helvetica Neue","Helvetica","Arial","Verdana","sans-serif";
 }
+.transparentClass {
+  background-color: rgba(0,0,0,0) !important;
+}
 .num {
   font-weight: 300;
 }
@@ -25,14 +28,8 @@ page {
   /* background: linear-gradient(to bottom, #73C6F1, #50B5EC); */
 }
 .search {
-  position: fixed;
-  z-index: 4;
-  top: 0;
-  left: 0;
-  right: 0;
-  width: 100%;
   height: 90rpx;
-  /* background: #40a7e7; */
+  z-index: 10;
 }
 .search .wrapper {
   display: flex;
