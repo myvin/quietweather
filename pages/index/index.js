@@ -100,6 +100,7 @@ Page({
     enableSearch: true,
     openSettingButtonShow: false,
     shareInfo: {},
+    firstLoad: true,
   },
   success (data, location) {
     this.setData({
@@ -377,7 +378,13 @@ Page({
     }
   },
   onShow() {
-    this.showInterstitialAd()
+    if (this.data.firstLoad) {
+      this.setData({
+        firstLoad: false,
+      })
+    } else {
+      this.showInterstitialAd()
+    }
   },
   onLoad () {
     this.reloadPage()
