@@ -8,16 +8,8 @@ Page({
     swiperHeight: 'auto',
     bannerImgList: [
       {
-        src: 'https://raw.githubusercontent.com/myvin/miniprogram/master/quietweather/images/miniqrcode.jpg',
+        src: 'https://i.niupic.com/images/2021/09/30/9DC0.png',
         title: 'Quiet Weather',
-      },
-      {
-        src: 'https://raw.githubusercontent.com/myvin/miniprogram/master/juejin/images/miniqrcode.jpg',
-        title: '掘金第三方版',
-      },
-      {
-        src: 'https://raw.githubusercontent.com/myvin/miniprogram/master/suijiyitu/images/suijiyitu.jpg',
-        title: '随机一图',
       },
     ],
   },
@@ -28,7 +20,7 @@ Page({
     let index = e.currentTarget.dataset.index || 0
     let urls = this.data.bannerImgList
     let arr = []
-    let imgs = urls.forEach(item => {
+    urls.forEach(item => {
       arr.push(item.src)
     })
     wx.previewImage({
