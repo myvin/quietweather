@@ -10,7 +10,7 @@
         </swiper-item>
       </block>
     </swiper>
-    <!-- <ad unit-id="adunit-da632c715ebfb1a5"></ad> -->
+    <ad unit-id="adunit-da632c715ebfb1a5"></ad>
     <view class='item'>
       <view class='title'>代码已开源</view>
       <view class='i' catchtap='copy' data-title='项目地址' data-content='{{projectAddress}}'>
