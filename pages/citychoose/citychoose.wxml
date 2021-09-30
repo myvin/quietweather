@@ -11,7 +11,7 @@
   <!-- <view class='top' wx:if='{{hotCities.length}}'>
     <view class='title'>热门城市</view>
     <view class='items'>
-      <view class='item' hover-class='hover-ddd' catchtap='choose' data-item='{{item}}' wx:key='{{index}}' wx:for='{{hotCities}}'>{{item.name}}</view>
+      <view class='item' hover-class='hover-ddd' catchtap='choose' data-item='{{item}}' wx:key='index' wx:for='{{hotCities}}'>{{item.name}}</view>
     </view>
   </view> -->
   <view class='hot'>
@@ -21,14 +21,14 @@
         <image class='icon' src='/img/location_s_w.png'></image>
         <view>定位</view>
       </view>
-      <view class='item' hover-class='active' catchtap='choose' wx:for='{{hotCities}}' wx:key='{{index}}' data-name='{{item.name}}'>{{item.name}}</view>
+      <view class='item' hover-class='active' catchtap='choose' wx:for='{{hotCities}}' wx:key='index' data-name='{{item.name}}'>{{item.name}}</view>
     </view>
   </view>
   <view class='bottom'>
-    <view wx:key='{{index}}' wx:for='{{showItems}}'>
+    <view wx:key='index' wx:for='{{showItems}}'>
       <view class='key'>{{index}}</view>
       <view class='values'>
-        <view wx:key='{{index}}' class='value' hover-class='hover' wx:for='{{item}}' catchtap='choose' data-name='{{item.name}}'>{{item.name}}</view>
+        <view wx:key='index' class='value' hover-class='hover' wx:for='{{item}}' catchtap='choose' data-name='{{item.name}}'>{{item.name}}</view>
       </view>
     </view>
   </view>

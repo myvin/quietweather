@@ -12,7 +12,7 @@
     <view class='top'>
       <view class='title'>更换背景</view>
       <view class='bcgs'>
-        <view class='border {{bcgImgIndex === index ? "active" : ""}}' wx:for='{{bcgImgList}}' wx:key='{{index}}'>
+        <view class='border {{bcgImgIndex === index ? "active" : ""}}' wx:for='{{bcgImgList}}' wx:key='index'>
           <image src='{{item.src}}' catchtap='chooseBcg' data-index='{{index}}' data-src='{{item.src}}'></image>
         </view>
       </view>
@@ -46,7 +46,7 @@
     <view class='guide' wx:if='{{cityDatas.daily_forecast}}'>
       <view class='title'>7 天预报</view>
       <view class='guides'>
-        <view class='item' wx:for='{{cityDatas.daily_forecast}}' wx:key='{{index}}'>
+        <view class='item' wx:for='{{cityDatas.daily_forecast}}' wx:key='index'>
           <view class='date i'>{{item.date}}</view>
           <view class='temperature i'>{{item.tmp_max}}~{{item.tmp_min}}℃</view>
           <view class='weather i'>
@@ -58,7 +58,7 @@
       </view>
     </view>
     <view class='details'>
-      <view class='detail' wx:for='{{detailsDic.key}}' wx:key='{{index}}'>
+      <view class='detail' wx:for='{{detailsDic.key}}' wx:key='index'>
         <view>{{detailsDic.val[item]}}</view>
         <view>{{cityDatas.now[item]}}</view>
       </view>
@@ -67,7 +67,7 @@
       <view class='title'>24 小时逐 3 小时预报</view>
       <view class='hours'>
         <swiper style='height:360rpx;' indicator-dots="{{false}}" autoplay="{{false}}" circular="{{false}}" duration="300" next-margin="50rpx">
-          <block wx:for="{{hourlyDatas}}" wx:key="{{index}}">
+          <block wx:for="{{hourlyDatas}}" wx:key="index">
             <swiper-item>
               <view class='hour'>
                 <view class='detail'>
@@ -126,7 +126,7 @@
     </view>
     <ad unit-id="adunit-785cc3f710cc3d4c"></ad>
     <view class='livingIndex' wx:if='{{!setting.hiddenIndex}}'>
-      <view class='item' wx:for='{{cityDatas.lifestyle}}' wx:key='{{index}}'>
+      <view class='item' wx:for='{{cityDatas.lifestyle}}' wx:key='index'>
         <image class='icon' src='/img/lifestyle_{{item.type}}.png'></image>
         <view class='right'>
           <view class='key'>{{lifestyles[item.type]}} {{item.brf}}</view>
