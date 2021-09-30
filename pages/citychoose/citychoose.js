@@ -1,3 +1,4 @@
+const { HotCities } = require('../../constant.js')
 let staticData = require('../../data/staticData.js')
 let utils = require('../../utils/utils.js')
 Page({
@@ -7,7 +8,7 @@ Page({
     // 需要显示的城市
     showItems: null,
     inputText: '',
-    hotCities: [],
+    hotCities: HotCities,
   },
   cancel () {
     this.setData({
@@ -86,22 +87,22 @@ Page({
       })
     }
   },
-  getHotCities(callback) {
-    wx.cloud.callFunction({
-      name: 'getHotCities',
-      data: {},
-    })
-    .then(res => {
-      let data = res.result.data
-      if (data) {
-        this.setData({
-          hotCities: data
-        })
-      }
-    })
-  },
+  // getHotCities(callback) {
+  //   wx.cloud.callFunction({
+  //     name: 'getHotCities',
+  //     data: {},
+  //   })
+  //   .then(res => {
+  //     let data = res.result.data
+  //     if (data) {
+  //       this.setData({
+  //         hotCities: data
+  //       })
+  //     }
+  //   })
+  // },
   onLoad () {
-    this.getHotCities()
+    // this.getHotCities()
     let cities = this.getSortedAreaObj(staticData.cities || [])
     this.setData({
       cities,

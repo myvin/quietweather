@@ -1,10 +1,10 @@
 import { CloudEnvId, HeWeatherKey, } from './accountconfig';
 App({
   onLaunch () {
-    wx.cloud.init({
-      env: CloudEnvId,
-      traceUser: true,
-    })
+    // wx.cloud.init({
+    //   env: CloudEnvId,
+    //   traceUser: true,
+    // })
     wx.getSystemInfo({
       success: (res) => {
         this.globalData.StatusBar = res.statusBarHeight;

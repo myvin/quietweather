@@ -1,4 +1,4 @@
-import { BackgroundImageList, EnvironmentVars, LifeStyles } from '../../constant';
+import { BackgroundImageList, EnvironmentVars, LifeStyles, BroadCastMessages } from '../../constant';
 
 let utils = require('../../utils/utils')
 let globalData = getApp().globalData
@@ -255,7 +255,7 @@ Page({
     })
   },
   onPullDownRefresh (res) {
-    this.reloadPage()
+    this.reloadWeather()
   },
   getCityDatas() {
     let cityDatas = wx.getStorage({
@@ -305,26 +305,31 @@ Page({
       backgroundColor: this.data.bcgColor,
     })
   },
-  getBroadcast (callback) {
-    wx.cloud.callFunction({
-      name: 'getBroadcast',
-      data: {
-        hour: new Date().getHours(),
-      },
-    })
-    .then(res => {
-      let data = res.result.data
-      if (data) {
-        callback && callback(data[0].message)
-      }
-    })
-  },
+  // getBroadcast (callback) {
+  //   wx.cloud.callFunction({
+  //     name: 'getBroadcast',
+  //     data: {
+  //       hour: new Date().getHours(),
+  //     },
+  //   })
+  //   .then(res => {
+  //     let data = res.result.data
+  //     if (data) {
+  //       callback && callback(data[0].message)
+  //     }
+  //   })
+  // },
   reloadGetBroadcast () {
-    this.getBroadcast((message) => {
-      this.setData({
-        message,
-      })
-    })
+    // this.getBroadcast((message) => {
+    //   this.setData({
+    //     message,
+    //   })
+    // })
+    const len = BroadCastMessages.length;
+    const index = Math.floor(Math.random() * len);
+    this.setData({
+      message: BroadCastMessages[index],
+    });
   },
   reloadWeather () {
     if (this.data.located) {
@@ -350,15 +355,13 @@ Page({
     }
   },
   onLoad () {
-    this.reloadPage()
-    this.initRewardedVideo()
-  },
-  reloadPage () {
     this.setBcgImg()
     this.getCityDatas()
     this.reloadInitSetting()
-    this.reloadWeather()
     this.reloadGetBroadcast()
+    this.reloadWeather();
+
+    this.initRewardedVideo()
   },
   checkUpdate (setting) {
     // 兼容低版本
