@@ -24,7 +24,7 @@
         <image class='icon' src='/img/location_s_w.png'></image>
         <view>定位</view>
       </view>
-      <view class='item' hover-class='active' catchtap='choose' wx:for='{{hotCities}}' wx:key='index' data-name='{{item.name}}'>{{item.name}}</view>
+      <view class='item' hover-class='active' catchtap='choose' wx:for='{{hotCities}}' wx:key='index' data-name='{{item}}'>{{item}}</view>
     </view>
   </view>
   <ad unit-id="adunit-f545cc3a91fb35cd" ad-intervals="30"></ad>
