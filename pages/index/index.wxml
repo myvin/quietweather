@@ -128,7 +128,7 @@
         </swiper>
       </view>
     </view>
-    <ad unit-id="adunit-7333c7f2387ab699" ad-type="video" ad-theme="black"  ad-intervals="60"></ad>
+    <!-- <ad unit-id="adunit-7333c7f2387ab699" ad-type="video" ad-theme="black"  ad-intervals="60"></ad> -->
     <view class='livingIndex' wx:if='{{!setting.hiddenIndex}}'>
       <view class='item' wx:for='{{cityDatas.lifestyle}}' wx:key='index'>
         <image class='icon' src='/img/lifestyle_{{item.type}}.png'></image>
