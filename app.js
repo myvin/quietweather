@@ -25,8 +25,8 @@ App({
     key: HeWeatherKey,
     weatherIconUrl: 'https://cdn.heweather.com/cond_icon/',
     requestUrl: {
-      weather: 'https://devapi.qweather.com',
-      hourly: 'https://devapi.qweather.com/hourly',
+      weather: 'https://devapi.qweather.com/s6/weather',
+      hourly: 'https://devapi.qweather.com/s6/weather/hourly',
     },
   },
 })
