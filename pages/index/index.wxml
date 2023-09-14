@@ -33,61 +33,61 @@
     <view class='info'>
       <view class='city'>
         <view class='name' bindtap='toCitychoose'>
-          <image wx:if='{{located}}' class='icon' src='/img/location_s_w.png'></image>
-          <view class='val'>{{cityDatas.basic.location || '定位中'}}</view>
+          <image wx:if='{{cityData && cityData.name}}' class='icon' src='/img/location_s_w.png'></image>
+          <view class='val'>{{cityData.name || '定位中'}}</view>
           <image class='down' src='/img/down.png'></image>
         </view>
-        <text class='time' wx:if='{{cityDatas.updateTimeFormat}}'>{{cityDatas.updateTimeFormat}} 更新</text>
+        <text class='time' wx:if='{{weatherDataNow.now.obsTime}}'>{{weatherDataNow.now.obsTime}} 更新</text>
       </view>
       <view class='message'>{{message}}</view>
-      <view class='temp num' decode='true'>{{cityDatas.now.tmp || '-'}}<text style='font-size:50rpx;position:relative;top:-20px;'>℃</text></view>
-      <view class='weather'>{{cityDatas.now.cond_txt || '--'}}</view>
+      <view class='temp num' decode='true'>{{weatherDataNow.now.temp || '-'}}<text style='font-size:50rpx;position:relative;top:-20px;'>℃</text></view>
+      <view class='weather'>{{weatherDataNow.now.text || '--'}}</view>
       <view class='pm'>
-        <text>能见度 {{cityDatas.now.vis}}</text>
+        <text>能见度 {{weatherDataNow.now.vis}}</text>
       </view>
     </view>
-    <view class='guide' wx:if='{{cityDatas.daily_forecast}}'>
+    <view class='guide' wx:if='{{weatherData7d && weatherData7d.daily}}'>
       <view class='title'>7 天预报</view>
       <view class='guides'>
-        <view class='item' wx:for='{{cityDatas.daily_forecast}}' wx:key='index'>
-          <view class='date i'>{{item.date}}</view>
-          <view class='temperature i'>{{item.tmp_max}}~{{item.tmp_min}}℃</view>
+        <view class='item' wx:for='{{weatherData7d.daily}}' wx:key='index'>
+          <view class='date i'>{{item.fxDate}}</view>
+          <view class='temperature i'>{{item.tempMax}}~{{item.tempMin}}℃</view>
           <view class='weather i'>
-            <text>{{item.cond_txt_d}}</text>
-            <image mode='widthFix' src='{{weatherIconUrl}}{{item.cond_code_d}}.png'></image>
+            <text>{{item.textDay}}</text>
+            <!-- <image mode='widthFix' src='{{weatherIconUrl}}{{item.cond_code_d}}.png'></image> -->
           </view>
-          <view class='wind i'>{{item.wind_dir}}{{item.wind_sc}}级</view>
+          <view class='wind i'>{{item.windDirDay}}{{item.windScaleDay}}级</view>
         </view>
       </view>
     </view>
-    <view class='details'>
+    <!-- <view class='details'>
       <view class='detail' wx:for='{{detailsDic.key}}' wx:key='index'>
         <view>{{environmentVars[item]}}</view>
         <view>{{cityDatas.now[item]}}</view>
       </view>
-    </view>
+    </view> -->
     <ad unit-id="adunit-785cc3f710cc3d4c" ad-intervals="30"></ad>
-    <view class='hourly' wx:if='{{hourlyDatas.length}}'>
-      <view class='title'>24 小时逐 3 小时预报</view>
+    <view class='hourly' wx:if='{{weatherData24h.hourly}}'>
+      <view class='title'>24 小时逐小时预报</view>
       <view class='hours'>
         <swiper style='height:360rpx;' indicator-dots="{{false}}" autoplay="{{false}}" circular="{{false}}" duration="300" next-margin="50rpx">
-          <block wx:for="{{hourlyDatas}}" wx:key="index">
+          <block wx:for="{{weatherData24h.hourly}}" wx:key="index">
             <swiper-item>
               <view class='hour'>
                 <view class='detail'>
                   <view>温度(℃)</view>
-                  <view>{{item.tmp}}</view>
+                  <view>{{item.temp}}</view>
                 </view>
                 <view class='detail'>
                   <view>天气</view>
                   <view class='weather'>
-                    <text>{{item.cond_txt}}</text>
-                    <image mode='widthFix' src='{{weatherIconUrl}}{{item.cond_code}}.png'></image>
+                    <text>{{item.text}}</text>
+                    <!-- <image mode='widthFix' src='{{weatherIconUrl}}{{item.cond_code}}.png'></image> -->
                   </view>
                 </view>
                 <view class='detail'>
                   <view>相对湿度(%)</view>
-                  <view>{{item.hum}}</view>
+                  <view>{{item.humidity}}</view>
                 </view>
                 <view class='detail'>
                   <view>露点温度(℃)</view>
@@ -99,30 +99,30 @@
                 </view>
                 <view class='detail'>
                   <view>风向</view>
-                  <view>{{item.wind_dir}}</view>
+                  <view>{{item.windDir}}</view>
                 </view>
                 <view class='detail'>
                   <view>风向角度(deg)</view>
-                  <view>{{item.wind_deg}}</view>
+                  <view>{{item.wind360}}</view>
                 </view>
                 <view class='detail'>
                   <view>风力(级)</view>
-                  <view>{{item.wind_sc}}</view>
+                  <view>{{item.windScale}}</view>
                 </view>
                 <view class='detail'>
                   <view>风速(mk/h)</view>
-                  <view>{{item.wind_spd}}</view>
+                  <view>{{item.windSpeed}}</view>
                 </view>
                 <view class='detail'>
                   <view>气压(mb)</view>
-                  <view>{{item.pres}}</view>
+                  <view>{{item.pressure}}</view>
                 </view>
                 <view class='detail'>
                   <view>云量</view>
                   <view>{{item.cloud}}</view>
                 </view>
               </view>
-              <view class='time'>{{item.time}}</view>
+              <view class='time'>{{item.fxTime}}</view>
             </swiper-item>
           </block>
         </swiper>
@@ -130,11 +130,11 @@
     </view>
     <!-- <ad unit-id="adunit-7333c7f2387ab699" ad-type="video" ad-theme="black"  ad-intervals="60"></ad> -->
     <view class='livingIndex' wx:if='{{!setting.hiddenIndex}}'>
-      <view class='item' wx:for='{{cityDatas.lifestyle}}' wx:key='index'>
+      <view class='item' wx:for='{{indicesData1d.daily}}' wx:key='index'>
         <image class='icon' src='/img/lifestyle_{{item.type}}.png'></image>
         <view class='right'>
-          <view class='key'>{{lifestyles[item.type]}} {{item.brf}}</view>
-          <view class='value'>{{item.txt}}</view>
+          <view class='key'>{{item.name}} {{item.category}}</view>
+          <view class='value'>{{item.text}}</view>
         </view>
       </view>
     </view>
@@ -159,4 +159,5 @@
     <image src="/img/info.png" animation="{{animationFour}}" class="menu" catchtap="menuToAbout"></image>
     <image src="/img/menu.png" animation="{{animationMain}}" class="menu main" catchtap="menuMain"></image>
   </view>
+  <privacy showPrivacy="{{showPrivacy}}" privacyContractName="{{privacyContractName}}" bindagree="agreePrivacy"></privacy>
 </view>

@@ -2,8 +2,8 @@
   "pages": [
     "pages/index/index",
     "pages/about/about",
-    "pages/citychoose/citychoose",
     "pages/setting/setting",
+    "pages/citychoose/citychoose",
     "pages/systeminfo/systeminfo"
   ],
   "window": {
@@ -18,10 +18,15 @@
       "desc": "定位以获取当前位置天气信息"
     }
   },
+  "requiredPrivateInfos": [
+    "getLocation"
+  ],
+  "__usePrivacyCheck__": true,
   "usingComponents": {
     "custom-navigation-bar": "/components/custom-navigation-bar/custom-navigation-bar"
   },
   "style": "v2",
   "cloud": true,
-  "sitemapLocation": "sitemap.json"
+  "sitemapLocation": "sitemap.json",
+  "lazyCodeLoading": "requiredComponents"
 }

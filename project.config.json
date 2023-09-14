@@ -28,41 +28,39 @@
       "outputPath": ""
     },
     "enableEngineNative": false,
-    "useIsolateContext": true,
+    "useIsolateContext": false,
     "userConfirmedBundleSwitch": false,
     "packNpmManually": false,
     "packNpmRelationList": [],
     "minifyWXSS": true,
-    "showES6CompileOption": false
+    "showES6CompileOption": false,
+    "minifyWXML": true
   },
   "cloudfunctionRoot": "cloudfunction/",
   "compileType": "miniprogram",
-  "libVersion": "2.7.0",
+  "libVersion": "3.0.2",
   "appid": "wx7f0d40f5ed14c27d",
   "projectname": "weather",
   "simulatorType": "wechat",
   "simulatorPluginLibVersion": {},
+  "qqappid": "1109973735",
   "condition": {
-    "search": {
-      "list": []
-    },
-    "conversation": {
-      "list": []
-    },
-    "plugin": {
-      "list": []
-    },
-    "game": {
-      "list": []
-    },
     "miniprogram": {
       "list": [
         {
-          "id": -1,
           "name": "citychoose",
-          "pathName": "pages/citychoose/citychoose"
+          "pathName": "pages/citychoose/citychoose",
+          "query": ""
         }
       ]
     }
+  },
+  "packOptions": {
+    "ignore": [],
+    "include": []
+  },
+  "editorSetting": {
+    "tabIndent": "insertSpaces",
+    "tabSize": 2
   }
 }

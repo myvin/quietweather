@@ -25,8 +25,11 @@ App({
     key: HeWeatherKey,
     weatherIconUrl: 'https://cdn.heweather.com/cond_icon/',
     requestUrl: {
-      weather: 'https://devapi.qweather.com/s6/weather',
-      hourly: 'https://devapi.qweather.com/s6/weather/hourly',
+      weatherNow: 'https://devapi.qweather.com/v7/weather/now',
+      weather7d: 'https://devapi.qweather.com/v7/weather/now',
+      weather24h: 'https://devapi.qweather.com/v7/weather/24h',
+      indices1d: 'https://devapi.qweather.com/v7/indices/1d',
+      cityLookUp: 'https://geoapi.qweather.com/v2/city/lookup',
     },
   },
 })

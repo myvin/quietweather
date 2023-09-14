@@ -1,8 +1,7 @@
-import { BackgroundImageList, EnvironmentVars, LifeStyles, BroadCastMessages } from '../../constant';
-
+import { BackgroundImageList, EnvironmentVars, BroadCastMessages } from '../../constant';
+import * as apis from '../../utils/apis'
 let utils = require('../../utils/utils')
 let globalData = getApp().globalData
-const key = globalData.key
 let SYSTEMINFO = globalData.systeminfo
 let rewardedVideoAd = null;
 Page({
@@ -10,14 +9,16 @@ Page({
     transparentClass: 'transparentClass',
     isIPhoneX: globalData.isIPhoneX,
     message: '',
-    cityDatas: {},
-    hourlyDatas: [],
+    cityData: {},
+    weatherDataNow: {},
+    weatheData7d: {},
+    weatherData24h: {},
+    indicesData1d: {},
     weatherIconUrl: globalData.weatherIconUrl,
     EnvironmentVars: {
       key: ['tmp', 'fl', 'hum', 'pcpn', 'wind_dir', 'wind_deg', 'wind_sc', 'wind_spd', 'vis', 'pres', 'cloud', ''],
       val: EnvironmentVars,
     },
-    lifestyles: LifeStyles,
     // 用来清空 input
     searchText: '',
     // 是否已经弹出
@@ -26,8 +27,6 @@ Page({
     animationOne: {},
     animationTwo: {},
     animationThree: {},
-    // 是否切换了城市
-    located: true,
     // 需要查询的城市
     searchCity: '',
     setting: {},
@@ -42,32 +41,84 @@ Page({
     enableSearch: true,
     openSettingButtonShow: false,
     shareInfo: {},
-    pageShowCount: 0,
     isWx: getApp().globalData.platform === 'wx',
+    showPrivacy: false,
+    privacyContractName: '',
   },
-  success (data, location) {
-    this.setData({
-      openSettingButtonShow: false,
-      searchCity: location,
-    })
-    wx.stopPullDownRefresh()
-    let now = new Date()
-    // 存下来源数据
-    data.updateTime = now.getTime()
-    data.updateTimeFormat = utils.formatDate(now, "MM-dd hh:mm")
-    wx.setStorage({
-      key: 'cityDatas',
-      data,
-    })
-    this.setData({
-      cityDatas: data,
+
+  onLoad () {
+    this.setBcgImg()
+    this.reloadInitSetting()
+    this.reloadGetBroadcast()
+    wx.getPrivacySetting({
+      success: (res)=> {
+          if (res.needAuthorization) {
+              this.setData({
+                  showPrivacy: true,
+                  privacyContractName: res.privacyContractName,
+              })
+          } else {
+            this.getLocationWeather();
+          }
+      }
+    });
+
+    // this.initRewardedVideo();
+  },
+  getLocationWeather() {
+    wx.getLocation({
+      success: (res) => {
+        this.searchWeather(`${res.longitude},${res.latitude}`);
+      },
+      fail: (res) => {
+        this.wxGetLocationFail(res)
+      }
     })
   },
-  fail(res) {
+  async searchWeather (keyWord) {
+    try {
+      var cityDatas = await apis.lookUpCity(keyWord);
+      if (!cityDatas || cityDatas.location.length <= 0) {
+        wx.showToast({
+          title: '查询失败',
+          icon: 'none',
+        })
+        return;
+      }
+      apis.getAllWeatherData(`${cityDatas.location[0].lon},${cityDatas.location[0].lat}`, (data) => {
+        wx.stopPullDownRefresh()
+        this.setData({
+          openSettingButtonShow: false,
+          cityData: cityDatas.location[0],
+          weatherDataNow: data[0],
+          weatherData7d: data[1],
+          weatherData24h: data[2],
+          indicesData1d: data[3],
+        })
+      }, (e) => {
+        wx.showToast({
+          title: '查询失败',
+          icon: 'none',
+        })
+      });
+    } catch (e) {
+      wx.showToast({
+        title: '查询失败',
+        icon: 'none',
+      })
+    }
+  },
+  wxGetLocationFail(res) {
     wx.stopPullDownRefresh()
     let errMsg = res.errMsg || ''
     // 拒绝授权地理位置权限
-    if (errMsg.indexOf('deny') !== -1 || errMsg.indexOf('denied') !== -1) {
+    console.error('res ', res)
+    if (res.errCode === 2) {
+      wx.showModal({
+        title: '提示',
+        content: '无法定位，请打开手机定位',
+      })
+    } else if (errMsg.indexOf('deny') !== -1 || errMsg.indexOf('denied') !== -1) {
       wx.showToast({
         title: '需要开启地理位置权限',
         icon: 'none',
@@ -92,14 +143,14 @@ Page({
       })
     }
   },
-  initRewardedVideo () {
-    rewardedVideoAd = wx.createRewardedVideoAd({
-      adUnitId: 'adunit-5598044ee112a568'
-    });
-    rewardedVideoAd.onLoad(() => {});
-    rewardedVideoAd.onError((err) => {});
-    rewardedVideoAd.onClose((res) => {});
-  },
+  // initRewardedVideo () {
+  //   rewardedVideoAd = wx.createRewardedVideoAd({
+  //     adUnitId: 'adunit-5598044ee112a568'
+  //   });
+  //   rewardedVideoAd.onLoad(() => {});
+  //   rewardedVideoAd.onError((err) => {});
+  //   rewardedVideoAd.onClose((res) => {});
+  // },
   showRewardedVideo () {
     rewardedVideoAd.show().catch(() => {
       rewardedVideoAd.load()
@@ -155,7 +206,7 @@ Page({
       searchText: '',
     })
   },
-  search (val, callback) {
+  search (val) {
     if (val === '520' || val === '521') {
       this.clearInput()
       this.dance()
@@ -166,13 +217,9 @@ Page({
       duration: 300,
     })
     if (val) {
-      this.setData({
-        located: false,
-      })
-      this.getWeather(val)
-      this.getHourly(val)
+      this.searchWeather(val)
+      this.clearInput()
     }
-    callback && callback()
   },
   // wx.openSetting 要废弃，button open-type openSetting 2.0.7 后支持
   // 使用 wx.canIUse('openSetting') 都会返回 true，这里判断版本号区分
@@ -186,88 +233,8 @@ Page({
       return false
     }
   },
-  init(params, callback) {
-    this.setData({
-      located: true,
-    })
-    wx.getLocation({
-      type: 'gcj02', // qq 必须
-      success: (res) => {
-        this.getWeather(`${res.latitude},${res.longitude}`)
-        this.getHourly(`${res.latitude},${res.longitude}`)
-        callback && callback()
-      },
-      fail: (res) => {
-        this.fail(res)
-      }
-    })
-  },
-  getWeather (location) {
-    wx.request({
-      url: `${globalData.requestUrl.weather}`,
-      data: {
-        location,
-        key,
-      },
-      success: (res) => {
-        if (res.statusCode === 200) {
-          let data = res.data.HeWeather6[0]
-          if (data.status === 'ok') {
-            this.clearInput()
-            this.success(data, location)
-          } else {
-            wx.showToast({
-              title: '查询失败',
-              icon: 'none',
-            })
-          }
-        }
-      },
-      fail: () => {
-        wx.showToast({
-          title: '查询失败',
-          icon: 'none',
-        })
-      },
-    })
-  },
-  getHourly(location) {
-    wx.request({
-      url: `${globalData.requestUrl.hourly}`,
-      data: {
-        location,
-        key,
-      },
-      success: (res) => {
-        if (res.statusCode === 200) {
-          let data = res.data.HeWeather6[0]
-          if (data.status === 'ok') {
-            this.setData({
-              hourlyDatas: data.hourly || []
-            })
-          }
-        }
-      },
-      fail: () => {
-        wx.showToast({
-          title: '查询失败',
-          icon: 'none',
-        })
-      },
-    })
-  },
   onPullDownRefresh (res) {
-    this.reloadWeather()
-  },
-  getCityDatas() {
-    let cityDatas = wx.getStorage({
-      key: 'cityDatas',
-      success: (res) => {
-        this.setData({
-          cityDatas: res.data,
-        })
-      },
-    })
+    this.getLocationWeather();
   },
   setBcgImg (index) {
     if (index !== undefined) {
@@ -333,37 +300,11 @@ Page({
       message: BroadCastMessages[index],
     });
   },
-  reloadWeather () {
-    if (this.data.located) {
-      this.init({})
-    } else {
-      this.search(this.data.searchCity)
-      this.setData({
-        searchCity: '',
-      })
-    }
-  },
-  onShow() {
+  agreePrivacy () {
     this.setData({
-      pageShowCount: ++this.data.pageShowCount,
+      showPrivacy: false
     })
-    // 注意：这里是测试广告的，上线后请注释掉
-    if (this.data.pageShowCount === 3) {
-      this.showRewardedVideo()
-    } else {
-      if (this.data.pageShowCount > 1) {
-        this.showInterstitialAd()
-      }
-    }
-  },
-  onLoad () {
-    this.setBcgImg()
-    this.getCityDatas()
-    this.reloadInitSetting()
-    this.reloadGetBroadcast()
-    this.reloadWeather();
-
-    this.initRewardedVideo()
+    this.getLocationWeather();
   },
   checkUpdate (setting) {
     // 兼容低版本

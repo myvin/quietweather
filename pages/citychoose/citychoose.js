@@ -78,13 +78,11 @@ Page({
     let len = pages.length
     let indexPage = pages[len - 2]
     if (name) {
-      indexPage.search(name, () => {
-        wx.navigateBack({})
-      })
+      indexPage.searchWeather(name);
+      wx.navigateBack({});
     } else {
-      indexPage.init({}, () => {
-        wx.navigateBack({})
-      })
+      indexPage.getLocationWeather();
+      wx.navigateBack({});
     }
   },
   // getHotCities(callback) {
